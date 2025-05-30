@@ -15,7 +15,7 @@ export default function useFields() {
             error: false,
             errorText: "* Campo Obrigatório",
             required: true,
-            placeholder: "Digite o E-mail para entrar"
+            placeholder: "Digite a senha para entrar"
         }
     });
 

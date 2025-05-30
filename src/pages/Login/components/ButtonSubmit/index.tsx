@@ -1,3 +1,5 @@
+import ButtonPrimary from "../../../../components/ButtonPrimary";
+
 export default function ButtonSubmit(){
-    return <></>
+    return <ButtonPrimary value="Entrar" />
 }
