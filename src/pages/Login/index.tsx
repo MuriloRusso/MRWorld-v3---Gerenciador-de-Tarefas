@@ -25,7 +25,6 @@ export default function Login() {
                 <Form
                     userField={loginFields.userField}
                     passwordField={loginFields.passwordField}
-
                     handleLoginFieldChange={handleLoginFieldChange}
                     handleUserFieldError={handleLoginFieldError}
                 />
