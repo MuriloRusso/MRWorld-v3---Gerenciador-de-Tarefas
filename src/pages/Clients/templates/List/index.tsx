@@ -10,7 +10,7 @@ export default function List() {
     const { columns } = useColumns();
 
     return (
-        <Paper>
+        <Paper sx={{maxHeight: "60vh"}}>
             <DataGrid
                 rows={rows}
                 columns={columns}
