@@ -13,7 +13,7 @@ export default function ButtonMenu({ Icon, text, link }: ButtonMenuProps) {
     <Link to={link ? link : "/"}>
       <Button
         variant="text"
-        startIcon={<Icon size={50}/>}
+        startIcon={<Icon/>}
         sx={{
           borderWidth: 0,
           color: "#000",

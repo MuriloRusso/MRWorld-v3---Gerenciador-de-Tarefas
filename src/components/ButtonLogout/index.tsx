@@ -2,6 +2,6 @@ import ButtonPrimary from "../ButtonPrimary";
 
 export default function ButtonLogout () {
     return (
-        <ButtonPrimary value="Sair" sx={{width: '100%'}}/>
+        <ButtonPrimary value="Sair" sx={{width: '100%', marginTop: '20px'}} />
     )
 }

@@ -7,6 +7,7 @@ import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import { ComponentType } from 'react';
 import DvrOutlinedIcon from '@mui/icons-material/DvrOutlined';
 import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined';
+import BrowserUpdatedOutlinedIcon from '@mui/icons-material/BrowserUpdatedOutlined';
 
 type MenuItem = {
     menuTitle: string;
@@ -48,6 +49,11 @@ export default function useMenuItems(){
         {
             menuTitle: "Site",
             menuComponent: [
+                {
+                    text: "Acessos",
+                    link: "../tasks",
+                    Icon: BrowserUpdatedOutlinedIcon
+                },
                 {
                     text: "Contatos",
                     link: "../tasks",
