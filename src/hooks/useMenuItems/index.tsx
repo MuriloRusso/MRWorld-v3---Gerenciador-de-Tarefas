@@ -31,7 +31,7 @@ export default function useMenuItems(){
                 },
                 {
                     text: "Empresas/Clientes",
-                    link: "../tasks",
+                    link: "../clients",
                     Icon: BusinessCenterOutlinedIcon
                 },
                 {
