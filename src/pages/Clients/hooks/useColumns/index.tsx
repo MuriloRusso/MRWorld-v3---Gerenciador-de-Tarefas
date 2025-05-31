@@ -2,23 +2,10 @@ import { GridColDef } from "@mui/x-data-grid";
 
 export default function useColumns() {
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'firstName', headerName: 'First name', width: 130 },
-        { field: 'lastName', headerName: 'Last name', width: 130 },
-        {
-            field: 'age',
-            headerName: 'Age',
-            type: 'number',
-            width: 90,
-        },
-        {
-            field: 'fullName',
-            headerName: 'Full name',
-            description: 'This column has a value getter and is not sortable.',
-            sortable: false,
-            width: 160,
-            valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-        },
+        { field: 'name', headerName: 'Empresa/Cliente', width: 250 },
+        { field: 'ower', headerName: 'Nome Dono', width: 130 },
+        { field: 'phone', headerName: 'Telefone', width: 130 },
+        { field: 'created_at', headerName: 'Criado', width: 90, },
     ];
     return {columns}
 }

@@ -2,6 +2,6 @@ import ButtonPrimary from "../../../../components/ButtonPrimary";
 
 export default function ButtonNew(){
     return(
-        <ButtonPrimary value="Nova Tarefa" />
+        <ButtonPrimary value="Nova Empresa/Cliente" />
     )
 }
