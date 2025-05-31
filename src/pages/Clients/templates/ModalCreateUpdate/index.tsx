@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
+import InputLogo from "../../components/InputLogo";
 
 
 const style = {
@@ -23,12 +24,11 @@ export default function ModalCreateUpdate(){
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Text in a modal
+                </Typography>
+
+                <InputLogo/>
             </Box>
         </Modal>
         )
