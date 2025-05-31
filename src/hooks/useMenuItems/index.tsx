@@ -1,6 +1,12 @@
 
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
+import DomainVerificationOutlinedIcon from '@mui/icons-material/DomainVerificationOutlined';
+import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import { ComponentType } from 'react';
+import DvrOutlinedIcon from '@mui/icons-material/DvrOutlined';
+import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined';
 
 type MenuItem = {
     menuTitle: string;
@@ -10,7 +16,8 @@ type MenuComponent = {
     text: string;
     Icon: ComponentType;
     link: string;
-} 
+}
+
 export default function useMenuItems(){
     const menuItems:MenuItem[] = [
         {
@@ -18,8 +25,48 @@ export default function useMenuItems(){
             menuComponent: [
                 {
                     text: "Tarefas",
-                    link: "tasks",
+                    link: "../tasks",
                     Icon: ListAltIcon
+                },
+                {
+                    text: "Empresas/Clientes",
+                    link: "../tasks",
+                    Icon: BusinessCenterOutlinedIcon
+                },
+                {
+                    text: "Projetos",
+                    link: "../tasks",
+                    Icon: DomainVerificationOutlinedIcon
+                },
+                {
+                    text: "Ideias",
+                    link: "../tasks",
+                    Icon: LightbulbOutlinedIcon
+                }
+            ]
+        },
+        {
+            menuTitle: "Site",
+            menuComponent: [
+                {
+                    text: "Contatos",
+                    link: "../tasks",
+                    Icon: CallOutlinedIcon
+                },
+                {
+                    text: "Portfólio",
+                    link: "../tasks",
+                    Icon: DvrOutlinedIcon
+                },
+                {
+                    text: "Projetos Pessoais",
+                    link: "../tasks",
+                    Icon: DvrOutlinedIcon
+                },
+                {
+                    text: "Depoimentos",
+                    link: "../tasks",
+                    Icon: RecordVoiceOverOutlinedIcon
                 }
             ]
         }
