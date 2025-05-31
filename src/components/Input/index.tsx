@@ -20,7 +20,7 @@ export default function Input({value, error, errorText, onChange, placeholder, r
             helperText={error ? errorText : ""}
             required={required}
             placeholder={placeholder}
-            sx={{width: "100%", minWidth: 400, borderRadius: '8px', borderColor: error ? borderColor : "#000"}}
+            sx={{width: "100%", minWidth: 400, borderRadius: '8px', borderColor: error ? borderColor : "#000", backgroundColor: "#fff"}}
         />
     )
 }

@@ -5,17 +5,18 @@ import useColumns from "../../hooks/useColumns";
 
 
 export default function List() {
-    const paginationModel = { page: 0, pageSize: 5 };
+    const paginationModel = { page: 0, pageSize: 10 };
     const { rows } = useGetList();
     const { columns } = useColumns();
 
     return (
-        <Paper sx={{ height: 400, width: '100%' }}>
+        <Paper>
             <DataGrid
                 rows={rows}
                 columns={columns}
                 initialState={{ pagination: { paginationModel } }}
-                pageSizeOptions={[5, 10]}
+            
+                pageSizeOptions={[10, 20]}
                 checkboxSelection
                 sx={{ border: 0 }}
             />
