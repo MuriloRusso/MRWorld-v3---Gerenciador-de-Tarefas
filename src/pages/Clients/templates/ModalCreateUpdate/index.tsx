@@ -1,6 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import InputLogo from "../../components/InputLogo";
+import InputDescription from "../../components/InputDescription";
+// import InputDescription from "../../components/InputDescription";
 
 
 const style = {
@@ -29,6 +31,7 @@ export default function ModalCreateUpdate(){
                 </Typography>
 
                 <InputLogo/>
+                <InputDescription/>
             </Box>
         </Modal>
         )
