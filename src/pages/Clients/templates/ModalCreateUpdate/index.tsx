@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import InputLogo from "../../components/InputLogo";
-import InputDescription from "../../components/InputDescription";
+import InputDescription from "../../components/InputNotes";
 import ModalPanel from "../ModalPanel";
 // import InputDescription from "../../components/InputDescription";
 
@@ -32,8 +32,6 @@ export default function ModalCreateUpdate(){
                 </Typography>
                 <ModalPanel/>
 
-                <InputLogo/>
-                <InputDescription/>
             </Box>
         </Modal>
         )

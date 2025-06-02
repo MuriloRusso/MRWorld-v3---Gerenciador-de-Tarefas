@@ -48,7 +48,7 @@ function onError(error:any) {
   console.error(error);
 }
 
-export default function InputDescription() {
+export default function InputNotes() {
   const initialConfig = {
     namespace: 'MyEditor',
     theme,

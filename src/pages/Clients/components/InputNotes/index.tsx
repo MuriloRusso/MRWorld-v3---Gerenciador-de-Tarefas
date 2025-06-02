@@ -1,5 +1,5 @@
 import RichTextEditor from "../../../../components/RichTextEditor";
 
-export default function InputDescription(){
+export default function InputNotes(){
     return <RichTextEditor/>
 }

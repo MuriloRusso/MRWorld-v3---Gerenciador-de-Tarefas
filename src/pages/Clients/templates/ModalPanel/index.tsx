@@ -2,6 +2,9 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import InputLogo from '../../components/InputLogo';
+import InputDescription from '../../components/InputNotes';
+import InputNotes from '../../components/InputNotes';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -10,19 +13,20 @@ interface TabPanelProps {
 }
 
 function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
+    const { children, value, index, ...other } = props;
+    return (
+        <div
+            role="tabpanel"
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+            style={{ display: value === index ? 'block' : 'none' }} // 👈 manter montado, mas ocultar
+            >
+            <Box sx={{ p: 3 }}>
+                {children}
+            </Box>
+        </div>
+    );
 }
 
 function a11yProps(index: number) {
@@ -40,7 +44,7 @@ export default function ModalPanel() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', marginTop: '20px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
             value={value}
@@ -53,7 +57,7 @@ export default function ModalPanel() {
             }}
             >
             <Tab
-                label="Item One"
+                label="Logo/Foto"
                 {...a11yProps(0)}
                 sx={{
                 '&.Mui-selected': {
@@ -63,7 +67,7 @@ export default function ModalPanel() {
                 }}
             />
             <Tab
-                label="Item Two"
+                label="Dados"
                 {...a11yProps(1)}
                 sx={{
                 '&.Mui-selected': {
@@ -73,7 +77,7 @@ export default function ModalPanel() {
                 }}
             />
             <Tab
-                label="Item Three"
+                label="Anotações"
                 {...a11yProps(2)}
                 sx={{
                 '&.Mui-selected': {
@@ -86,13 +90,15 @@ export default function ModalPanel() {
 
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+        <InputLogo/>
+
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         Item Two
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <InputNotes/>
+
       </CustomTabPanel>
     </Box>
   );
