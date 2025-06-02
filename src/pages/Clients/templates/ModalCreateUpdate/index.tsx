@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import InputLogo from "../../components/InputLogo";
 import InputDescription from "../../components/InputDescription";
+import ModalPanel from "../ModalPanel";
 // import InputDescription from "../../components/InputDescription";
 
 
@@ -27,8 +28,9 @@ export default function ModalCreateUpdate(){
         >
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Text in a modal
+                    Criar Empresa/Cliente
                 </Typography>
+                <ModalPanel/>
 
                 <InputLogo/>
                 <InputDescription/>
