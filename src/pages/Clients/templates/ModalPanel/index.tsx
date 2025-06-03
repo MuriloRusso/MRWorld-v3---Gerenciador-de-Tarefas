@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import InputLogo from '../../components/InputLogo';
 import InputDescription from '../../components/InputNotes';
 import InputNotes from '../../components/InputNotes';
+import InputName from '../../components/InputName';
+import { Grid } from '@mui/material';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -90,7 +92,10 @@ export default function ModalPanel() {
 
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <InputLogo/>
+        <Grid sx={{display: 'flex', flexDirection: 'column', gap: 3}}>
+            <InputName/>
+            <InputLogo/>
+        </Grid>
 
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
