@@ -14,7 +14,7 @@ export default function List() {
         rows={rows}
         columns={columns}
         initialState={{ pagination: { paginationModel } }}
-        pageSizeOptions={[10, 20]}
+        pageSizeOptions={[5, 10, 20]}
         checkboxSelection
         localeText={
             {
@@ -49,7 +49,22 @@ export default function List() {
                 },
                 footerRowSelected(params) {
                     return  params + " Itens selecionados"
+                },
+                paginationItemAriaLabel(type) {
+                    switch (type) {
+                        case 'next':
+                        return 'Próxima Página';
+                        case 'previous':
+                        return 'Página Anterior';
+                        case 'first':
+                        return 'Primeira Página';
+                        case 'last':
+                        return 'Última Página';
+                        default:
+                        return `Página ${type}`;
+                    }
                 }
+
             }
         }
         sx={{ border: 0 }}

@@ -19,7 +19,27 @@ export default function useGetList() {
         { id: 17, name: 'QuickApps', ower: 'Quésia', phone: "(19) 92222-2222", created_at: "2024-01-10", logo: "https://placehold.co/100x100?text=QuickApps" },
         { id: 18, name: 'RocketDev', ower: 'Rafael', phone: "(20) 91111-1111", created_at: "2024-02-01", logo: "https://placehold.co/100x100?text=RocketDev" },
         { id: 19, name: 'Skyline Systems', ower: 'Sabrina', phone: "(22) 90000-0000", created_at: "2024-02-15", logo: "https://placehold.co/100x100?text=Skyline" },
-        { id: 20, name: 'TechSphere', ower: 'Tiago', phone: "(23) 98888-1234", created_at: "2024-03-01", logo: "https://placehold.co/100x100?text=TechSphere" }
+        { id: 20, name: 'TechSphere', ower: 'Tiago', phone: "(23) 98888-1234", created_at: "2024-03-01", logo: "https://placehold.co/100x100?text=TechSphere" },
+        { id: 21, name: 'UpCore', ower: 'Ursula', phone: "(24) 97777-9876", created_at: "2024-03-10", logo: "https://placehold.co/100x100?text=UpCore" },
+        { id: 22, name: 'VortexIT', ower: 'Vinicius', phone: "(25) 96666-8765", created_at: "2024-03-20", logo: "https://placehold.co/100x100?text=VortexIT" },
+        { id: 23, name: 'WebNova', ower: 'Wesley', phone: "(26) 95555-7654", created_at: "2024-04-01", logo: "https://placehold.co/100x100?text=WebNova" },
+        { id: 24, name: 'XPressCode', ower: 'Xuxa', phone: "(27) 94444-6543", created_at: "2024-04-10", logo: "https://placehold.co/100x100?text=XPressCode" },
+        { id: 25, name: 'YellowDev', ower: 'Yuri', phone: "(28) 93333-5432", created_at: "2024-04-15", logo: "https://placehold.co/100x100?text=YellowDev" },
+        { id: 26, name: 'ZenSoft', ower: 'Zoe', phone: "(29) 92222-4321", created_at: "2024-04-20", logo: "https://placehold.co/100x100?text=ZenSoft" },
+        { id: 27, name: 'Appify', ower: 'Alan', phone: "(30) 91111-3210", created_at: "2024-05-01", logo: "https://placehold.co/100x100?text=Appify" },
+        { id: 28, name: 'ByteFlow', ower: 'Bruna', phone: "(31) 90000-2109", created_at: "2024-05-05", logo: "https://placehold.co/100x100?text=ByteFlow" },
+        { id: 29, name: 'CloudOn', ower: 'Caio', phone: "(32) 98888-1098", created_at: "2024-05-10", logo: "https://placehold.co/100x100?text=CloudOn" },
+        { id: 30, name: 'DevFactory', ower: 'Débora', phone: "(33) 97777-0987", created_at: "2024-05-15", logo: "https://placehold.co/100x100?text=DevFactory" },
+        { id: 31, name: 'EdgeLogic', ower: 'Eduarda', phone: "(34) 96666-9876", created_at: "2024-05-20", logo: "https://placehold.co/100x100?text=EdgeLogic" },
+        { id: 32, name: 'FlexDev', ower: 'Felipe', phone: "(35) 95555-8765", created_at: "2024-05-25", logo: "https://placehold.co/100x100?text=FlexDev" },
+        { id: 33, name: 'GridSoft', ower: 'Gabriela', phone: "(36) 94444-7654", created_at: "2024-06-01", logo: "https://placehold.co/100x100?text=GridSoft" },
+        { id: 34, name: 'HyperApps', ower: 'Henrique', phone: "(37) 93333-6543", created_at: "2024-06-05", logo: "https://placehold.co/100x100?text=HyperApps" },
+        { id: 35, name: 'InfinityCode', ower: 'Isabela', phone: "(38) 92222-5432", created_at: "2024-06-10", logo: "https://placehold.co/100x100?text=InfinityCode" },
+        { id: 36, name: 'JetStream', ower: 'João', phone: "(39) 91111-4321", created_at: "2024-06-15", logo: "https://placehold.co/100x100?text=JetStream" },
+        { id: 37, name: 'KappaDev', ower: 'Karen', phone: "(40) 90000-3210", created_at: "2024-06-20", logo: "https://placehold.co/100x100?text=KappaDev" },
+        { id: 38, name: 'LambdaTech', ower: 'Lucas', phone: "(41) 98888-2109", created_at: "2024-06-25", logo: "https://placehold.co/100x100?text=LambdaTech" },
+        { id: 39, name: 'NeoCode', ower: 'Nicole', phone: "(42) 97777-1098", created_at: "2024-07-01", logo: "https://placehold.co/100x100?text=NeoCode" },
+        { id: 40, name: 'OmegaApps', ower: 'Otto', phone: "(43) 96666-0987", created_at: "2024-07-05", logo: "https://placehold.co/100x100?text=OmegaApps" },
     ];
 
     return { rows };
