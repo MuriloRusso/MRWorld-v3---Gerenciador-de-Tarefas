@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+.container{
+  background-image: url(https://mrworld.shop/img/bg-new.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: brightness(0.5); */
+  background-blend-mode: lighten;
+}
