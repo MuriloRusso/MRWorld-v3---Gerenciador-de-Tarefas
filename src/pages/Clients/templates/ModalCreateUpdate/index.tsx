@@ -19,11 +19,11 @@ const style = {
   p: 4,
 };
 
-export default function ModalCreateUpdate(){
+export default function ModalCreateUpdate({visible, handleFunction}: {visible: boolean; handleFunction: (value:boolean) => void;}){
     return (
         <Modal
-            open={true}
-            // onClose={handleClose}
+            open={visible}
+            onClose={() => handleFunction(false)}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
