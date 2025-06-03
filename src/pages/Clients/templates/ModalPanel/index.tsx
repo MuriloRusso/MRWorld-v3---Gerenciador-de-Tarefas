@@ -10,6 +10,7 @@ import { Grid } from '@mui/material';
 import ModalPanelIntro from '../ModalPanelIntro';
 import ModalPanelNotes from '../ModalPanelNotes';
 import ModalPanelContact from '../ModalPanelContact';
+import { ClientData } from '../../../../types/client';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -41,7 +42,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function ModalPanel() {
+export default function ModalPanel({fieldsData}: {fieldsData: ClientData}) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -95,10 +96,10 @@ export default function ModalPanel() {
 
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <ModalPanelIntro/>
+        <ModalPanelIntro fieldsData={fieldsData}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ModalPanelContact/>
+        <ModalPanelContact fieldsData={fieldsData}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <ModalPanelNotes/>

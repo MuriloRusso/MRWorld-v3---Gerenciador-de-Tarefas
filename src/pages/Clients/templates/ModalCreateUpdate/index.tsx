@@ -5,6 +5,7 @@ import InputDescription from "../../components/InputNotes";
 import ModalPanel from "../ModalPanel";
 import ButtonPrimary from "../../../../components/ButtonPrimary";
 import ModalFooter from "../ModalFooter";
+import { ClientData } from "../../../../types/client";
 // import InputDescription from "../../components/InputDescription";
 
 
@@ -20,7 +21,13 @@ const style = {
   p: 4,
 };
 
-export default function ModalCreateUpdate({visible, handleModal}: {visible: boolean; handleModal: (value:boolean) => void;}){
+type ModalProps = {
+    visible: boolean;
+    handleModal: (value:boolean) => void;
+    fieldsData:ClientData
+}
+
+export default function ModalCreateUpdate({visible, handleModal, fieldsData}:ModalProps){
     return (
         <Modal
             open={visible}
@@ -32,7 +39,7 @@ export default function ModalCreateUpdate({visible, handleModal}: {visible: bool
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Criar Empresa/Cliente
                 </Typography>
-                <ModalPanel/>
+                <ModalPanel fieldsData={fieldsData}/>
                 <ModalFooter handleModal={handleModal}/>
             </Box>
         </Modal>
