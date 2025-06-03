@@ -2,11 +2,6 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import InputLogo from '../../components/InputLogo';
-import InputDescription from '../../components/InputNotes';
-import InputNotes from '../../components/InputNotes';
-import InputName from '../../components/InputName';
-import { Grid } from '@mui/material';
 import ModalPanelIntro from '../ModalPanelIntro';
 import ModalPanelNotes from '../ModalPanelNotes';
 import ModalPanelContact from '../ModalPanelContact';
@@ -42,10 +37,10 @@ function a11yProps(index: number) {
   };
 }
 
-export default function ModalPanel({fieldsData}: {fieldsData: ClientData}) {
+export default function ModalPanel({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}) {
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -54,7 +49,7 @@ export default function ModalPanel({fieldsData}: {fieldsData: ClientData}) {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
             value={value}
-            onChange={handleChange}
+            onChange={handleChangeTab}
             aria-label="basic tabs example"
             TabIndicatorProps={{
                 style: {
@@ -96,10 +91,10 @@ export default function ModalPanel({fieldsData}: {fieldsData: ClientData}) {
 
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <ModalPanelIntro fieldsData={fieldsData}/>
+        <ModalPanelIntro fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ModalPanelContact fieldsData={fieldsData}/>
+        <ModalPanelContact fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <ModalPanelNotes/>

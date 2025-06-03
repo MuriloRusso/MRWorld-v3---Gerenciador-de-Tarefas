@@ -36,7 +36,21 @@ export default function useFields(){
             errorText: "* Campo obrigatório",
             required: false
         }
-    })
+    });
 
-    return {fieldsData}
+
+    const handleChange = (fieldName: keyof ClientData, newValue: string) => {
+        setFieldsData(prev => ({
+            ...prev,
+            [fieldName]: {
+                ...prev[fieldName],
+                value: newValue,
+                error: prev[fieldName].required ? newValue.trim() === "" : false
+            }
+        }))
+    }
+
+    
+
+    return {fieldsData, handleChange}
 }

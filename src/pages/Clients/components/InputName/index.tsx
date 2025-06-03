@@ -3,7 +3,7 @@ import Input from "../../../../components/Input";
 import InputLabel from "../../../../components/InputLabel";
 import { ClientData } from "../../../../types/client";
 
-export default function InputName({fieldsData}: {fieldsData: ClientData}){
+export default function InputName({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     return (
         <InputLabel 
             label={fieldsData.name.label}
@@ -12,6 +12,7 @@ export default function InputName({fieldsData}: {fieldsData: ClientData}){
             error={fieldsData.name.error}
             errorText={fieldsData.name.errorText}
             required={fieldsData.name.required}
+            onChange={(newValue:string) => handleChange('name', newValue)}
         />
     )
 }

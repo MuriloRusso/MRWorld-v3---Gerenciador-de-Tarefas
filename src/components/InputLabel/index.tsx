@@ -9,14 +9,15 @@ type InputLabelProps = {
     error?: boolean;
     errorText?: string;
     required?: boolean;
+    onChange: (newValue: string) => void;
 }
 
-export default function InputLabel({label, value, placeholder, error, errorText, required}:InputLabelProps){
+export default function InputLabel({label, value, placeholder, error, errorText, required, onChange}:InputLabelProps){
     return(
         <Box>
             <Label text={label}/>
             <Input
-                onChange={()=>{}}
+                onChange={onChange}
                 value={value}
                 placeholder={placeholder}
                 error={error}
