@@ -6,14 +6,14 @@ type ButtonProps = {
     sx?: SxProps<Theme>;
 }
 
-export default function ButtonPrimary({value, onClick, sx}:ButtonProps){
+export default function ButtonSecondary({value, onClick, sx}:ButtonProps){
     return (
         <Button
             variant="text"
             onClick={onClick ? onClick : () => {}}
-            sx={{ backgroundColor: "#000", color: "#fff", height: '40px', borderWidth: 1, borderColor: "#000", borderStyle: "solid", ...sx}}
+            sx={{ backgroundColor: "#fff", color: "#000", height: '40px', borderWidth: 1, borderColor: "#000", borderStyle: "solid", ...sx}}
         >                
-        {value}                
+            {value}                
         </Button>
     )
 }

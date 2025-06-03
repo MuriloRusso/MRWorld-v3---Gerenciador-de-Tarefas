@@ -4,6 +4,7 @@ import InputLogo from "../../components/InputLogo";
 import InputDescription from "../../components/InputNotes";
 import ModalPanel from "../ModalPanel";
 import ButtonPrimary from "../../../../components/ButtonPrimary";
+import ModalFooter from "../ModalFooter";
 // import InputDescription from "../../components/InputDescription";
 
 
@@ -19,11 +20,11 @@ const style = {
   p: 4,
 };
 
-export default function ModalCreateUpdate({visible, handleFunction}: {visible: boolean; handleFunction: (value:boolean) => void;}){
+export default function ModalCreateUpdate({visible, handleModal}: {visible: boolean; handleModal: (value:boolean) => void;}){
     return (
         <Modal
             open={visible}
-            onClose={() => handleFunction(false)}
+            onClose={() => handleModal(false)}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -32,14 +33,9 @@ export default function ModalCreateUpdate({visible, handleFunction}: {visible: b
                     Criar Empresa/Cliente
                 </Typography>
                 <ModalPanel/>
-
-                <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
-                    <ButtonPrimary value="Salvar" />
-
-                </Grid>
-
+                <ModalFooter handleModal={handleModal}/>
             </Box>
         </Modal>
-        )
+    )
 
 }

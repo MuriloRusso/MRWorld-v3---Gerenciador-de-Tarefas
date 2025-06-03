@@ -2,7 +2,6 @@ import { Grid } from "@mui/material";
 import Menu from "../../components/Menu";
 import Container from "./templates/Container";
 import ModalCreateUpdate from "./templates/ModalCreateUpdate";
-import { useState } from "react";
 import useModals from "./hooks/useModals";
 
 export default function Clients(){
@@ -11,7 +10,7 @@ export default function Clients(){
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
             <Container handleModal={handleModal}/>
-            <ModalCreateUpdate visible={modalVisible} handleFunction={handleModal} />
+            <ModalCreateUpdate visible={modalVisible} handleModal={handleModal} />
         </Grid>
     )
 }
