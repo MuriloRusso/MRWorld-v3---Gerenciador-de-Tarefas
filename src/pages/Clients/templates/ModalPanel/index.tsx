@@ -7,6 +7,9 @@ import InputDescription from '../../components/InputNotes';
 import InputNotes from '../../components/InputNotes';
 import InputName from '../../components/InputName';
 import { Grid } from '@mui/material';
+import ModalPanelIntro from '../ModalPanelIntro';
+import ModalPanelNotes from '../ModalPanelNotes';
+import ModalPanelContact from '../ModalPanelContact';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -59,7 +62,7 @@ export default function ModalPanel() {
             }}
             >
             <Tab
-                label="Logo/Foto"
+                label="Introdução"
                 {...a11yProps(0)}
                 sx={{
                 '&.Mui-selected': {
@@ -69,7 +72,7 @@ export default function ModalPanel() {
                 }}
             />
             <Tab
-                label="Dados"
+                label="Contatos"
                 {...a11yProps(1)}
                 sx={{
                 '&.Mui-selected': {
@@ -92,18 +95,13 @@ export default function ModalPanel() {
 
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Grid sx={{display: 'flex', flexDirection: 'column', gap: 3}}>
-            <InputName/>
-            <InputLogo/>
-        </Grid>
-
+        <ModalPanelIntro/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <ModalPanelContact/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <InputNotes/>
-
+        <ModalPanelNotes/>
       </CustomTabPanel>
     </Box>
   );
