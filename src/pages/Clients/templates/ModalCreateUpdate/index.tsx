@@ -1,8 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import InputLogo from "../../components/InputLogo";
 import InputDescription from "../../components/InputNotes";
 import ModalPanel from "../ModalPanel";
+import ButtonPrimary from "../../../../components/ButtonPrimary";
 // import InputDescription from "../../components/InputDescription";
 
 
@@ -31,6 +32,11 @@ export default function ModalCreateUpdate(){
                     Criar Empresa/Cliente
                 </Typography>
                 <ModalPanel/>
+
+                <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
+                    <ButtonPrimary value="Salvar" />
+
+                </Grid>
 
             </Box>
         </Modal>

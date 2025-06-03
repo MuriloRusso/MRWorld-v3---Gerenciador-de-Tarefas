@@ -49,7 +49,7 @@ export default function ModalPanel() {
   };
 
   return (
-    <Box sx={{ width: '100%', marginTop: '20px' }}>
+    <Box sx={{ width: '100%', marginTop: '20px', minHeight: '430px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
             value={value}

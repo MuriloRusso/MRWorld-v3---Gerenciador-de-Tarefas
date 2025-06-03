@@ -27,15 +27,18 @@ export default function InputFile() {
 
     return (
         <>
-            <Grid container direction="column" spacing={2} /*alignItems="center"*/>
-                <Grid sx={{borderColor: 'lightblue', borderWidth: 2, borderStyle: 'dashed', backgroundColor: "#efefef", paddingY: 1}}>
-                    {imageSrc && (
+            <Grid container direction="column" spacing={2}>
+                <Grid sx={{borderRadius: '100%',borderColor: '#aaa', borderWidth: 2, borderStyle: 'dashed', backgroundColor: "#efefef",  height: '104px', width: '104px'}}>
+                    {imageSrc ? (
                         <img
                         src={imageSrc}
                         alt="Imagem selecionada"
                         style={{ maxWidth: "auto", height: '100px', width: '100px',  borderRadius: '100%', objectFit: 'cover' }}
                         />
-                    )}
+                    ):
+                    <></>
+                        // <Typography variant="subtitle1" sx={{color: '#aaa', textAlign: "center", position: "absolute", width: '100px'}}>Logo da Empresa</Typography>
+                    }
                 </Grid>
                 <Grid>
                     <Typography variant="subtitle1">{fileName}</Typography>
