@@ -4,6 +4,7 @@ import Container from "./templates/Container";
 import ModalCreateUpdate from "./templates/ModalCreateUpdate";
 import useModals from "./hooks/useModals";
 import useFields from "./hooks/useFields";
+import Toast from "../../components/Toast";
 
 export default function Clients(){
     const { modalVisible, handleModal } = useModals();
@@ -18,6 +19,7 @@ export default function Clients(){
                 fieldsData={fieldsData}
                 handleChange={handleChange}
             />
+            <Toast text="Logado com sucesso!" severity="success" variant="filled"/>
         </Grid>
     )
 }
