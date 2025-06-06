@@ -8,7 +8,7 @@ import Clients from './pages/Clients';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/mrworld-v3">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/tasks" element={<Tasks />} />
