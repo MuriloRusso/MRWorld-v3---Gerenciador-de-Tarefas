@@ -1,8 +1,12 @@
 import { Cloud, ContentCopy, ContentCut, ContentPaste } from "@mui/icons-material";
-import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, MenuList, Paper, Typography } from "@mui/material";
+import { Box, Button, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, MenuList, Paper, Typography } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
+import React from "react";
+import ListMenu from "../../components/ListMenu";
 
 export default function useColumns() {
+
+
     const columns: GridColDef[] = [
         { field: 'logo', headerName: 'Logo', width: 150, renderCell(params) {            
                 return(
@@ -16,45 +20,7 @@ export default function useColumns() {
         { field: 'created_at', headerName: 'Criado', width: 150, },
 
         {field: 'id', headerName: '', renderCell(params){
-             return (
-                <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    <nav aria-label="main mailbox folders">
-                        <List>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                            <ListItemIcon>
-                                {/* <InboxIcon /> */}
-                            </ListItemIcon>
-                            <ListItemText primary="Inbox" />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                            <ListItemIcon>
-                                {/* <DraftsIcon /> */}
-                            </ListItemIcon>
-                            <ListItemText primary="Drafts" />
-                            </ListItemButton>
-                        </ListItem>
-                        </List>
-                    </nav>
-                    <Divider />
-                    <nav aria-label="secondary mailbox folders">
-                        <List>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                            <ListItemText primary="Trash" />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding>
-                            <ListItemButton component="a" href="#simple-list">
-                            <ListItemText primary="Spam" />
-                            </ListItemButton>
-                        </ListItem>
-                        </List>
-                    </nav>
-                </Box>
-            );
+            return <ListMenu/>
         }}
 
     ];
