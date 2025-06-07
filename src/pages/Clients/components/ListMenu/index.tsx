@@ -7,7 +7,11 @@ export default function ListMenu(){
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        console.log('aqui...');
+        console.log(event.currentTarget);
+        
         setAnchorEl(event.currentTarget);
+        
     };
     const handleClose = () => {
         setAnchorEl(null);

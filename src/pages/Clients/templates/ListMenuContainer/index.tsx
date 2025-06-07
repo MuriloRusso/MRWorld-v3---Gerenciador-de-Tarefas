@@ -13,7 +13,7 @@ type ListMenuContainerProps = {
 export default function ListMenuContainer({handleClose, anchorEl, open}:ListMenuContainerProps){
     return (
         <Menu
-            id="basic-menu"
+            id="item-menu"
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
@@ -23,9 +23,9 @@ export default function ListMenuContainer({handleClose, anchorEl, open}:ListMenu
             },
             }}
         >
-            <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={()=>{}}/>
-            <ListMenuItem Icon={EditIcon} text="Editar" onClick={()=>{}}/>
-            <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={()=>{}}/>
+            <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose}/>
+            <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose}/>
+            <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleClose}/>
         </Menu>
     )
 }
