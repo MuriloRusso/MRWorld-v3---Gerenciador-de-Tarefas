@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ListMenuContainer from "../../templates/ListMenuContainer";
 
@@ -8,14 +8,18 @@ export default function ListMenu(){
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         console.log('aqui...');
-        console.log(event.currentTarget);
-        
+        console.log(event.currentTarget);        
         setAnchorEl(event.currentTarget);
-        
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    useEffect(() => {
+        console.log('open');
+        console.log(open);
+    }, [open]);
+
     return (
         <div>
             <Button
@@ -25,7 +29,7 @@ export default function ListMenu(){
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <MoreHorizIcon color="disabled"/>
+                <MoreHorizIcon color="disabled" />
                 <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} />
             </Button>
             

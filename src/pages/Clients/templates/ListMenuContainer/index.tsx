@@ -23,9 +23,9 @@ export default function ListMenuContainer({handleClose, anchorEl, open}:ListMenu
             },
             }}
         >
-            <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose}/>
-            <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose}/>
-            <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleClose}/>
+            <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={()=> handleClose}/>
+            <ListMenuItem Icon={EditIcon} text="Editar" onClick={()=>handleClose}/>
+            <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={()=>handleClose}/>
         </Menu>
     )
 }

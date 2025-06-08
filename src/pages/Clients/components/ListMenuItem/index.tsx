@@ -9,8 +9,8 @@ type ListMenuItemProps = {
 export default function ListMenuItem({Icon, text, onClick}: ListMenuItemProps){
     return(
         <MenuItem onClick={onClick}>
-            <ListItemIcon>
-                <Icon />
+            <ListItemIcon onClick={onClick}>
+                <Icon onClick={onClick}/>
             </ListItemIcon>
             <ListItemText>{text}</ListItemText>
         </MenuItem>
