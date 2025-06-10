@@ -1,38 +1,50 @@
-import { Button } from "@mui/material";
-import { useEffect, useState } from "react";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Fade from '@mui/material/Fade';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import ListMenuContainer from "../../templates/ListMenuContainer";
+import ListMenuContainer from '../../templates/ListMenuContainer';
 
-export default function ListMenu(){
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        console.log('aqui...');
-        console.log(event.currentTarget);        
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+export default function ListMenu() {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-    useEffect(() => {
-        console.log('open');
-        console.log(open);
-    }, [open]);
-
-    return (
-        <div>
-            <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-            >
-                <MoreHorizIcon color="disabled" />
-                <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} />
-            </Button>
-            
-        </div>
-    );
+  return (
+    <div>
+      <Button
+        id="fade-button"
+        aria-controls={open ? 'fade-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
+        <MoreHorizIcon color="disabled" />
+      </Button>
+      <Menu
+        id="fade-menu"
+        slotProps={{
+          list: {
+            'aria-labelledby': 'fade-button',
+          },
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} />
+        
+      </Menu>
+    </div>
+  );
 }
