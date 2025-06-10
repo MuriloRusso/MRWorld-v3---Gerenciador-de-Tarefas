@@ -8,11 +8,20 @@ import ListMenuContainer from '../../templates/ListMenuContainer';
 
 export default function ListMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  // const open = Boolean(anchorEl);
+
+  const [open, setOpen] = React.useState<boolean>(Boolean(anchorEl));
+
+  React.useEffect(()=>{
+    setOpen(Boolean(anchorEl))
+  }, [anchorEl])
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    console.log('closing...');
+    
     setAnchorEl(null);
   };
 
@@ -39,11 +48,7 @@ export default function ListMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} />
-        
+        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} />        
       </Menu>
     </div>
   );

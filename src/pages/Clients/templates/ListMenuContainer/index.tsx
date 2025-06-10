@@ -1,4 +1,4 @@
-import { ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
+import { Button, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import ListMenuItem from "../../components/ListMenuItem";
 import EditIcon from '@mui/icons-material/Edit';
@@ -22,10 +22,10 @@ export default function ListMenuContainer({handleClose, anchorEl, open}:ListMenu
                 'aria-labelledby': 'basic-button',
             },
             }}
-        >
-            <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={()=> handleClose}/>
-            <ListMenuItem Icon={EditIcon} text="Editar" onClick={()=>handleClose}/>
-            <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={()=>handleClose}/>
+        >        
+            <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose}/>
+            <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose}/>
+            <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleClose}/>
         </Menu>
     )
 }
