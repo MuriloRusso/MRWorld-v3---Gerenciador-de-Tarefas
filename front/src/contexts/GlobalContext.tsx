@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useState, ReactNode } from 'react';
 import { ToastProps } from '../types/toast';
 
 // Tipagem do que será compartilhado no contexto
@@ -11,14 +11,7 @@ export const GlobalContext = createContext<GlobalContextType>({} as GlobalContex
 
 // Componente Provider
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  const [toast, setToast] = useState<ToastProps[]>([
-    {
-        id: 0,
-        severity: "success",
-        text: "Login efetuado com sucesso!",
-        variant: "filled"
-    }
-  ]);
+  const [toast, setToast] = useState<ToastProps[]>([]);
 
   const addToast = (value: ToastProps) => {
     const id = Date.now();

@@ -1,15 +1,8 @@
 import api from '../../../../services/api';
 import { Client, ClientData } from '../../../../types/client';
+import { ToastProps } from '../../../../types/toast';
 
-export default function useCreate({handleModal, addToast}:{handleModal:any; addToast:any;}) {
-  /*const newClient: Client = {
-    name: "teste - 2",
-    ower: "Dono teste - 2",
-    phone: "dasd",
-    email: "dsads",
-    notes: "tedsfsd"
-  };*/
-
+export default function useCreate({handleModal, addToast}:{handleModal:(value: boolean) => void; addToast:(value: ToastProps) => void;}) {
   const create = (newClient:ClientData) => {
     console.log('creating...');
 
@@ -29,6 +22,13 @@ export default function useCreate({handleModal, addToast}:{handleModal:any; addT
     })
     .then(response => {
       console.log('Sucesso:', response.data);
+      handleModal(false);
+      addToast({
+        id: 0,
+        severity: 'success',
+        variant: 'filled',
+        text: response.data.message
+      });
     })
     .catch(error => {
       console.error('Erro ao criar cliente:', error);
