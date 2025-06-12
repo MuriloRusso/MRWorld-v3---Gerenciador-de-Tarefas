@@ -19,6 +19,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
+    "axios": "^1.9.0",
     "lexical": "^0.31.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
