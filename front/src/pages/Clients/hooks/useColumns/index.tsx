@@ -8,9 +8,15 @@ export default function useColumns() {
 
 
     const columns: GridColDef[] = [
-        { field: 'logo', headerName: 'Logo', width: 150, renderCell(params) {            
+        { field: 'logo', headerName: 'Logo', width: 150, renderCell(params) {                
                 return(
-                    <img src={params.value} style={{maxHeight: '90%', borderRadius: 100, margin: "2.5% 0"}}/>
+                    <img 
+                        src={
+                            params.value ? params.value : 
+                            `https://placehold.co/100x100?text=${params.row.name}`
+                        }
+                        style={{maxHeight: '90%', borderRadius: 100, margin: "2.5% 0"}}
+                    />
                 )
             },
         },

@@ -1,5 +1,11 @@
+import { useEffect, useState } from 'react';
+import api from '../../../../services/api';
+import { Client } from '../../../../types/client';
+
+
 export default function useGetList() {
-    const rows = [
+    
+    /*const rows = [
         { id: 1, name: '2UP', ower: 'Arthur', phone: "(11) 99999-9999", created_at: "2023-05-05", logo: "https://mrworld.shop/img/upload/empresas/6508965e871d4.jpg" },
         { id: 2, name: 'AlphaTech', ower: 'Beatriz', phone: "(21) 98888-7777", created_at: "2023-06-01", logo: "https://mrworld.shop/img/upload/empresas/651c6697b7f3d.enc" },
         { id: 3, name: 'BluePixel', ower: 'Carlos', phone: "(31) 97777-6666", created_at: "2023-06-15", logo: "https://placehold.co/100x100?text=BluePixel" },
@@ -40,7 +46,18 @@ export default function useGetList() {
         { id: 38, name: 'LambdaTech', ower: 'Lucas', phone: "(41) 98888-2109", created_at: "2024-06-25", logo: "https://placehold.co/100x100?text=LambdaTech" },
         { id: 39, name: 'NeoCode', ower: 'Nicole', phone: "(42) 97777-1098", created_at: "2024-07-01", logo: "https://placehold.co/100x100?text=NeoCode" },
         { id: 40, name: 'OmegaApps', ower: 'Otto', phone: "(43) 96666-0987", created_at: "2024-07-05", logo: "https://placehold.co/100x100?text=OmegaApps" },
-    ];
+    ];*/
+
+
+    const [ rows, setRows ] = useState<Client[]>([]);
+
+    useEffect(() => {
+    api.get('/clients/get.php'/*, { params: { search } }*/)
+        .then(response => setRows(response.data.data))
+        .catch(error => console.error(error));
+    // }, [search]);
+    }, []);
+
 
     return { rows };
 }

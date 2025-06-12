@@ -7,7 +7,7 @@ include('../protect.php');
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
 // Montar a query base
-$sql = "SELECT id, name, ower, email, phone, notes FROM cad_client";
+$sql = "SELECT * FROM cad_client";
 
 // Se houver filtro de busca, adicionar cláusula WHERE
 if (!empty($search)) {
