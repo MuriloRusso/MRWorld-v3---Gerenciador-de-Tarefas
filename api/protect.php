@@ -1,5 +1,5 @@
 <?php
-	$headers = apache_request_headers();	
+	/*$headers = apache_request_headers();	
 
 	if(!isset($headers['Authorization'])){
 		die("Você não está logado");
@@ -12,4 +12,4 @@
 
     if ($sql_query->num_rows === 0) {
 		die("Você não está logado");	
-	}
+	}*/

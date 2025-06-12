@@ -1,7 +1,7 @@
 <?php 
-	error_reporting(0);
+	error_reporting(1);
 	$usuario = 'root';
-	$senha = '';
+	$senha = 'root';
 	$database = 'mrworld';
 	$host = 'localhost';
 	$mysqli = new mysqli($host, $usuario, $senha, $database);
