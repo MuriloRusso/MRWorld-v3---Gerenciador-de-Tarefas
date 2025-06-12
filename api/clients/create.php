@@ -41,7 +41,7 @@
     $notes = $data['notes'] ?? '';
 
     // (Opcional) Upload de imagem ou outro arquivo
-    $uploadedFilePath = '';
+    /*$uploadedFilePath = '';
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
         $photo = $_FILES['file'];
         $folder = "../../../public/src/img/upload/post/";
@@ -59,7 +59,7 @@
             http_response_code(500);
             exit;
         }
-    }
+    }*/
 
     // Inserção no banco de dados
     $sql_code = "INSERT INTO cad_client (name, ower, email, phone, notes) 
