@@ -21,7 +21,7 @@ type ModalProps = {
     handleModal: (value:boolean) => void;
     fieldsData:ClientData;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
-    create: () => void;
+    create: (newClient:ClientData) => void;
 }
 
 export default function ModalCreateUpdate({visible, handleModal, fieldsData, handleChange, create}:ModalProps){
@@ -37,7 +37,7 @@ export default function ModalCreateUpdate({visible, handleModal, fieldsData, han
                     Criar Empresa/Cliente
                 </Typography>
                 <ModalPanel fieldsData={fieldsData} handleChange={handleChange}/>
-                <ModalFooter handleModal={handleModal} create={create}/>
+                <ModalFooter handleModal={handleModal} create={create} fieldsData={fieldsData}/>
             </Box>
         </Modal>
     )

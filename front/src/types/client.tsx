@@ -16,4 +16,6 @@ export type ClientData = {
     ower: inputProps;
     phone: inputProps;
     email: inputProps;
+    notes: inputProps;
+
 }

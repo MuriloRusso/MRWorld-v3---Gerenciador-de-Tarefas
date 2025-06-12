@@ -1,24 +1,24 @@
 import api from '../../../../services/api';
-import { Client } from '../../../../types/client';
+import { Client, ClientData } from '../../../../types/client';
 
 export default function useCreate() {
-  const newClient: Client = {
+  /*const newClient: Client = {
     name: "teste - 2",
     ower: "Dono teste - 2",
     phone: "dasd",
     email: "dsads",
     notes: "tedsfsd"
-  };
+  };*/
 
-  const create = () => {
+  const create = (newClient:ClientData) => {
     console.log('creating...');
 
     const formData = new FormData();
-    formData.append('name', newClient.name);
-    formData.append('ower', newClient.ower);
-    formData.append('phone', newClient.phone ? newClient.phone : "");
-    formData.append('email', newClient.email ? newClient.email : "");
-    formData.append('notes', newClient.notes ? newClient.notes : "");
+    formData.append('name', newClient.name.value);
+    formData.append('ower', newClient.ower.value);
+    formData.append('phone', newClient.phone.value ? newClient.phone.value : "");
+    formData.append('email', newClient.email.value ? newClient.email.value : "");
+    // formData.append('notes', newClient.notes.value ? newClient.notes.value : "");
 
     // Se tiver arquivo, adicionar aqui: formData.append('file', file);
 

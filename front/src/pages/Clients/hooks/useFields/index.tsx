@@ -35,6 +35,14 @@ export default function useFields(){
             error: false,
             errorText: "* Campo obrigatório",
             required: false
+        },
+        notes: {
+            label: "E-mail",
+            value: "",
+            placeholder: "Digite o mail da Empresa/Cliente",
+            error: false,
+            errorText: "* Campo obrigatório",
+            required: false
         }
     });
 
