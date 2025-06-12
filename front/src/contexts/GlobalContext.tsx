@@ -4,7 +4,7 @@ import { ToastProps } from '../types/toast';
 // Tipagem do que será compartilhado no contexto
 type GlobalContextType = {
   toast: ToastProps[];
-  handleToast: (value: ToastProps) => void;
+  addToast: (value: ToastProps) => void;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
@@ -13,25 +13,28 @@ export const GlobalContext = createContext<GlobalContextType>({} as GlobalContex
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [toast, setToast] = useState<ToastProps[]>([
     {
-        severity: "error",
-        text: "teste",
-        variant: "outlined"
-    },
-    {
+        id: 0,
         severity: "success",
         text: "Login efetuado com sucesso!",
         variant: "filled"
     }
   ]);
 
-  const handleToast = (value: ToastProps) => {
-    console.log(value);
-    
-    // setToast(value);
-  }
+  const addToast = (value: ToastProps) => {
+    const id = Date.now();
+    const newToast = { ...value, id };
+    setToast(prev => [...prev, newToast]);
+    setTimeout(() => {
+      removeToast(id);
+    }, 5000);
+  };
+
+  const removeToast = (id: number) => {
+    setToast(prev => prev.filter(toast => toast.id !== id));
+  };
 
   return (
-    <GlobalContext.Provider value={{ toast, handleToast }}>
+    <GlobalContext.Provider value={{ toast, addToast }}>
       {children}
     </GlobalContext.Provider>
   );

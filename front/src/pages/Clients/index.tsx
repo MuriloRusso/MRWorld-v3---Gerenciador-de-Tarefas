@@ -12,8 +12,8 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 export default function Clients(){
     const { modalVisible, handleModal } = useModals();
     const { fieldsData, handleChange } = useFields();
-    const { toast, handleToast } = useContext(GlobalContext);
-    const { create } = useCreate({handleModal, handleToast});
+    const { toast, addToast } = useContext(GlobalContext);
+    const { create } = useCreate({handleModal, addToast});
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
