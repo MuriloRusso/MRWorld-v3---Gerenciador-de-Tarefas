@@ -1,20 +1,24 @@
-import { Alert, AlertTitle } from "@mui/material";
+import { Alert, AlertTitle, Grid } from "@mui/material";
+import { ToastProps } from "../../types/toast";
 
-type ToastProps = {
-  text: string;
-  severity: "success" | "info" | "warning" | "error";
-  variant?: "filled" | "outlined" | "standard";
-  Icon?: React.ComponentType<any> | false;
-  alertTitle?: string;
-};
-
-export default function Toast({ text, severity, variant, Icon, alertTitle }: ToastProps) {
-  const iconProp = Icon === false ? false : Icon ? <Icon /> : undefined;
-
+export default function Toast({ toasts }: { toasts: ToastProps[] }) {
   return (
-    <Alert severity={severity} variant={variant} icon={iconProp} sx={{position: 'fixed', right: 20, bottom: 10}}>
-        {alertTitle && <AlertTitle>{alertTitle}</AlertTitle>}
-        {text}
-    </Alert>
+    <Grid sx={{display: 'flex', flexDirection: 'column', gap: 1, position: "fixed", right: 20, bottom: 10 }}>
+      {toasts.map((item, i) => {
+        const iconProp = item.Icon === false ? false : item.Icon ? <item.Icon /> : undefined;
+
+        return (
+          <Alert
+            key={i} // <- importante para evitar warning do React
+            severity={item.severity}
+            variant={item.variant}
+            icon={iconProp}
+          >
+            {item.alertTitle && <AlertTitle>{item.alertTitle}</AlertTitle>}
+            {item.text}
+          </Alert>
+        );
+      })}
+    </Grid>
   );
 }

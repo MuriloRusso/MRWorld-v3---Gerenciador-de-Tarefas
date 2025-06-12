@@ -1,7 +1,7 @@
 import api from '../../../../services/api';
 import { Client, ClientData } from '../../../../types/client';
 
-export default function useCreate() {
+export default function useCreate({handleModal, handleToast}:{handleModal:any; handleToast:any;}) {
   /*const newClient: Client = {
     name: "teste - 2",
     ower: "Dono teste - 2",
