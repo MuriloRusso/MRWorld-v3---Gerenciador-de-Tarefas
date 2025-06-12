@@ -32,6 +32,18 @@ export default function useCreate({handleModal, addToast}:{handleModal:(value: b
     })
     .catch(error => {
       console.error('Erro ao criar cliente:', error);
+
+      const errors = error.response.data.errors;
+
+      errors.map((error:string, i:number) => {
+        addToast({
+          id: i,
+          severity: 'error',
+          variant: 'filled',
+          text: error
+        });
+      })
+
     });
   };
 
