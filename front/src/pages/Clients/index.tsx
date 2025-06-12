@@ -5,10 +5,12 @@ import ModalCreateUpdate from "./templates/ModalCreateUpdate";
 import useModals from "./hooks/useModals";
 import useFields from "./hooks/useFields";
 import Toast from "../../components/Toast";
+import useCreate from "./hooks/useCreate";
 
 export default function Clients(){
     const { modalVisible, handleModal } = useModals();
     const { fieldsData, handleChange } = useFields();
+    const { create } = useCreate();
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
@@ -18,6 +20,7 @@ export default function Clients(){
                 handleModal={handleModal}
                 fieldsData={fieldsData}
                 handleChange={handleChange}
+                create={create}
             />
             <Toast text="Logado com sucesso!" severity="success" variant="filled"/>
         </Grid>
