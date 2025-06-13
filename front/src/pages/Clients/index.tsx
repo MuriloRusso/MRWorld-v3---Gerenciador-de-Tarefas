@@ -25,7 +25,6 @@ export default function Clients(){
                 handleChange={handleChange}
                 create={create}
             />
-            {/* <Toast text="Logado com sucesso!" severity="success" variant="filled"/> */}
             <Toast toasts={toast} />
         </Grid>
     )
