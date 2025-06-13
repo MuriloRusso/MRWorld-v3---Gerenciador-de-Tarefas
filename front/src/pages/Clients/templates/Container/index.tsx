@@ -19,11 +19,14 @@ export default function Container({handleModal}:{handleModal: (value:boolean) =>
             className="container" 
             sx={{
                 paddingX: 10,
+                paddingY: 5,
+
                 width: "calc(100% - 417px)",
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 2, height: '100vh',
-                backgroundColor: "#efefef"
+                backgroundColor: "#efefef",
+                flexGrow: 1
             }}
         >
             <Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', marginY: 5}}>

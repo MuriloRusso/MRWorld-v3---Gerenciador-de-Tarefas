@@ -1,6 +1,13 @@
 import { ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
-export default function ButtonMenu({text, open}:{text:string; open:boolean;}){
+type ButtonMenuProps = {
+  Icon?: React.ElementType;
+  text: string;
+  link?: string;
+  open: boolean;
+};
+
+export default function ButtonMenu({Icon, text, link, open }:ButtonMenuProps){
     return(
         <ListItem key={text} disablePadding sx={{ display: 'block' }}>
             <ListItemButton
@@ -33,6 +40,7 @@ export default function ButtonMenu({text, open}:{text:string; open:boolean;}){
                     },
                 ]}
             >
+                {Icon && <Icon/>}
                 {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
             </ListItemIcon>
             <ListItemText

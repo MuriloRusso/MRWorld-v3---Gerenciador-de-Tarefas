@@ -107,7 +107,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-export default function MiniDrawer() {
+export default function Menu() {
     const { menuItems } = useMenuItems();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -123,7 +123,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{backgroundColor: "#000"}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -131,22 +131,24 @@ export default function MiniDrawer() {
             onClick={handleDrawerOpen}
             edge="start"
             sx={[
-              {
+                {
                 marginRight: 5,
-              },
-              open && { display: 'none' },
-            ]}
+            },
+            open && { display: 'none' },
+        ]}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          {/* <Typography variant="h6" noWrap component="div">
             Mini variant drawer
-          </Typography>
+          </Typography> */}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+        <DrawerHeader  sx={{backgroundColor: "#000"}}>
+        <Typography component='h1' variant='h1' sx={{fontSize: 30,paddingX: 2, color: "#fff"}}>MRWorld</Typography>
+
+          <IconButton onClick={handleDrawerClose} sx={{color: "#fff"}}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
@@ -154,10 +156,11 @@ export default function MiniDrawer() {
           {menuItems.map((item, index) => (
             <List>
                 <Box sx={{marginY: '40px'}} key={10}>
-                    <Typography variant="subtitle1" component="p" sx={{fontWeight: 500, fontSize: 22, paddingX: 2}}>{item.menuTitle}</Typography>
+                    {/* <Typography variant="subtitle1" component="p" sx={{fontWeight: 500, fontSize: 22, paddingX: 2}}>{item.menuTitle}</Typography> */}
+                    <ButtonMenu text={item.menuTitle} open={open} key={10} />
                     {
                         item.menuComponent.map((item, i) => {
-                            return(<ButtonMenu text={item.text} open={open} key={10} />)
+                            return(<ButtonMenu text={item.text} open={open} key={10} Icon={item.Icon} />)
                         })
                     }
                     <Divider />
