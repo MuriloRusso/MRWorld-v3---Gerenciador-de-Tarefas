@@ -144,7 +144,7 @@ export default function Menu() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader  sx={{backgroundColor: "#fff"}}>
-        <Typography component='h1' variant='h1' sx={{fontSize: 30,paddingX: 2, color: "#000"}}>MRWorld</Typography>
+        {/* <Typography component='h1' variant='h1' sx={{fontSize: 30,paddingX: 2, color: "#000"}}>MRWorld</Typography> */}
 
           <IconButton onClick={handleDrawerClose} sx={{color: "#000"}}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}

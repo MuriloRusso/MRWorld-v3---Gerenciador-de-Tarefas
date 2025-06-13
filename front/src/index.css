@@ -21,3 +21,9 @@ code {
   /* filter: brightness(0.5); */
   background-blend-mode: lighten;
 }
+
+@media (max-width: 776px){
+  .container{
+    padding: 30px 10px !important
+  }
+}
