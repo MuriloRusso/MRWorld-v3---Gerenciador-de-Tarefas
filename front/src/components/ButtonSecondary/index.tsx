@@ -11,7 +11,15 @@ export default function ButtonSecondary({value, onClick, sx}:ButtonProps){
         <Button
             variant="text"
             onClick={onClick ? onClick : () => {}}
-            sx={{ backgroundColor: "#fff", color: "#000", height: '40px', borderWidth: 1, borderColor: "#000", borderStyle: "solid", ...sx}}
+            sx={{
+                backgroundColor: "#fff",
+                color: "#000",
+                height: '55px',
+                borderWidth: 1,
+                borderColor: "#000",
+                borderStyle: "solid",
+                ...sx
+            }}
         >                
             {value}                
         </Button>

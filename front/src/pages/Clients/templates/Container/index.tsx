@@ -20,11 +20,11 @@ export default function Container({handleModal}:{handleModal: (value:boolean) =>
             sx={{
                 paddingX: 10,
                 paddingY: 5,
-
                 width: "calc(100% - 417px)",
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 2, height: '100vh',
+                gap: 2,
+                height: '100vh',
                 backgroundColor: "#efefef",
                 flexGrow: 1
             }}
@@ -35,8 +35,8 @@ export default function Container({handleModal}:{handleModal: (value:boolean) =>
                     flexDirection: 'row',
                     gap: 2,
                     alignItems: 'center',
-                    /*justifyContent: 'space-between',*/
-                    marginY: 5
+                    flexWrap: 'wrap',
+                    marginTop: 5
                 }}
             >
                 <Typography variant="h2" component="h2" sx={{fontSize: 25}}>Empresas/Clientes</Typography>

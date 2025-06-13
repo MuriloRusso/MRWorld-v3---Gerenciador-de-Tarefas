@@ -15,7 +15,7 @@ export default function ButtonPrimary({value, onClick, sx, Icon}:ButtonProps){
             sx={{
                 backgroundColor: "#000",
                 color: "#fff",
-                height: '40px',
+                height: '55px',
                 borderWidth: 1,
                 borderColor: "#000",
                 borderStyle: "solid",
