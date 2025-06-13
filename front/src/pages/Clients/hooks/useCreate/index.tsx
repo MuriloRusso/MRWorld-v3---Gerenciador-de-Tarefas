@@ -1,8 +1,8 @@
 import api from '../../../../services/api';
-import { Client, ClientData } from '../../../../types/client';
+import { ClientData } from '../../../../types/client';
 import { ToastProps } from '../../../../types/toast';
 
-export default function useCreate({handleModal, addToast}:{handleModal:(value: boolean) => void; addToast:(value: ToastProps) => void;}) {
+export default function useCreate({handleModal, addToast, validateFields}:{handleModal:(value: boolean) => void; addToast:(value: ToastProps) => void; validateFields: () => void;}) {
   const create = (newClient:ClientData) => {
     console.log('creating...');
 
@@ -43,7 +43,7 @@ export default function useCreate({handleModal, addToast}:{handleModal:(value: b
           text: error
         });
       })
-
+      validateFields();
     });
   };
 

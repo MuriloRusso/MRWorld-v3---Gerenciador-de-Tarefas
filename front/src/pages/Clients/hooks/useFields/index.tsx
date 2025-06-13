@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { ClientData } from "../../../../types/client"
+import { GlobalContext } from "../../../../contexts/GlobalContext";
 
 export default function useFields(){
+
+    const { addToast } = useContext(GlobalContext);
 
     const [ fieldsData, setFieldsData ] = useState<ClientData>({
         name: {
@@ -18,7 +21,7 @@ export default function useFields(){
             placeholder: "Digite o nome do dono da Empresa",
             error: false,
             errorText: "* Campo obrigatório",
-            required: false
+            required: true
         },
         phone: {
             label: "Telefone",
@@ -58,7 +61,34 @@ export default function useFields(){
         }))
     }
 
+    const validateFields = () => {
+        let isValid = true;
+
+        Object.entries(fieldsData).forEach(([key, field]) => {
+            if (field.required && field.value.trim() === "") {
+                isValid = false;
+                setFieldsData(prev => ({
+                    ...prev,
+                    [key]: {
+                        ...prev[key as keyof ClientData],
+                        error: true
+                    }
+                }));
+
+                /*addToast({
+                    id: 0,
+                    severity: 'error',
+                    variant: 'filled',
+                    text: 'Campo ' + key + ' é obrigatório!'
+                });*/
+            }
+        });
+
+        return isValid;
+    };
+
+
     
 
-    return {fieldsData, handleChange}
+    return {fieldsData, handleChange, validateFields}
 }
