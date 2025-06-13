@@ -1,4 +1,5 @@
 import { ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { Link } from "react-router-dom";
 
 type ButtonMenuProps = {
   Icon?: React.ElementType;
@@ -9,53 +10,55 @@ type ButtonMenuProps = {
 
 export default function ButtonMenu({Icon, text, link, open }:ButtonMenuProps){
     return(
-        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-            sx={[
-                {
-                minHeight: 48,
-                px: 2.5,
-                },
-                open
-                ? {
-                    justifyContent: 'initial',
-                    }
-                : {
-                    justifyContent: 'center',
-                    },
-            ]}
-            >
-            <ListItemIcon
+        <Link to={link ? link : "/"} style={{textDecoration: 'none', color: "#000"}}>
+            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                <ListItemButton
                 sx={[
-                {
-                    minWidth: 0,
-                    justifyContent: 'center',
-                },
-                open
-                    ? {
-                        mr: 3,
-                    }
-                    : {
-                        mr: 'auto',
+                    {
+                    minHeight: 48,
+                    px: 2.5,
                     },
-                ]}
-            >
-                {Icon && <Icon/>}
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-            </ListItemIcon>
-            <ListItemText
-                primary={text}
-                sx={[
-                open
+                    open
                     ? {
-                        opacity: 1,
-                    }
+                        justifyContent: 'initial',
+                        }
                     : {
-                        opacity: 0,
-                    },
+                        justifyContent: 'center',
+                        },
                 ]}
-            />
-            </ListItemButton>
-        </ListItem>
+                >
+                <ListItemIcon
+                    sx={[
+                    {
+                        minWidth: 0,
+                        justifyContent: 'center',
+                    },
+                    open
+                        ? {
+                            mr: 3,
+                        }
+                        : {
+                            mr: 'auto',
+                        },
+                    ]}
+                >
+                    {Icon && <Icon/>}
+                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                </ListItemIcon>
+                <ListItemText
+                    primary={text}
+                    sx={[
+                    open
+                        ? {
+                            opacity: 1,
+                        }
+                        : {
+                            opacity: 0,
+                        },
+                    ]}
+                />
+                </ListItemButton>
+            </ListItem>
+        </Link>
     )
 } 
