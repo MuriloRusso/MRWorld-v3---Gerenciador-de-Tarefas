@@ -3,37 +3,21 @@
     include('../cors.php');
     include('../protect.php');
 
-    // Os dados vêm via multipart/form-data, então usamos $_POST e $_FILES
+    // Dados do POST multipart/form-data
     $data = $_POST;
+    $erros = [];
 
-    if (!isset($data['name']) || !isset($data['ower'])) {
-        echo json_encode([
-            'message' => 'Campos obrigatórios não enviados',
-            'status' => 400,
-        ]);
-        http_response_code(400);
-        exit;
+    // Verifica se campos obrigatórios foram enviados
+    if (!isset($data['name']) || trim($data['name']) === '') {
+        $erros[] = 'Nome da Empresa/Cliente em branco';
+    } else {
+        $name = trim($data['name']);
     }
 
-    $name = trim($data['name']);
-    $ower = trim($data['ower']);
-
-    if (strlen($name) === 0) {
-        echo json_encode([
-            'message' => 'Nome da Empresa/Cliente em branco',
-            'status' => 401,
-        ]);
-        http_response_code(401);
-        exit;
-    }
-
-    if (strlen($ower) === 0) {
-        echo json_encode([
-            'message' => 'Responsável da Empresa/Cliente em branco',
-            'status' => 401,
-        ]);
-        http_response_code(401);
-        exit;
+    if (!isset($data['ower']) || trim($data['ower']) === '') {
+        $erros[] = 'Responsável da Empresa/Cliente em branco';
+    } else {
+        $ower = trim($data['ower']);
     }
 
     $email = $data['email'] ?? '';
@@ -42,24 +26,34 @@
 
     // (Opcional) Upload de imagem ou outro arquivo
     /*$uploadedFilePath = '';
-    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $photo = $_FILES['file'];
-        $folder = "../../../public/src/img/upload/post/";
-        $extension = strtolower(pathinfo($photo['name'], PATHINFO_EXTENSION));
-        $newFileName = uniqid() . "." . $extension;
-        $path = $folder . $newFileName;
+    if (isset($_FILES['file']) && $_FILES['file']['error'] !== UPLOAD_ERR_NO_FILE) {
+        if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $photo = $_FILES['file'];
+            $folder = "../../../public/src/img/upload/post/";
+            $extension = strtolower(pathinfo($photo['name'], PATHINFO_EXTENSION));
+            $newFileName = uniqid() . "." . $extension;
+            $path = $folder . $newFileName;
 
-        if (move_uploaded_file($photo["tmp_name"], $path)) {
-            $uploadedFilePath = $newFileName; // salva o nome do arquivo, se precisar
+            if (move_uploaded_file($photo["tmp_name"], $path)) {
+                $uploadedFilePath = $newFileName;
+            } else {
+                $erros[] = 'Erro ao fazer upload do arquivo';
+            }
         } else {
-            echo json_encode([
-                'message' => 'Erro ao fazer upload do arquivo',
-                'status' => 500,
-            ]);
-            http_response_code(500);
-            exit;
+            $erros[] = 'Erro no envio do arquivo';
         }
     }*/
+
+    // Se houver erros, retorna todos
+    if (!empty($erros)) {
+        echo json_encode([
+            'message' => 'Erros de validação',
+            'errors' => $erros,
+            'status' => 400,
+        ]);
+        http_response_code(400);
+        exit;
+    }
 
     // Inserção no banco de dados
     $sql_code = "INSERT INTO cad_client (name, ower, email, phone, notes) 
