@@ -29,11 +29,19 @@ export default function Container({handleModal}:{handleModal: (value:boolean) =>
                 flexGrow: 1
             }}
         >
-            <Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', marginY: 5}}>
-                {/* <ButtonNew handleModal={handleModal}/> */}
+            <Grid 
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: 2,
+                    alignItems: 'center',
+                    /*justifyContent: 'space-between',*/
+                    marginY: 5
+                }}
+            >
+                <Typography variant="h2" component="h2" sx={{fontSize: 25}}>Empresas/Clientes</Typography>
                 {loading ? <Skeleton variant="rounded" width={170} height={40} /> : <ButtonNew handleModal={handleModal}/>}
             </Grid>
-            <Typography variant="h2" component="h2" sx={{fontSize: 25}}>Empresas/Clientes</Typography>
             
             {loading ? <Skeleton variant="rounded" width={450} height={90} /> : <Search/>}
 

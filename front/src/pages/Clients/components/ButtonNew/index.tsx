@@ -1,7 +1,8 @@
 import ButtonPrimary from "../../../../components/ButtonPrimary";
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 export default function ButtonNew({handleModal}:{handleModal: (value: boolean) => void;}){
     return(
-        <ButtonPrimary value="Nova Empresa/Cliente" onClick={() => handleModal(true)} />
+        <ButtonPrimary Icon={AddCircleOutlineOutlinedIcon} onClick={() => handleModal(true)} />
     )
 }
