@@ -30,6 +30,8 @@ export default function ButtonMenu({Icon, text, link, open }:ButtonMenuProps){
                 <ListItemIcon
                     sx={[
                     {
+                        color: "#000",
+
                         minWidth: 0,
                         justifyContent: 'center',
                     },
