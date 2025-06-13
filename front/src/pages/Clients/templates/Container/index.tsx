@@ -35,17 +35,19 @@ export default function Container({handleModal}:{handleModal: (value:boolean) =>
                     flexDirection: 'row',
                     gap: 2,
                     alignItems: 'center',
+                    justifyContent: "space-between",
+                    maxWidth: '400px',
                     flexWrap: 'wrap',
                     marginTop: 5
                 }}
             >
                 <Typography variant="h2" component="h2" sx={{fontSize: 25}}>Empresas/Clientes</Typography>
-                {loading ? <Skeleton variant="rounded" width={170} height={40} /> : <ButtonNew handleModal={handleModal}/>}
+                {/* {loading ? <Skeleton variant="rounded" width={170} height={40} /> : <ButtonNew handleModal={handleModal}/>} */}
             </Grid>
             
             {loading ? <Skeleton variant="rounded" width={450} height={90} /> : <Search/>}
 
-            {loading ? <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : <List/>}
+            {loading ? <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : <List  handleModal={handleModal}/>}
         </Box>
     )
 }

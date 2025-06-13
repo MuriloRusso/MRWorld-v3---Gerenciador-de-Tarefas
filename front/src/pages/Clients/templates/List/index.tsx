@@ -1,15 +1,20 @@
-import { Paper } from "@mui/material";
+import { Divider, Grid, Paper } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import useGetList from "../../hooks/useGetList";
 import useColumns from "../../hooks/useColumns";
+import ButtonNew from "../../components/ButtonNew";
 
-export default function List() {
+export default function List({handleModal}:{handleModal: (value: boolean) => void;}) {
   const paginationModel = { page: 0, pageSize: 10 };
   const { rows } = useGetList();
   const { columns } = useColumns();
 
   return (
     <Paper sx={{ maxHeight: "60vh" }}>
+      <Grid sx={{display: 'flex', justifyContent: "flex-end", padding: 2}}>
+        <ButtonNew handleModal={handleModal}/>
+      </Grid>
+      <Divider/>
       <DataGrid
         rows={rows}
         columns={columns}

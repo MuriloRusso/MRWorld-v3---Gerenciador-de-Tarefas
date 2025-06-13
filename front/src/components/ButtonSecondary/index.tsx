@@ -14,7 +14,7 @@ export default function ButtonSecondary({value, onClick, sx}:ButtonProps){
             sx={{
                 backgroundColor: "#fff",
                 color: "#000",
-                height: '55px',
+                height: '40px',
                 borderWidth: 1,
                 borderColor: "#000",
                 borderStyle: "solid",
