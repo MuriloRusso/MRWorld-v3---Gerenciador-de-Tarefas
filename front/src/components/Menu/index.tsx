@@ -12,12 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import ButtonMenu from '../ButtonMenu';
 import useMenuItems from '../../hooks/useMenuItems';
 import ButtonLogout from '../ButtonLogout';
@@ -153,9 +147,9 @@ export default function Menu() {
         <Divider />
           {menuItems.map((item, index) => (
             <List>
-                <Box sx={{marginY: '40px'}} key={10}>
+                <Box sx={{marginY: '10px'}} key={10}>
                     {/* <Typography variant="subtitle1" component="p" sx={{fontWeight: 500, fontSize: 22, paddingX: 2}}>{item.menuTitle}</Typography> */}
-                    <ButtonMenu text={item.menuTitle} open={open} key={10} />
+                    <ButtonMenu text={item.menuTitle} open={open} key={10} Icon={item.menuComponent[0].Icon} />
                     {
                         item.menuComponent.map((item, i) => {
                             return(<ButtonMenu text={item.text} open={open} key={10} Icon={item.Icon} link={item.link} />)
