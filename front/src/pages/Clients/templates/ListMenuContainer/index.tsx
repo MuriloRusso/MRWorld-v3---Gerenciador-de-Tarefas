@@ -1,6 +1,6 @@
 import { Button, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
-import ListMenuItem from "../../components/ListMenuItem";
+import ListMenuItem from "../ListMenuItem";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 

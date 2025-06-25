@@ -1,8 +1,8 @@
 import { Box, Grid, Skeleton, Typography } from "@mui/material";
 import ButtonNew from "../../components/ButtonNew";
-import List from "../List";
 import Search from "../Search";
 import { useEffect, useState } from "react";
+import List from "../List";
 
 export default function Container({handleModal}:{handleModal: (value:boolean) => void;}) {
 
@@ -47,7 +47,7 @@ export default function Container({handleModal}:{handleModal: (value:boolean) =>
             
             {loading ? <Skeleton variant="rounded" width={450} height={90} /> : <Search/>}
 
-            {loading ? <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : <List  handleModal={handleModal}/>}
+            {loading ? <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : <List handleModal={handleModal}/>}
         </Box>
     )
 }
