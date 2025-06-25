@@ -18,8 +18,7 @@ export default function usePersonColumns() {
             },
         },
         { field: 'name', headerName: 'Nome', width: 200 },
-
-
+        
         {field: 'id', headerName: '', renderCell(params){
             return <ListMenu/>
         }}

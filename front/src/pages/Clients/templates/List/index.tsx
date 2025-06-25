@@ -7,5 +7,5 @@ export default function List({handleModal}:{handleModal: (value: boolean) => voi
     const { rows } = useGetList();
     const { columns } = useColumns();
 
-    return <TableDataGrid handleModal={handleModal} rows={rows} columns={columns}/>
+    return <TableDataGrid handleModal={handleModal} rows={rows} columns={columns} sx={{ maxHeight: "60vh" }}/>
 }

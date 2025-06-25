@@ -1,18 +1,20 @@
-import { Divider, Grid, Paper } from "@mui/material";
+import { Divider, Grid, Paper, SxProps } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import ButtonNew from "../../pages/Clients/components/ButtonNew";
+import { Theme } from "@emotion/react";
 
-export default function TableDataGrid({handleModal, rows, columns}:{handleModal: (value: boolean) => void; rows: any[], columns: any[]}) {
+type TableDataGrid = {
+  handleModal: (value: boolean) => void;
+  rows: any[];
+  columns: any[];
+  sx?: SxProps<Theme>;
+}
+
+export default function TableDataGrid({handleModal, rows, columns, sx}:TableDataGrid) {
   const paginationModel = { page: 0, pageSize: 10 };
-  // const { rows } = useGetList();
-  // const { columns } = useColumns();
-
-  console.log(rows);
-  
-  console.log(columns);
 
   return (
-    <Paper sx={{ maxHeight: "60vh" }}>
+    <Paper sx={sx}>
       <Grid sx={{display: 'flex', justifyContent: "flex-end", padding: 2}}>
         <ButtonNew handleModal={handleModal}/>
       </Grid>
@@ -74,7 +76,7 @@ export default function TableDataGrid({handleModal, rows, columns}:{handleModal:
 
             }
         }
-        sx={{ border: 0, maxHeight: "100%" }}
+        sx={{ border: 0, ...sx }}
       />
     </Paper>
   );
