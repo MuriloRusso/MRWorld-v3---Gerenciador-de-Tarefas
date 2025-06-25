@@ -76,7 +76,7 @@ export default function TableDataGrid({handleModal, rows, columns, sx}:TableData
 
             }
         }
-        sx={{ border: 0, ...sx }}
+        sx={{ border: 0, maxHeight: "inherit" }}
       />
     </Paper>
   );

@@ -18,7 +18,13 @@ export default function usePersonColumns() {
             },
         },
         { field: 'name', headerName: 'Nome', width: 200 },
-        
+        { field: 'phone', headerName: 'Telefone', width: 200 },
+        { field: 'email', headerName: 'E-mail', width: 200 },
+        { field: 'position', headerName: 'Cargo', width: 200 },
+        { field: 'function', headerName: 'Função', width: 200 },
+        { field: 'notes', headerName: 'Anotações', width: 200 },
+
+
         {field: 'id', headerName: '', renderCell(params){
             return <ListMenu/>
         }}
