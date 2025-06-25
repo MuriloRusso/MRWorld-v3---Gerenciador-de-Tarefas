@@ -5,7 +5,7 @@ export default function usePersonColumns() {
 
 
     const columns: GridColDef[] = [
-        { field: 'avatar', headerName: 'Foto', width: 150, renderCell(params) {                
+        { field: 'avatar', headerName: 'Foto', width: 70, renderCell(params) {                
                 return(
                     <img 
                         src={
@@ -17,7 +17,7 @@ export default function usePersonColumns() {
                 )
             },
         },
-        { field: 'name', headerName: 'Empresa/Cliente', width: 350 },
+        { field: 'name', headerName: 'Nome', width: 200 },
 
 
         {field: 'id', headerName: '', renderCell(params){
