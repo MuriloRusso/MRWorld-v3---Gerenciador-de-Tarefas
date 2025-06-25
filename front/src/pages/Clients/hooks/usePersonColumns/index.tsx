@@ -1,11 +1,11 @@
 import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
 
-export default function useColumns() {
+export default function usePersonColumns() {
 
 
     const columns: GridColDef[] = [
-        { field: 'logo', headerName: 'Logo', width: 150, renderCell(params) {                
+        { field: 'avatar', headerName: 'Foto', width: 150, renderCell(params) {                
                 return(
                     <img 
                         src={
@@ -18,9 +18,7 @@ export default function useColumns() {
             },
         },
         { field: 'name', headerName: 'Empresa/Cliente', width: 350 },
-        { field: 'ower', headerName: 'Nome Dono', width: 250 },
-        { field: 'phone', headerName: 'Telefone', width: 150 },
-        { field: 'created_at', headerName: 'Criado', width: 150, },
+
 
         {field: 'id', headerName: '', renderCell(params){
             return <ListMenu/>
