@@ -6,6 +6,7 @@ import ModalPanelIntro from '../ModalPanelIntro';
 import ModalPanelNotes from '../ModalPanelNotes';
 import ModalPanelContact from '../ModalPanelContact';
 import { ClientData } from '../../../../types/client';
+import ModalPanelPerson from '../ModalPanelPerson';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -87,6 +88,16 @@ export default function ModalPanel({fieldsData, handleChange}: {fieldsData: Clie
                 },
                 }}
             />
+            <Tab
+                label="Pessoas"
+                {...a11yProps(3)}
+                sx={{
+                '&.Mui-selected': {
+                    color: 'black',
+                    fontWeight: 'bold',
+                },
+                }}
+            />
             </Tabs>
 
       </Box>
@@ -98,6 +109,9 @@ export default function ModalPanel({fieldsData, handleChange}: {fieldsData: Clie
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <ModalPanelNotes/>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+        <ModalPanelPerson/>
       </CustomTabPanel>
     </Box>
   );
