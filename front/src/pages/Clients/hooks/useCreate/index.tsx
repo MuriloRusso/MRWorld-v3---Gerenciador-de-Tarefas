@@ -2,7 +2,13 @@ import api from '../../../../services/api';
 import { ClientData } from '../../../../types/client';
 import { ToastProps } from '../../../../types/toast';
 
-export default function useCreate({handleModal, addToast, validateFields}:{handleModal:(value: boolean) => void; addToast:(value: ToastProps) => void; validateFields: () => void;}) {
+type useCreateProps = {
+  handleModal:(value: boolean) => void;
+  addToast:(value: ToastProps) => void;
+  validateFields: () => void;
+}
+
+export default function useCreate({handleModal, addToast, validateFields}:useCreateProps) {
   const create = (newClient:ClientData) => {
     console.log('creating...');
 

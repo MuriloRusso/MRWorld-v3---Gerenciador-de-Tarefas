@@ -63,7 +63,7 @@
 
     if ($stmt->execute()) {
         echo json_encode([
-            'message' => 'Empresa adicionada com sucesso!',
+            'message' => 'onada com sucesso!',
             'status' => 200,
         ]);
         http_response_code(200);
