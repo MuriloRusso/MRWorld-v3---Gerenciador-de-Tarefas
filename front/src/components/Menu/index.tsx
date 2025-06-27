@@ -147,16 +147,14 @@ export default function Menu() {
         <Divider />
           {menuItems.map((item, index) => (
             <List>
-                <Box sx={{marginY: '10px'}} key={10}>
-                    {/* <Typography variant="subtitle1" component="p" sx={{fontWeight: 500, fontSize: 22, paddingX: 2}}>{item.menuTitle}</Typography> */}
-                    <ButtonMenu text={item.menuTitle} open={open} key={10} Icon={item.menuComponent[0].Icon} />
+                <Box sx={{marginY: '10px'}} key={index}>
+                    <ButtonMenu text={item.menuTitle} open={open} Icon={item.menuComponent[0].Icon} />
                     {
                         item.menuComponent.map((item, i) => {
-                            return(<ButtonMenu text={item.text} open={open} key={10} Icon={item.Icon} link={item.link} />)
+                            return(<ButtonMenu text={item.text} open={open} key={i} Icon={item.Icon} link={item.link} />)
                         })
                     }
                     <Divider />
-
                 </Box>
             </List>
           ))}
