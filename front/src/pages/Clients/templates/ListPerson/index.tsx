@@ -6,5 +6,5 @@ export default function ListPerson(){
     const { rows } = useGetPersonList();
     const { columns } = usePersonColumns();
 
-    return <TableDataGrid handleModal={()=>{}} rows={rows} columns={columns} sx={{ height: "500px" }}/>
+    return <TableDataGrid rows={rows} columns={columns} sx={{ height: "500px" }}/>
 }

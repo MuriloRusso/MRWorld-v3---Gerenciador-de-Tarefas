@@ -4,21 +4,20 @@ import ButtonNew from "../../pages/Clients/components/ButtonNew";
 import { Theme } from "@emotion/react";
 
 type TableDataGrid = {
-  handleModal: (value: boolean) => void;
   rows: any[];
   columns: any[];
   sx?: SxProps<Theme>;
+  headerTable?: React.ReactNode;
 }
 
-export default function TableDataGrid({handleModal, rows, columns, sx}:TableDataGrid) {
+export default function TableDataGrid({rows, columns, sx, headerTable}:TableDataGrid) {
   const paginationModel = { page: 0, pageSize: 10 };
 
   return (
     <Paper sx={sx}>
       <Grid sx={{display: 'flex', flexDirection: 'column', height: "100%"}}>
-        <Grid sx={{display: 'flex', justifyContent: "flex-end", padding: 2}}>
-          <ButtonNew handleModal={handleModal}/>
-        </Grid>
+
+        {headerTable}
         <Divider/>
         <DataGrid
           rows={rows}
