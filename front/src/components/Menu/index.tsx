@@ -151,7 +151,7 @@ export default function Menu() {
                     <ButtonMenu text={item.menuTitle} open={open} Icon={item.menuComponent[0].Icon} />
                     {
                         item.menuComponent.map((item, i) => {
-                            return(<ButtonMenu text={item.text} open={open} key={i} Icon={item.Icon} link={item.link} />)
+                            return(<ButtonMenu text={item.text} open={open} key={index + '-' + i} Icon={item.Icon} link={item.link} />)
                         })
                     }
                     <Divider />
