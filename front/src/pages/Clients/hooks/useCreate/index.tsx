@@ -6,9 +6,10 @@ type useCreateProps = {
   handleModal:(value: boolean) => void;
   addToast:(value: ToastProps) => void;
   validateFields: () => void;
+  getList: () => void;
 }
 
-export default function useCreate({handleModal, addToast, validateFields}:useCreateProps) {
+export default function useCreate({handleModal, addToast, validateFields, getList}:useCreateProps) {
   const create = (newClient:ClientData) => {
     console.log('creating...');
 
@@ -35,6 +36,7 @@ export default function useCreate({handleModal, addToast, validateFields}:useCre
         variant: 'filled',
         text: response.data.message
       });
+      getList();
     })
     .catch(error => {
       console.error('Erro ao criar cliente:', error);

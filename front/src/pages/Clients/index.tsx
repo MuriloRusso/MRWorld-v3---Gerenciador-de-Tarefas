@@ -8,12 +8,14 @@ import Toast from "../../components/Toast";
 import useCreate from "./hooks/useCreate";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import useGetList from "./hooks/useGetList";
 
 export default function Clients(){
     const { modalVisible, handleModal } = useModals();
     const { fieldsData, handleChange, validateFields } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
-    const { create } = useCreate({handleModal, addToast, validateFields});
+    const { getList } = useGetList();
+    const { create } = useCreate({handleModal, addToast, validateFields, getList});
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
