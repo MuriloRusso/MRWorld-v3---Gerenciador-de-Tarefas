@@ -1,6 +1,5 @@
 import { Divider, Grid, Paper, SxProps } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
-import ButtonNew from "../../pages/Clients/components/ButtonNew";
 import { Theme } from "@emotion/react";
 
 type TableDataGrid = {

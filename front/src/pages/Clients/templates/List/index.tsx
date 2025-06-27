@@ -8,5 +8,5 @@ export default function List({handleModal}:{handleModal: (value: boolean) => voi
     const { rows } = useGetList();
     const { columns } = useColumns();
 
-    return <TableDataGrid rows={rows} columns={columns} sx={{ maxHeight: "60vh" }} headerTable={<HeaderList handleModal={()=>handleModal}/>} />
+    return <TableDataGrid rows={rows} columns={columns} sx={{ maxHeight: "60vh" }} headerTable={<HeaderList handleModal={handleModal}/>} />
 }
