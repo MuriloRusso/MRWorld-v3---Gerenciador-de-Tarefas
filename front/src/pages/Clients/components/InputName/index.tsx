@@ -1,5 +1,3 @@
-import { Box, Typography } from "@mui/material";
-import Input from "../../../../components/Input";
 import InputLabel from "../../../../components/InputLabel";
 import { ClientData } from "../../../../types/client";
 

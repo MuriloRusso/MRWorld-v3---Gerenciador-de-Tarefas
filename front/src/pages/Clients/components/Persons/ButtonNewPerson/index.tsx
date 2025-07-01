@@ -1,4 +1,4 @@
-import ButtonPrimary from "../../../../components/ButtonPrimary";
+import ButtonPrimary from "../../../../../components/ButtonPrimary";
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 export default function ButtonNewPerson({onClick}: {onClick: () => void;}){

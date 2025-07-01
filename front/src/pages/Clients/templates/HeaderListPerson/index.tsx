@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import ButtonNewPerson from "../../components/ButtonNewPerson";
+import ButtonNewPerson from "../../components/Persons/ButtonNewPerson";
 
 export default function HeaderListPerson({handleModal}:{handleModal: (value: boolean) => void;}){
     return (
