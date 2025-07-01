@@ -4,7 +4,7 @@ import ListPerson from "../ListPerson";
 export default function ModalPanelProjects(){
     return (
         <Grid sx={{display: 'flex', flexDirection: "column", gap: 3}}>
-            <ListPerson/>
+            {/* <ListPerson/> */}
         </Grid>
     )
 }

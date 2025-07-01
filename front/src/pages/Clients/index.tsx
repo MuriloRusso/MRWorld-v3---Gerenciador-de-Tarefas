@@ -11,11 +11,12 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import useGetList from "./hooks/useGetList";
 
 export default function Clients(){
-    const { modalVisible, handleModal } = useModals();
+    const { modalVisible, handleModal, formPersonVisible, handleFormPerson } = useModals();
     const { fieldsData, handleChange, validateFields } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
     const { getList } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
+
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
@@ -25,6 +26,7 @@ export default function Clients(){
                 handleModal={handleModal}
                 fieldsData={fieldsData}
                 handleChange={handleChange}
+                formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
             />
             <Toast toasts={toast} />

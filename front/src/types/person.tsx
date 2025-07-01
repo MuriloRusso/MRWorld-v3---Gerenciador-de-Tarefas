@@ -12,3 +12,8 @@ export type Person = {
     created_at: string;
     updated_at?: string;
 }
+
+export type FormPersonParamsProps = {
+    state: boolean;
+    handleFormFunction: (value: boolean) => void;
+}

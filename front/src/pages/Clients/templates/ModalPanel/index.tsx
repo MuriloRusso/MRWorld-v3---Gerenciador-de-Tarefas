@@ -8,6 +8,7 @@ import ModalPanelContact from '../ModalPanelContact';
 import { ClientData } from '../../../../types/client';
 import ModalPanelPerson from '../ModalPanelPerson';
 import ModalPanelProjects from '../ModalPanelProjects';
+import { FormPersonParamsProps } from '../../../../types/person';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -39,7 +40,13 @@ function a11yProps(index: number) {
   };
 }
 
-export default function ModalPanel({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}) {
+type ModalPanelProps = {
+  fieldsData: ClientData;
+  handleChange: (fieldName: keyof ClientData, newValue: string) => void;
+  formPersonParams: FormPersonParamsProps;
+}
+
+export default function ModalPanel({fieldsData, handleChange, formPersonParams}:ModalPanelProps ) {
   const [value, setValue] = React.useState(0);
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
@@ -123,7 +130,7 @@ export default function ModalPanel({fieldsData, handleChange}: {fieldsData: Clie
         <ModalPanelNotes/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <ModalPanelPerson/>
+        <ModalPanelPerson formPersonParams={formPersonParams}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         <ModalPanelProjects/>
