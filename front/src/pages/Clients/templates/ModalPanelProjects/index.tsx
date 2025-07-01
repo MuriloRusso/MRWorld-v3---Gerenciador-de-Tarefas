@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import ListPerson from "../ListPerson";
+import ListPerson from "../Persons/ListPerson";
 
 export default function ModalPanelProjects(){
     return (

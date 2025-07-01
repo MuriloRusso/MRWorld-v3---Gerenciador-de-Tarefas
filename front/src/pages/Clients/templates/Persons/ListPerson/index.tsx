@@ -1,7 +1,7 @@
-import TableDataGrid from "../../../../templates/TableDataGrid";
-import useGetPersonList from "../../hooks/useGetPersonList";
-import usePersonColumns from "../../hooks/usePersonColumns";
-import HeaderListPerson from "../HeaderListPerson";
+import TableDataGrid from "../../../../../templates/TableDataGrid";
+import useGetPersonList from "../../../hooks/useGetPersonList";
+import usePersonColumns from "../../../hooks/usePersonColumns";
+import HeaderListPerson from "../../HeaderListPerson";
 
 export default function ListPerson({handleModal}:{handleModal: (value: boolean) => void;}){
     const { rows } = useGetPersonList();
