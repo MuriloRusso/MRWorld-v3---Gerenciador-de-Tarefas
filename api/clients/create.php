@@ -52,19 +52,19 @@
 
     // Inserção no banco de dados
     $sql_code = "INSERT INTO cad_client (name, email, phone, notes) 
-                VALUES (?, ?, ?, ?, ?)";
+                VALUES (?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param("sssss", $name, $email, $phone, $notes);
+    $stmt->bind_param("ssss", $name, $email, $phone, $notes);
 
     if ($stmt->execute()) {
         echo json_encode([
-            'message' => 'onada com sucesso!',
+            'message' => 'Cliente cadastrado com sucesso!',  // Corrigi a mensagem também
             'status' => 200,
         ]);
         http_response_code(200);
     } else {
         echo json_encode([
-            'message' => 'Erro ao adicionar empresa: ' . $stmt->error,
+            'message' => 'Erro ao adicionar cliente: ' . $stmt->error,
             'status' => 500,
         ]);
         http_response_code(500);

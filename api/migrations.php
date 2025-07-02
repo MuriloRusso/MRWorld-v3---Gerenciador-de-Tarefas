@@ -22,6 +22,7 @@ try {
             name TEXT NOT NULL,
             cnpj VARCHAR(45) DEFAULT NULL,
             logo VARCHAR(45) DEFAULT NULL,
+            email VARCHAR(125) DEFAULT NULL,
             notes TEXT DEFAULT NULL,
             phone VARCHAR(45) DEFAULT NULL,
             cep VARCHAR(45) DEFAULT NULL,
