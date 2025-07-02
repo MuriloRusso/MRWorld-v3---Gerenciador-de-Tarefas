@@ -136,10 +136,10 @@ export default function ModalPanel({fieldsData, handleChange, formPersonParams}:
         <ModalPanelIntro fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ModalPanelAddress fieldsData={fieldsData} handleChange={handleChange}/>
+        <ModalPanelContact fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <ModalPanelContact fieldsData={fieldsData} handleChange={handleChange}/>
+        <ModalPanelAddress fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <ModalPanelNotes/>

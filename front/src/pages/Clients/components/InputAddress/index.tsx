@@ -3,7 +3,7 @@ import { ClientData } from "../../../../types/client";
 
 export default function InputAddress({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     return (
-        <InputLabel 
+        <InputLabel
             label={fieldsData.address.label}
             value={fieldsData.address.value}
             placeholder={fieldsData.address.placeholder}
@@ -11,6 +11,7 @@ export default function InputAddress({fieldsData, handleChange}: {fieldsData: Cl
             errorText={fieldsData.address.errorText}
             required={fieldsData.address.required}
             onChange={(newValue:string) => handleChange('address', newValue)}
+            sx={{width: '100%'}}
         />
     )
 }

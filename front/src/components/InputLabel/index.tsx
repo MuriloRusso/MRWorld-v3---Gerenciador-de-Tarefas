@@ -1,6 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Box, SxProps, Typography } from "@mui/material";
 import Input from "../Input";
 import Label from "../Label";
+import { Theme } from "@emotion/react";
 
 type InputLabelProps = {
     label?: string;
@@ -10,11 +11,12 @@ type InputLabelProps = {
     errorText?: string;
     required?: boolean;
     onChange: (newValue: string) => void;
+    sx?: SxProps<Theme>;    
 }
 
-export default function InputLabel({label, value, placeholder, error, errorText, required, onChange}:InputLabelProps){
+export default function InputLabel({label, value, placeholder, error, errorText, required, onChange, sx}:InputLabelProps){
     return(
-        <Box>
+        <Box sx={sx}>
             <Label text={label}/>
             <Input
                 onChange={onChange}
