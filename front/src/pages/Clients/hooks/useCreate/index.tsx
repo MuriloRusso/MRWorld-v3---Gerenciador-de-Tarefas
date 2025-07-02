@@ -15,7 +15,6 @@ export default function useCreate({handleModal, addToast, validateFields, getLis
 
     const formData = new FormData();
     formData.append('name', newClient.name.value);
-    formData.append('ower', newClient.ower.value);
     formData.append('phone', newClient.phone.value ? newClient.phone.value : "");
     formData.append('email', newClient.email.value ? newClient.email.value : "");
     // formData.append('notes', newClient.notes.value ? newClient.notes.value : "");

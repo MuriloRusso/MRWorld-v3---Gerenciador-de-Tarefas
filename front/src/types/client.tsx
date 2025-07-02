@@ -13,9 +13,16 @@ export type Client = {
 
 export type ClientData = {
     name: inputProps;
-    ower: inputProps;
-    phone: inputProps;
+    cnpj: inputProps;
+    logo: inputProps;
+    id_contact_method: inputProps;
     email: inputProps;
+    phone: inputProps;
     notes: inputProps;
-
+    cep: inputProps;
+    address: inputProps;
+    address_number: inputProps;
+    city: inputProps;
+    state: inputProps;
+    country: inputProps;
 }

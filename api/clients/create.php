@@ -14,11 +14,6 @@
         $name = trim($data['name']);
     }
 
-    if (!isset($data['ower']) || trim($data['ower']) === '') {
-        $erros[] = 'Responsável da Empresa/Cliente em branco';
-    } else {
-        $ower = trim($data['ower']);
-    }
 
     $email = $data['email'] ?? '';
     $phone = $data['phone'] ?? '';
@@ -56,10 +51,10 @@
     }
 
     // Inserção no banco de dados
-    $sql_code = "INSERT INTO cad_client (name, ower, email, phone, notes) 
+    $sql_code = "INSERT INTO cad_client (name, email, phone, notes) 
                 VALUES (?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param("sssss", $name, $ower, $email, $phone, $notes);
+    $stmt->bind_param("sssss", $name, $email, $phone, $notes);
 
     if ($stmt->execute()) {
         echo json_encode([
