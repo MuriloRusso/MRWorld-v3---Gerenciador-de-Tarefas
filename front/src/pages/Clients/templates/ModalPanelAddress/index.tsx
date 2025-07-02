@@ -4,7 +4,7 @@ import InputLogo from "../../components/InputLogo";
 import { ClientData } from "../../../../types/client";
 import InputCNPJ from "../../components/InputCNPJ";
 
-export default function ModalPanelIntro({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
+export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     return (
         <Grid sx={{display: 'flex', flexDirection: 'row', gap: 5}}>
             <InputLogo/>

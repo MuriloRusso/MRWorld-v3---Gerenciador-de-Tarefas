@@ -9,6 +9,7 @@ import { ClientData } from '../../../../types/client';
 import ModalPanelPerson from '../ModalPanelPerson';
 import ModalPanelProjects from '../ModalPanelProjects';
 import { FormPersonParamsProps } from '../../../../types/person';
+import ModalPanelAddress from '../ModalPanelAddress';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -54,7 +55,7 @@ export default function ModalPanel({fieldsData, handleChange, formPersonParams}:
   };
 
   return (
-    <Box sx={{ width: '100%', marginTop: '20px', minHeight: '430px' }}>
+    <Box sx={{ width: '100%', marginTop: '20px', minHeight: '300px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
             value={value}
@@ -86,8 +87,9 @@ export default function ModalPanel({fieldsData, handleChange, formPersonParams}:
                 },
                 }}
             />
+
             <Tab
-                label="Anotações"
+                label="Endereço"
                 {...a11yProps(2)}
                 sx={{
                 '&.Mui-selected': {
@@ -97,8 +99,18 @@ export default function ModalPanel({fieldsData, handleChange, formPersonParams}:
                 }}
             />
             <Tab
-                label="Pessoas"
+                label="Anotações"
                 {...a11yProps(3)}
+                sx={{
+                '&.Mui-selected': {
+                    color: 'black',
+                    fontWeight: 'bold',
+                },
+                }}
+            />
+            <Tab
+                label="Pessoas"
+                {...a11yProps(4)}
                 sx={{
                 '&.Mui-selected': {
                     color: 'black',
@@ -109,7 +121,7 @@ export default function ModalPanel({fieldsData, handleChange, formPersonParams}:
 
             <Tab
                 label="Projetos"
-                {...a11yProps(4)}
+                {...a11yProps(5)}
                 sx={{
                 '&.Mui-selected': {
                     color: 'black',
@@ -124,15 +136,18 @@ export default function ModalPanel({fieldsData, handleChange, formPersonParams}:
         <ModalPanelIntro fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ModalPanelContact fieldsData={fieldsData} handleChange={handleChange}/>
+        <ModalPanelAddress fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <ModalPanelNotes/>
+        <ModalPanelContact fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <ModalPanelPerson formPersonParams={formPersonParams}/>
+        <ModalPanelNotes/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
+        <ModalPanelPerson formPersonParams={formPersonParams}/>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={5}>
         <ModalPanelProjects/>
       </CustomTabPanel>
     </Box>
