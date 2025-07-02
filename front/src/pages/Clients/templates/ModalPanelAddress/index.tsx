@@ -8,6 +8,7 @@ import InputAddress from "../../components/InputAddress";
 import InputAddressNumber from "../../components/InputAddressNumber";
 import InputCity from "../../components/InputCity";
 import InputCountry from "../../components/InputCountry";
+import InputState from "../../components/InputState";
 
 export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     return (
@@ -17,6 +18,7 @@ export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsDat
                 <InputAddress fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputAddressNumber fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputCity fieldsData={fieldsData} handleChange={handleChange}/>
+                <InputState fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputCountry fieldsData={fieldsData} handleChange={handleChange}/>
             </Grid>
         </Grid>
