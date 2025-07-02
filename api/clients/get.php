@@ -17,7 +17,12 @@ if (!empty($search)) {
                 owner LIKE '{$searchLike}' OR 
                 email LIKE '{$searchLike}' OR 
                 phone LIKE '{$searchLike}' OR 
-                cnpj LIKE '{$searchLike}'";  // Adicionado CNPJ na busca
+                cnpj LIKE '{$searchLike}' OR
+                cep LIKE '{$searchLike}' OR
+                address LIKE '{$searchLike}' OR
+                city LIKE '{$searchLike}' OR
+                state LIKE '{$searchLike}' OR
+                country LIKE '{$searchLike}'";
 }
 
 $sql .= " ORDER BY name ASC";
@@ -40,6 +45,15 @@ while ($row = $result->fetch_assoc()) {
     if (!empty($row['cnpj'])) {
         $row['cnpj_formatado'] = formatarCNPJ($row['cnpj']);
     }
+    
+    // Formatando o CEP para exibição (opcional)
+    if (!empty($row['cep'])) {
+        $row['cep_formatado'] = formatarCEP($row['cep']);
+    }
+    
+    // Criando um campo de endereço completo (opcional)
+    $row['endereco_completo'] = formatarEndereco($row);
+    
     $clientes[] = $row;
 }
 
@@ -60,4 +74,36 @@ function formatarCNPJ($cnpj) {
            substr($cnpj, 5, 3) . '/' . 
            substr($cnpj, 8, 4) . '-' . 
            substr($cnpj, 12, 2);
+}
+
+// Função para formatar CEP (opcional)
+function formatarCEP($cep) {
+    // Remove caracteres não numéricos
+    $cep = preg_replace('/[^0-9]/', '', $cep);
+    
+    // Formata: XXXXX-XXX
+    return substr($cep, 0, 5) . '-' . substr($cep, 5, 3);
+}
+
+// Função para formatar endereço completo (opcional)
+function formatarEndereco($dados) {
+    $endereco = [];
+    
+    if (!empty($dados['address'])) {
+        $endereco[] = $dados['address'];
+    }
+    if (!empty($dados['city'])) {
+        $endereco[] = $dados['city'];
+    }
+    if (!empty($dados['state'])) {
+        $endereco[] = $dados['state'];
+    }
+    if (!empty($dados['cep'])) {
+        $endereco[] = 'CEP: ' . formatarCEP($dados['cep']);
+    }
+    if (!empty($dados['country'])) {
+        $endereco[] = $dados['country'];
+    }
+    
+    return implode(', ', $endereco);
 }

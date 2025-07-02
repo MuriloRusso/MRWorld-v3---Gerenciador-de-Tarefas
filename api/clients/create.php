@@ -16,13 +16,26 @@ if (!isset($data['name']) || trim($data['name']) === '') {
 
 // Adicionando validação para CNPJ (opcional)
 $cnpj = $data['cnpj'] ?? '';
-if ($cnpj !== '' && !validarCNPJ($cnpj)) {  // Implemente a função validarCNPJ() se necessário
+if ($cnpj !== '' && !validarCNPJ($cnpj)) {
     $erros[] = 'CNPJ inválido';
 }
 
+// Campos básicos
 $email = $data['email'] ?? '';
 $phone = $data['phone'] ?? '';
 $notes = $data['notes'] ?? '';
+
+// Campos de endereço
+$cep = $data['cep'] ?? '';
+$address = $data['address'] ?? '';
+$city = $data['city'] ?? '';
+$state = $data['state'] ?? '';
+$country = $data['country'] ?? '';
+
+// Validação opcional para CEP
+if ($cep !== '' && !validarCEP($cep)) {
+    $erros[] = 'CEP inválido';
+}
 
 // Se houver erros, retorna todos
 if (!empty($erros)) {
@@ -36,10 +49,10 @@ if (!empty($erros)) {
 }
 
 // Inserção no banco de dados
-$sql_code = "INSERT INTO cad_client (name, cnpj, email, phone, notes) 
-            VALUES (?, ?, ?, ?, ?)";
+$sql_code = "INSERT INTO cad_client (name, cnpj, email, phone, notes, cep, address, city, state, country) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $mysqli->prepare($sql_code);
-$stmt->bind_param("sssss", $name, $cnpj, $email, $phone, $notes);
+$stmt->bind_param("ssssssssss", $name, $cnpj, $email, $phone, $notes, $cep, $address, $city, $state, $country);
 
 if ($stmt->execute()) {
     echo json_encode([
@@ -57,7 +70,25 @@ if ($stmt->execute()) {
 
 // Função para validar CNPJ (opcional)
 function validarCNPJ($cnpj) {
-    // Implemente a validação de CNPJ aqui
-    // Retorna true se válido, false se inválido
-    return true; // Remova esta linha quando implementar
+    // Remove caracteres não numéricos
+    $cnpj = preg_replace('/[^0-9]/', '', $cnpj);
+    
+    // Verifica se tem 14 dígitos
+    if (strlen($cnpj) != 14) {
+        return false;
+    }
+    
+    // Validação dos dígitos verificadores (algoritmo de validação de CNPJ)
+    // [...] (implemente a validação completa aqui)
+    
+    return true;
+}
+
+// Função para validar CEP (opcional)
+function validarCEP($cep) {
+    // Remove caracteres não numéricos
+    $cep = preg_replace('/[^0-9]/', '', $cep);
+    
+    // Verifica se tem 8 dígitos
+    return strlen($cep) === 8;
 }
