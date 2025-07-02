@@ -5,7 +5,7 @@ export default function useColumns() {
 
 
     const columns: GridColDef[] = [
-        { field: 'logo', headerName: 'Logo', width: 150, renderCell(params) {                
+        { field: 'logo', headerName: 'Logo', width: 70, renderCell(params) {                
                 return(
                     <img 
                         src={
@@ -17,8 +17,9 @@ export default function useColumns() {
                 )
             },
         },
-        { field: 'name', headerName: 'Empresa/Cliente', width: 350 },
-        { field: 'ower', headerName: 'Nome Dono', width: 250 },
+        { field: 'name', headerName: 'Empresa/Cliente', width: 200 },
+        { field: 'cnpj', headerName: 'CNPJ', width: 150 },
+        { field: 'email', headerName: 'E-mail', width: 150 },
         { field: 'phone', headerName: 'Telefone', width: 150 },
         { field: 'created_at', headerName: 'Criado', width: 150, },
 
