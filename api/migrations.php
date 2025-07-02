@@ -20,6 +20,15 @@ try {
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT,
             name TEXT NOT NULL,
+            cnpj VARCHAR(45) DEFAULT NULL,
+            logo VARCHAR(45) DEFAULT NULL,
+            notes TEXT DEFAULT NULL,
+            phone VARCHAR(45) DEFAULT NULL,
+            cep VARCHAR(45) DEFAULT NULL,
+            address TEXT DEFAULT NULL,
+            city VARCHAR(45) DEFAULT NULL,
+            state VARCHAR(45) DEFAULT NULL,
+            country VARCHAR(45) DEFAULT NULL,
             created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES cad_user(id)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
