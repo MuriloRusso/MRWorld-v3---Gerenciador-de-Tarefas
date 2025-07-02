@@ -8,9 +8,9 @@ export default function ModalPanelIntro({fieldsData, handleChange}: {fieldsData:
     return (
         <Grid sx={{display: 'flex', flexDirection: 'row', gap: 5}}>
             <InputLogo/>
-            <Grid>
-                    <InputName fieldsData={fieldsData} handleChange={handleChange}/>
-                    <InputCNPJ fieldsData={fieldsData} handleChange={handleChange}/>
+            <Grid sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
+                <InputName fieldsData={fieldsData} handleChange={handleChange}/>
+                <InputCNPJ fieldsData={fieldsData} handleChange={handleChange}/>
             </Grid>
         </Grid>
     )

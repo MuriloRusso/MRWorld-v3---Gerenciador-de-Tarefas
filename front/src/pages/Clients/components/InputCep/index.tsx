@@ -11,6 +11,7 @@ export default function InputCep({fieldsData, handleChange}: {fieldsData: Client
             errorText={fieldsData.cep.errorText}
             required={fieldsData.cep.required}
             onChange={(newValue:string) => handleChange('cep', newValue)}
+            sx={{maxWidth: '350px'}}
         />
     )
 }
