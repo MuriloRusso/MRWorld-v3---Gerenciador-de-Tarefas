@@ -1,74 +1,138 @@
 import { Button, Grid, Typography } from "@mui/material";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+import CloseIcon from "@mui/icons-material/Close";
 import { useRef, useState } from "react";
-import CloseIcon from '@mui/icons-material/Close';
 
-export default function InputFile() {
-    const [fileName, setFileName] = useState('');
-    const [imageSrc, setImageSrc] = useState<string | null>(null);
+type InputProps = {
+  /** base64 ou URL da imagem (caso já exista) */
+  value?: string;
+  /** dispara quando o usuário escolhe um arquivo;
+   *  você recebe o arquivo e a string base64 */
+  onChange: (file: File) => void;
+  error?: boolean;
+  errorText?: string;
+  required?: boolean;
+  placeholder?: string;
+};
 
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
+export default function InputFile({
+  value,
+  onChange,
+  error,
+  errorText,
+  required,
+  placeholder = "Logo da Empresa",
+}: InputProps) {
+  const [fileName, setFileName] = useState("");
+  const [imageSrc, setImageSrc] = useState<string | null>(value ?? null);
 
-    const handleButtonClick = () => {
-        fileInputRef.current?.click();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  /* abre o seletor de arquivos */
+  const handleButtonClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  /* processa o arquivo selecionado */
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setFileName(file.name);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result as string;
+      setImageSrc(base64);
+    //   onChange(file, base64); // envia para o componente pai
+      onChange(base64); // envia para o componente pai
     };
+    reader.readAsDataURL(file);
+  };
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            setFileName(file.name);
+  const handleRemove = () => {
+    setImageSrc(null);
+    setFileName("");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
 
-            const reader = new FileReader();
-            reader.onload = () => {
-                setImageSrc(reader.result as string);
-            };
-            reader.readAsDataURL(file); // converte o arquivo em base64
-        }
-    };
+  return (
+    <Grid container direction="column" spacing={1}>
+      <Button
+        onClick={handleButtonClick}
+        sx={{ p: 0, m: 0, width: 104, height: 104, justifyContent: "start" }}
+      >
+        <Grid
+          sx={{
+            border: "2px dashed #aaa",
+            backgroundColor: "#efefef",
+            width: "100%",
+            height: "100%",
+            position: "relative",
+          }}
+        >
+          {imageSrc ? (
+            <>
+              <CloseIcon
+                sx={{
+                  position: "absolute",
+                  right: 0,
+                  p: 0.5,
+                  color: "#fff",
+                  backgroundColor: "rgba(0,0,0,0.6)",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                }}
+                onClick={handleRemove}
+              />
+              <img
+                src={imageSrc}
+                alt="Logo selecionado"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            </>
+          ) : (
+            <Typography
+              variant="subtitle2"
+              sx={{
+                color: "#aaa",
+                textAlign: "center",
+                position: "absolute",
+                width: "100%",
+                top: "40%",
+                transform: "translateY(-50%)",
+              }}
+            >
+              {placeholder}
+            </Typography>
+          )}
+        </Grid>
+      </Button>
 
-    return (
-        <>
-            <Grid container direction="column" spacing={2}>
-                <Button onClick={handleButtonClick} sx={{ padding: 0, margin: 0, justifyContent: 'start', height: '104px', width: '104px' }}>
-                    <Grid sx={{/*borderRadius: '100%',*/ borderColor: '#aaa', borderWidth: 2, borderStyle: 'dashed', backgroundColor: "#efefef", height: '100%', width: '100%' }}>
-                        {imageSrc ? (
-                            <>
-                                <CloseIcon sx={{ position: 'absolute', padding: 0, margin: 0, backgroundColor: "red", right: 0, zIndex: 10 }} onClick={() => alert('dsadas')}/>
-                                <img
-                                    src={imageSrc}
-                                    alt="Imagem selecionada"
-                                    style={{ maxWidth: "auto", height: '100px', width: '100px',  /*borderRadius: '100%',*/ objectFit: 'cover' }}
-                                />
-                                {/* <Typography variant="subtitle1" sx={{color: '#aaa', textAlign: "center", position: "absolute", width: '100px', top: "50px"}}>Alterar Logo</Typography> */}
+      {fileName && (
+        <Typography variant="subtitle2" sx={{ wordBreak: "break-all" }}>
+          {fileName}
+        </Typography>
+      )}
 
-                            </>
-                        ) :
-                            // <></>
-                            <Typography variant="subtitle1" sx={{color: '#aaa', textAlign: "center", position: "absolute", width: '100px'}}>Logo da Empresa</Typography>
-                        }
-                    </Grid>
-                </Button>
-                <Grid>
-                    <Typography variant="subtitle1">{fileName}</Typography>
-                </Grid>
-                <Grid>
-                    <input
-                        ref={fileInputRef}
-                        type="file"
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                        onChange={handleFileChange}
-                    />
-                    {/* <Button
-                        variant="contained"
-                        startIcon={<UploadFileIcon />}
-                        onClick={handleButtonClick}
-                        sx={{backgroundColor: "#000"}}
-                    >
-                        Selecionar Logo
-                    </Button> */}
-                </Grid>
-            </Grid>
-        </>
-    );
+      {/* input escondido */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        onChange={handleFileChange}
+        required={required}
+      />
+
+      {error && (
+        <Typography variant="caption" color="error">
+          {errorText}
+        </Typography>
+      )}
+    </Grid>
+  );
 }

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ClientData } from "../../../../types/client";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 
@@ -24,7 +24,7 @@ export default function useFields() {
     },
     logo: {
       label: "Logo",
-      value: "",
+      // value: "",
       placeholder: "URL do logo",
       error: false,
       errorText: "* Campo obrigatório",
@@ -149,6 +149,11 @@ export default function useFields() {
 
     return isValid;
   };
+
+  useEffect(()=>{
+    console.log(fieldsData);
+    
+  }, [fieldsData])
 
   return { fieldsData, handleChange, validateFields };
 }

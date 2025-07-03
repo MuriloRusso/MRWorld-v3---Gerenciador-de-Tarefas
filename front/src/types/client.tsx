@@ -1,4 +1,4 @@
-import { inputProps } from "./input"
+import { InputFileProps, inputProps } from "./input"
 
 export type Client = {
     name: string;
@@ -14,7 +14,7 @@ export type Client = {
 export type ClientData = {
     name: inputProps;
     cnpj: inputProps;
-    logo: inputProps;
+    logo: InputFileProps;
     id_contact_method: inputProps;
     email: inputProps;
     phone: inputProps;
