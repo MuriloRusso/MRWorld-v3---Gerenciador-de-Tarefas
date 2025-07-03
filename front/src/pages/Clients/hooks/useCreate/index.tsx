@@ -5,30 +5,45 @@ import { ToastProps } from '../../../../types/toast';
 type useCreateProps = {
   handleModal: (value: boolean) => void;
   addToast: (value: ToastProps) => void;
-  validateFields: () => void;
+  validateFields: () => boolean;
   getList: () => void;
-}
+};
 
-export default function useCreate({ handleModal, addToast, validateFields, getList }: useCreateProps) {
+export default function useCreate({
+  handleModal,
+  addToast,
+  validateFields,
+  getList
+}: useCreateProps) {
   const create = (newClient: ClientData) => {
-    console.log('creating...');
+    if (!validateFields()) return;
 
     const formData = new FormData();
-    // Campos básicos
+
+    // Campos obrigatórios
     formData.append('name', newClient.name.value);
-    formData.append('phone', newClient.phone.value ? newClient.phone.value : "");
-    formData.append('email', newClient.email.value ? newClient.email.value : "");
-    formData.append('cnpj', newClient.cnpj.value ? newClient.cnpj.value : "");
-    formData.append('notes', newClient.notes.value ? newClient.notes.value : "");
 
-    // Campos de endereço
-    formData.append('cep', newClient.cep?.value ? newClient.cep.value : "");
-    formData.append('address', newClient.address?.value ? newClient.address.value : "");
-    formData.append('city', newClient.city?.value ? newClient.city.value : "");
-    formData.append('state', newClient.state?.value ? newClient.state.value : "");
-    formData.append('country', newClient.country?.value ? newClient.country.value : "");
+    // Campo de logo (File)
+    if (newClient.logo?.value instanceof File) {
+      formData.append('logo', newClient.logo.value);
+    }
 
-    // Se tiver arquivo, adicionar aqui: formData.append('file', file);
+    // Campos opcionais
+    formData.append('phone', newClient.phone?.value || "");
+    formData.append('email', newClient.email?.value || "");
+    formData.append('cnpj', newClient.cnpj?.value || "");
+    formData.append('notes', newClient.notes?.value || "");
+
+    // Endereço
+    formData.append('cep', newClient.cep?.value || "");
+    formData.append('address', newClient.address?.value || "");
+    formData.append('address_number', newClient.address_number?.value || "");
+    formData.append('city', newClient.city?.value || "");
+    formData.append('state', newClient.state?.value || "");
+    formData.append('country', newClient.country?.value || "");
+
+    // Meio de contato (se existir)
+    formData.append('id_contact_method', newClient.id_contact_method?.value || "");
 
     api.post('/clients/create.php', formData, {
       headers: {
@@ -39,7 +54,7 @@ export default function useCreate({ handleModal, addToast, validateFields, getLi
       console.log('Sucesso:', response.data);
       handleModal(false);
       addToast({
-        id: Date.now(), // Usando timestamp para IDs únicos
+        id: Date.now(),
         severity: 'success',
         variant: 'filled',
         text: response.data.message
@@ -51,12 +66,12 @@ export default function useCreate({ handleModal, addToast, validateFields, getLi
 
       if (error.response?.data?.errors) {
         const errors = error.response.data.errors;
-        errors.forEach((error: string, i: number) => {
+        errors.forEach((errorMsg: string, i: number) => {
           addToast({
             id: i,
             severity: 'error',
             variant: 'filled',
-            text: error
+            text: errorMsg
           });
         });
       } else {
@@ -67,8 +82,6 @@ export default function useCreate({ handleModal, addToast, validateFields, getLi
           text: 'Erro ao conectar com o servidor'
         });
       }
-      
-      validateFields();
     });
   };
 
