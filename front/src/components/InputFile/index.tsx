@@ -1,6 +1,7 @@
 import { Button, Grid, Typography } from "@mui/material";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import { useRef, useState } from "react";
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function InputFile() {
     const [fileName, setFileName] = useState('');
@@ -28,18 +29,25 @@ export default function InputFile() {
     return (
         <>
             <Grid container direction="column" spacing={2}>
-                <Grid sx={{/*borderRadius: '100%',*/ borderColor: '#aaa', borderWidth: 2, borderStyle: 'dashed', backgroundColor: "#efefef",  height: '104px', width: '104px'}}>
-                    {imageSrc ? (
-                        <img
-                        src={imageSrc}
-                        alt="Imagem selecionada"
-                        style={{ maxWidth: "auto", height: '100px', width: '100px',  /*borderRadius: '100%',*/ objectFit: 'cover' }}
-                        />
-                    ):
-                    <></>
-                        // <Typography variant="subtitle1" sx={{color: '#aaa', textAlign: "center", position: "absolute", width: '100px'}}>Logo da Empresa</Typography>
-                    }
-                </Grid>
+                <Button onClick={handleButtonClick} sx={{ padding: 0, margin: 0, justifyContent: 'start', height: '104px', width: '104px' }}>
+                    <Grid sx={{/*borderRadius: '100%',*/ borderColor: '#aaa', borderWidth: 2, borderStyle: 'dashed', backgroundColor: "#efefef", height: '100%', width: '100%' }}>
+                        {imageSrc ? (
+                            <>
+                                <CloseIcon sx={{ position: 'absolute', padding: 0, margin: 0, backgroundColor: "red", right: 0, zIndex: 10 }} onClick={() => alert('dsadas')}/>
+                                <img
+                                    src={imageSrc}
+                                    alt="Imagem selecionada"
+                                    style={{ maxWidth: "auto", height: '100px', width: '100px',  /*borderRadius: '100%',*/ objectFit: 'cover' }}
+                                />
+                                {/* <Typography variant="subtitle1" sx={{color: '#aaa', textAlign: "center", position: "absolute", width: '100px', top: "50px"}}>Alterar Logo</Typography> */}
+
+                            </>
+                        ) :
+                            // <></>
+                            <Typography variant="subtitle1" sx={{color: '#aaa', textAlign: "center", position: "absolute", width: '100px'}}>Logo da Empresa</Typography>
+                        }
+                    </Grid>
+                </Button>
                 <Grid>
                     <Typography variant="subtitle1">{fileName}</Typography>
                 </Grid>
@@ -51,14 +59,14 @@ export default function InputFile() {
                         style={{ display: 'none' }}
                         onChange={handleFileChange}
                     />
-                    <Button
+                    {/* <Button
                         variant="contained"
                         startIcon={<UploadFileIcon />}
                         onClick={handleButtonClick}
                         sx={{backgroundColor: "#000"}}
                     >
                         Selecionar Logo
-                    </Button>
+                    </Button> */}
                 </Grid>
             </Grid>
         </>
