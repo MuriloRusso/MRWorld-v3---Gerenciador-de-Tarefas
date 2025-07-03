@@ -2,8 +2,6 @@ import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
 
 export default function useColumns() {
-
-
     const columns: GridColDef[] = [
         { field: 'logo', headerName: 'Logo', width: 70, renderCell(params) {                
                 return(
@@ -14,7 +12,7 @@ export default function useColumns() {
                         }
                         style={{maxHeight: '90%', borderRadius: 100, margin: "2.5% 0"}}
                     />
-                )
+                )                
             },
         },
         { field: 'name', headerName: 'Empresa/Cliente', width: 200 },
