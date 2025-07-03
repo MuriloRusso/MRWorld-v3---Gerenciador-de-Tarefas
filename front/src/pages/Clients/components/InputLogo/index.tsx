@@ -8,14 +8,14 @@ export default function InputLogo({
   handleChange
 }: {
   fieldsData: ClientData;
-  handleChange: (fieldName: keyof ClientData, newValue: string) => void;
+  handleChange: (fieldName: keyof ClientData, newValue: File) => void;
 }) {
   return (
     <Box sx={{ borderRight: "1px solid #ccc", paddingRight: "30px" }}>
       <Label text={"Logo"} />
       <InputFile
         value={fieldsData.logo.value}
-        // onChange={(newValue: string) => handleChange("logo", newValue)}
+        onChange={(newValue: File) => handleChange("logo", newValue)}
       />
     </Box>
   );

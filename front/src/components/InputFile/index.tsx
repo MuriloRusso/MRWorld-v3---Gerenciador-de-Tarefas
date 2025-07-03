@@ -1,12 +1,11 @@
 import { Button, Grid, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 type InputProps = {
-  /** base64 ou URL da imagem (caso já exista) */
-  value?: File | string | null;
-  /** dispara quando o usuário escolhe um arquivo;
-   *  você recebe o arquivo e a string base64 */
+  /** Arquivo já selecionado */
+  value?: File | null;
+  /** Dispara quando o usuário escolhe um arquivo */
   onChange?: (file: File) => void;
   error?: boolean;
   errorText?: string;
@@ -23,36 +22,41 @@ export default function InputFile({
   placeholder = "Logo da Empresa",
 }: InputProps) {
   const [fileName, setFileName] = useState("");
-  const [imageSrc, setImageSrc] = useState<string | null>(/*value ?? */null);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  /* abre o seletor de arquivos */
+  // Caso receba um File como `value`, converte em base64 para exibir
+  useEffect(() => {
+    if (value instanceof File) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImageSrc(reader.result as string);
+        setFileName(value.name);
+      };
+      reader.readAsDataURL(value);
+    } else {
+      setImageSrc(null);
+      setFileName("");
+    }
+  }, [value]);
+
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
 
-  /* processa o arquivo selecionado */
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setFileName(file.name);
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      const base64 = reader.result as string;
-      setImageSrc(base64);
-    //   onChange(file, base64); // envia para o componente pai
-    //   onChange(base64); // envia para o componente pai
-    };
-    reader.readAsDataURL(file);
+    onChange?.(file); // envia o File para o componente pai
   };
 
   const handleRemove = () => {
     setImageSrc(null);
     setFileName("");
     if (fileInputRef.current) fileInputRef.current.value = "";
+    onChange?.(null as any); // envia null para resetar o valor
   };
 
   return (
@@ -118,7 +122,6 @@ export default function InputFile({
         </Typography>
       )}
 
-      {/* input escondido */}
       <input
         ref={fileInputRef}
         type="file"

@@ -123,6 +123,19 @@ export default function useFields() {
     }));
   };
 
+
+  const handleChangeFile = (fieldName: keyof ClientData, newValue: File) => {
+    setFieldsData(prev => ({
+      ...prev,
+      [fieldName]: {
+        ...prev[fieldName],
+        value: newValue,
+        error: prev[fieldName].required ? newValue.name.trim() === "" : false
+      }
+    }));
+  };
+
+
   const validateFields = () => {
     let isValid = true;
     Object.entries(fieldsData).forEach(([key, field]) => {
@@ -143,5 +156,5 @@ export default function useFields() {
     
   }, [fieldsData])
 
-  return { fieldsData, handleChange, validateFields };
+  return { fieldsData, handleChange, handleChangeFile, validateFields };
 }

@@ -44,10 +44,11 @@ function a11yProps(index: number) {
 type ModalPanelProps = {
   fieldsData: ClientData;
   handleChange: (fieldName: keyof ClientData, newValue: string) => void;
+  handleChangeFile: (fieldName: keyof ClientData, newValue: File) => void;
   formPersonParams: FormPersonParamsProps;
 }
 
-export default function ModalPanel({fieldsData, handleChange, formPersonParams}:ModalPanelProps ) {
+export default function ModalPanel({fieldsData, handleChange, handleChangeFile, formPersonParams}:ModalPanelProps ) {
   const [value, setValue] = React.useState(0);
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
@@ -133,7 +134,7 @@ export default function ModalPanel({fieldsData, handleChange, formPersonParams}:
 
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <ModalPanelIntro fieldsData={fieldsData} handleChange={handleChange}/>
+        <ModalPanelIntro fieldsData={fieldsData} handleChange={handleChange} handleChangeFile={handleChangeFile}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <ModalPanelContact fieldsData={fieldsData} handleChange={handleChange}/>

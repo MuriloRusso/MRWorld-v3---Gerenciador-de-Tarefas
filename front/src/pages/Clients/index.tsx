@@ -12,7 +12,7 @@ import useGetList from "./hooks/useGetList";
 
 export default function Clients(){
     const { modalVisible, handleModal, formPersonVisible, handleFormPerson } = useModals();
-    const { fieldsData, handleChange, validateFields } = useFields();
+    const { fieldsData, handleChange, handleChangeFile, validateFields } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
     const { getList } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
@@ -26,6 +26,7 @@ export default function Clients(){
                 handleModal={handleModal}
                 fieldsData={fieldsData}
                 handleChange={handleChange}
+                handleChangeFile={handleChangeFile}
                 formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
             />

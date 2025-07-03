@@ -9,7 +9,7 @@ export type inputProps = {
 
 export type InputFileProps = {
     label?: string;
-    value: File | string | null;
+    value: File | null;
     error?: boolean;
     errorText?: string;
     placeholder?: string;
