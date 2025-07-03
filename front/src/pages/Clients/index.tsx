@@ -6,9 +6,10 @@ import useModals from "./hooks/useModals";
 import useFields from "./hooks/useFields";
 import Toast from "../../components/Toast";
 import useCreate from "./hooks/useCreate";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import useGetList from "./hooks/useGetList";
+import useSearchCep from "./hooks/useSearchCep";
 
 export default function Clients(){
     const { modalVisible, handleModal, formPersonVisible, handleFormPerson } = useModals();
@@ -16,6 +17,15 @@ export default function Clients(){
     const { toast, addToast } = useContext(GlobalContext);
     const { getList } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
+
+    const { getAddress } = useSearchCep();
+
+    // useEffect(()=>{
+    //     console.log('Buscando');
+        
+    //     getAddress();
+    // }, [])
+    
 
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
