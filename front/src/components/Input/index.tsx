@@ -1,7 +1,6 @@
 import { TextField } from "@mui/material";
-import { LoginFields } from "../../types/login";
 
-type inputProps = {
+type InputProps = {
     value: string;
     error?: boolean;
     errorText?: string;
@@ -10,7 +9,7 @@ type inputProps = {
     required?: boolean;
 }
 
-export default function Input({value, error, errorText, onChange, placeholder, required}:inputProps){
+export default function Input({value, error, errorText, onChange, placeholder, required}:InputProps){
     const borderColor = "#f00";
     return (
         <TextField

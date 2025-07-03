@@ -11,7 +11,7 @@ type InputLabelProps = {
     errorText?: string;
     required?: boolean;
     onChange: (newValue: string) => void;
-    sx?: SxProps<Theme>;    
+    sx?: SxProps<Theme>;
 }
 
 export default function InputLabel({label, value, placeholder, error, errorText, required, onChange, sx}:InputLabelProps){
