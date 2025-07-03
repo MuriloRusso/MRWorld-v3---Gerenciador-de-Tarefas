@@ -24,7 +24,7 @@ export default function useFields() {
     },
     logo: {
       label: "Logo",
-      // value: "",
+      value: null,
       placeholder: "URL do logo",
       error: false,
       errorText: "* Campo obrigatório",
@@ -125,28 +125,16 @@ export default function useFields() {
 
   const validateFields = () => {
     let isValid = true;
-
     Object.entries(fieldsData).forEach(([key, field]) => {
-      if (field.required && field.value.trim() === "") {
+      if (field.required && (!field.value || String(field.value).trim() === "")) {
         isValid = false;
         setFieldsData(prev => ({
           ...prev,
-          [key]: {
-            ...prev[key as keyof ClientData],
-            error: true
-          }
+          [key as keyof ClientData]: { ...prev[key as keyof ClientData], error: true }
         }));
-
-        // Se quiser exibir toasts, descomente isso:
-        // addToast({
-        //   id: 0,
-        //   severity: 'error',
-        //   variant: 'filled',
-        //   text: `Campo ${field.label} é obrigatório!`
-        // });
+        /* addToast({ id: 0, severity: "error", text: `Campo ${field.label} é obrigatório`, variant: "filled" }); */
       }
     });
-
     return isValid;
   };
 

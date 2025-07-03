@@ -15,7 +15,7 @@ export default function InputLogo({
       <Label text={"Logo"} />
       <InputFile
         value={fieldsData.logo.value}
-        onChange={(newValue: string) => handleChange("logo", newValue)}
+        // onChange={(newValue: string) => handleChange("logo", newValue)}
       />
     </Box>
   );

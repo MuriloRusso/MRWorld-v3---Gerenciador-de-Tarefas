@@ -4,10 +4,10 @@ import { useRef, useState } from "react";
 
 type InputProps = {
   /** base64 ou URL da imagem (caso já exista) */
-  value?: string;
+  value?: File | string | null;
   /** dispara quando o usuário escolhe um arquivo;
    *  você recebe o arquivo e a string base64 */
-  onChange: (file: File) => void;
+  onChange?: (file: File) => void;
   error?: boolean;
   errorText?: string;
   required?: boolean;
@@ -23,7 +23,7 @@ export default function InputFile({
   placeholder = "Logo da Empresa",
 }: InputProps) {
   const [fileName, setFileName] = useState("");
-  const [imageSrc, setImageSrc] = useState<string | null>(value ?? null);
+  const [imageSrc, setImageSrc] = useState<string | null>(/*value ?? */null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -44,7 +44,7 @@ export default function InputFile({
       const base64 = reader.result as string;
       setImageSrc(base64);
     //   onChange(file, base64); // envia para o componente pai
-      onChange(base64); // envia para o componente pai
+    //   onChange(base64); // envia para o componente pai
     };
     reader.readAsDataURL(file);
   };
