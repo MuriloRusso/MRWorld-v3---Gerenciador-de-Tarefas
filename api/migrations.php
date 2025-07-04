@@ -19,6 +19,7 @@ try {
         CREATE TABLE IF NOT EXISTS cad_client (
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT,
+            id_client INT DEFAULT NULL,
             name TEXT NOT NULL,
             cnpj VARCHAR(45) DEFAULT NULL,
             logo VARCHAR(45) DEFAULT NULL,
@@ -33,7 +34,8 @@ try {
             state VARCHAR(45) DEFAULT NULL,
             country VARCHAR(45) DEFAULT NULL,
             created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES cad_user(id)
+            FOREIGN KEY (user_id) REFERENCES cad_user(id),
+            FOREIGN KEY (id_client) REFERENCES cad_client(id) ON DELETE SET NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
     ");
 
@@ -74,11 +76,11 @@ try {
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS cad_project (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            client_id INT,
+            id_client INT,
             name TEXT NOT NULL,
             id_status INT,
             created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (client_id) REFERENCES cad_client(id),
+            FOREIGN KEY (id_client) REFERENCES cad_client(id),
             FOREIGN KEY (id_status) REFERENCES lst_status_project(id)
         ) ENGINE=InnoDB
     ");
@@ -126,10 +128,10 @@ try {
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS cad_task (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            client_id INT,
+            id_client INT,
             status VARCHAR(255),
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (client_id) REFERENCES cad_client(id)
+            FOREIGN KEY (id_client) REFERENCES cad_client(id)
         ) ENGINE=InnoDB
     ");
 
