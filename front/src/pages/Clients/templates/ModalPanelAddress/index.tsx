@@ -17,7 +17,8 @@ export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsDat
     const { getAddress } = useSearchCep();
 
     const handleSearchCep =  () => {
-        getAddress(fieldsData.cep.value);
+        getAddress(fieldsData.cep.value, handleChange);
+        // handleChange('city');
     }
 
     return (
