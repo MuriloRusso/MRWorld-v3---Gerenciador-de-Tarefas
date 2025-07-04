@@ -82,7 +82,7 @@ export default function useFields() {
     address_number: {
       label: "Número",
       value: "",
-      placeholder: "Digite o número",
+      placeholder: "Nº",
       error: false,
       errorText: "* Campo obrigatório",
       required: false

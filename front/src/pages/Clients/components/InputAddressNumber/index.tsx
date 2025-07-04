@@ -11,6 +11,7 @@ export default function InputAddressNumber({fieldsData, handleChange}: {fieldsDa
             errorText={fieldsData.address_number.errorText}
             required={fieldsData.address_number.required}
             onChange={(newValue:string) => handleChange('address_number', newValue)}
+            sx={{width: '100px'}}
         />
     )
 }

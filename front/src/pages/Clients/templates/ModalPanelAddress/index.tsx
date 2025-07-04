@@ -28,9 +28,11 @@ export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsDat
                 <InputCep fieldsData={fieldsData} handleChange={handleChange}/>
                 <ButtonSearchCep handleSearchCep={handleSearchCep}/>
             </Grid>
-            <Grid sx={{display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: 'space-between', gap: 2}}>
+            <Grid sx={{display: "flex", flexDirection: "row", justifyContent: 'space-between', gap: 2}}>
                 <InputAddress fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputAddressNumber fieldsData={fieldsData} handleChange={handleChange}/>
+            </Grid>
+            <Grid sx={{display: "flex", flexDirection: "row", justifyContent: 'space-between', gap: 2}}>
                 <InputNeighborhood fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputCity fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputState fieldsData={fieldsData} handleChange={handleChange}/>
