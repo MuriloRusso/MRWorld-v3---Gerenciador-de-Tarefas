@@ -1,13 +1,12 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import { TextField } from '@mui/material';
-import { Option } from '../../types/input';
+import { inputProps, Option } from '../../types/input';
 import { ClientData } from '../../types/client';
 
 type AutoCompleteProps = {
   options: Option[];
-  state: ClientData["client"];
-  // state: any;
-  // onChange: (fieldName: keyof SchedulingData, newValue: string) => void;
+  // state: keyof ClientData;
+  state: inputProps;
   onChange: (fieldName: keyof ClientData, newValue: string) => void;
 };
 
@@ -21,7 +20,7 @@ export default function AutoComplete({ options, state, onChange }: AutoCompleteP
       value={selectedOption}
       noOptionsText="Sem resultados"
       onChange={(_, newValue: Option | null) => {
-        onChange('client', newValue?.value.toString() || '');
+        onChange("client", newValue?.value.toString() || '');
       }}
       options={options}
       getOptionLabel={(option) => option.text}
