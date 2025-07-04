@@ -27,6 +27,8 @@ try {
             phone VARCHAR(45) DEFAULT NULL,
             cep VARCHAR(45) DEFAULT NULL,
             address TEXT DEFAULT NULL,
+            addressNumber TEXT DEFAULT NULL,
+            neighborhood TEXT DEFAULT NULL,
             city VARCHAR(45) DEFAULT NULL,
             state VARCHAR(45) DEFAULT NULL,
             country VARCHAR(45) DEFAULT NULL,
