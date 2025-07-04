@@ -23,6 +23,14 @@ export default function useFields() {
       errorText: "* Campo obrigatório",
       required: false
     },
+    client: {
+      label: "Cliente de:",
+      value: "",
+      placeholder: "Seleciona a qual empressa essa empresa é cliente",
+      error: false,
+      errorText: "* Campo obrigatório",
+      required: false
+    },
     logo: {
       label: "Logo",
       value: null,

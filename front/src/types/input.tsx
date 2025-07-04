@@ -15,3 +15,8 @@ export type InputFileProps = {
     placeholder?: string;
     required?: boolean;
 }
+
+export type Option = {
+  value: number;
+  text: string;
+};
