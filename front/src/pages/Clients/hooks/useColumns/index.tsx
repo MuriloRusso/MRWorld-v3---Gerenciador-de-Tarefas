@@ -7,7 +7,7 @@ export default function useColumns() {
                 return(
                     <img 
                         src={
-                            params.value ? params.value : 
+                            params.value ? 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + params.id + '/' + params.value : 
                             `https://placehold.co/100x100?text=${params.row.name}`
                         }
                         style={{maxHeight: '90%', borderRadius: 100, margin: "2.5% 0"}}

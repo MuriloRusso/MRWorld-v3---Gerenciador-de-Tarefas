@@ -23,6 +23,8 @@
     $notes = $data['notes'] ?? '';
     $cep = $data['cep'] ?? '';
     $address = $data['address'] ?? '';
+    $addressNumber = $data['addressNumber'] ?? '';
+    $neighborhood = $data['neighborhood'] ?? '';
     $city = $data['city'] ?? '';
     $state = $data['state'] ?? '';
     $country = $data['country'] ?? '';
@@ -46,10 +48,10 @@
     }
 
     // Insere dados iniciais (sem logo ainda)
-    $sql_code = "INSERT INTO cad_client (name, cnpj, email, phone, notes, cep, address, city, state, country) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql_code = "INSERT INTO cad_client (name, cnpj, email, phone, notes, cep, address, addressNumber, neighborhood, city, state, country) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param("ssssssssss", $name, $cnpj, $email, $phone, $notes, $cep, $address, $city, $state, $country);
+    $stmt->bind_param("ssssssssssss", $name, $cnpj, $email, $phone, $notes, $cep, $address, $addressNumber, $neighborhood, $city, $state, $country);
 
     if ($stmt->execute()) {
         $client_id = $stmt->insert_id;

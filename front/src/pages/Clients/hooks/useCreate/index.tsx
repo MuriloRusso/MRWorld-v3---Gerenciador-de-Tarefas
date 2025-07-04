@@ -38,6 +38,8 @@ export default function useCreate({
     formData.append('cep', newClient.cep?.value || "");
     formData.append('address', newClient.address?.value || "");
     formData.append('address_number', newClient.address_number?.value || "");
+    formData.append('neighborhood', newClient.neighborhood?.value || "");
+
     formData.append('city', newClient.city?.value || "");
     formData.append('state', newClient.state?.value || "");
     formData.append('country', newClient.country?.value || "");
