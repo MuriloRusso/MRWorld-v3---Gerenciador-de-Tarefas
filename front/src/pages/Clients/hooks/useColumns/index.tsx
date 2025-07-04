@@ -19,7 +19,23 @@ export default function useColumns() {
         { field: 'cnpj', headerName: 'CNPJ', width: 150 },
         { field: 'email', headerName: 'E-mail', width: 150 },
         { field: 'phone', headerName: 'Telefone', width: 150 },
-        { field: 'created_at', headerName: 'Criado', width: 150, },
+        { 
+            field: 'created_at', 
+            headerName: 'Criado em', 
+            width: 150,
+            renderCell: (params) => {
+                if (!params.value) return '';
+                // Formata a data para dd/mm/aaaa hh:mm
+                const date = new Date(params.value);
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const year = date.getFullYear();
+                const hours = date.getHours().toString().padStart(2, '0');
+                const minutes = date.getMinutes().toString().padStart(2, '0');
+                
+                return `${day}/${month}/${year} ${hours}:${minutes}`;
+            }
+        },
 
         {field: 'id', headerName: '', renderCell(params){
             return <ListMenu/>
