@@ -23,7 +23,7 @@ export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsDat
 
     return (
         <Grid sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
-            <Grid sx={{display: 'flex', flexDirection: 'row'}}>
+            <Grid sx={{display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'flex-end'}}>
                 <InputCep fieldsData={fieldsData} handleChange={handleChange}/>
                 <ButtonSearchCep handleSearchCep={handleSearchCep}/>
             </Grid>

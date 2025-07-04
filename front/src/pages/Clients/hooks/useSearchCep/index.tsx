@@ -9,6 +9,8 @@ export default function useSearchCep(){
                 handleChange('address', response.data.logradouro + ", " + response.data.bairro);
                 handleChange('city', response.data.localidade);
                 handleChange('state', response.data.uf);
+                handleChange('country', 'Brasil');
+
             })
             .catch(error => console.error(error));
     }
