@@ -22,6 +22,7 @@ export type ClientData = {
     cep: inputProps;
     address: inputProps;
     address_number: inputProps;
+    neighborhood: inputProps;
     city: inputProps;
     state: inputProps;
     country: inputProps;

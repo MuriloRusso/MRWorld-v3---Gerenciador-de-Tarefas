@@ -11,6 +11,7 @@ import InputCountry from "../../components/InputCountry";
 import InputState from "../../components/InputState";
 import ButtonSearchCep from "../../components/ButtonSearchCep";
 import useSearchCep from "../../hooks/useSearchCep";
+import InputNeighborhood from "../../components/InputNeighborhood";
 
 export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     
@@ -30,6 +31,7 @@ export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsDat
             <Grid sx={{display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent: 'space-between', gap: 2}}>
                 <InputAddress fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputAddressNumber fieldsData={fieldsData} handleChange={handleChange}/>
+                <InputNeighborhood fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputCity fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputState fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputCountry fieldsData={fieldsData} handleChange={handleChange}/>

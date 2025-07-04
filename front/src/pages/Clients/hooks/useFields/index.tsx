@@ -3,6 +3,7 @@ import { ClientData } from "../../../../types/client";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 
 export default function useFields() {
+
   const { addToast } = useContext(GlobalContext);
 
   const [fieldsData, setFieldsData] = useState<ClientData>({
@@ -86,6 +87,14 @@ export default function useFields() {
       errorText: "* Campo obrigatório",
       required: false
     },
+    neighborhood: {
+      label: "Bairro",
+      value: "",
+      placeholder: "Digite o endereço",
+      error: false,
+      errorText: "* Campo obrigatório",
+      required: false
+    },
     city: {
       label: "Cidade",
       value: "",
@@ -145,7 +154,7 @@ export default function useFields() {
           ...prev,
           [key as keyof ClientData]: { ...prev[key as keyof ClientData], error: true }
         }));
-        /* addToast({ id: 0, severity: "error", text: `Campo ${field.label} é obrigatório`, variant: "filled" }); */
+        addToast({ id: 0, severity: "error", text: `Campo ${field.label} é obrigatório`, variant: "filled" }); 
       }
     });
     return isValid;
