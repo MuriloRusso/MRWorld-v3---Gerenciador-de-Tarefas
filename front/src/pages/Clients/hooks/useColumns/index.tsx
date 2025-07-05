@@ -20,8 +20,8 @@ export default function useColumns() {
         { field: 'email', headerName: 'E-mail', width: 150 },
         { field: 'phone', headerName: 'Telefone', width: 150 },
         { 
-            field: 'created_at', 
-            headerName: 'Criado em', 
+            field: 'created_at',
+            headerName: 'Criado em',
             width: 150,
             renderCell: (params) => {
                 if (!params.value) return '';

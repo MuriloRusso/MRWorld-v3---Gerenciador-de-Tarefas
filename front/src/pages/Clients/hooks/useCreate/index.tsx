@@ -15,7 +15,7 @@ export default function useCreate({
   validateFields,
   getList
 }: useCreateProps) {
-  const create = (newClient: ClientData) => {
+  const create = async (newClient: ClientData) => {
     if (!validateFields()) return;
 
     const formData = new FormData();

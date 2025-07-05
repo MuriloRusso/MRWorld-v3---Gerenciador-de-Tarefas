@@ -18,15 +18,6 @@ export default function Clients(){
     const { getList } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
 
-    const { getAddress } = useSearchCep();
-
-    // useEffect(()=>{
-    //     console.log('Buscando');
-        
-    //     getAddress();
-    // }, [])
-    
-
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
