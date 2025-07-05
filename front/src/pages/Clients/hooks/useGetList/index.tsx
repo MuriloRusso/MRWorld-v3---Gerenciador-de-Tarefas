@@ -5,11 +5,13 @@ import { Client } from '../../../../types/client';
 
 export default function useGetList() {
     
-    const [ rows, setRows ] = useState<Client[]>([]);
+    const [clients, setClients ] = useState<Client[]>([]);
 
     const getList = () => {
+        console.log('--------getList----------');
+        
         api.get('/clients/get.php'/*, { params: { search } }*/)
-            .then(response => setRows(response.data.data))
+            .then(response => setClients(response.data.data))
             .catch(error => console.error(error));
     }
 
@@ -19,5 +21,5 @@ export default function useGetList() {
     }, []);
 
 
-    return { rows, getList };
+    return { clients, getList };
 }
