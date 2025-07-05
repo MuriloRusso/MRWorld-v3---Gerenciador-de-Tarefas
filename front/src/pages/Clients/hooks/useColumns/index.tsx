@@ -10,7 +10,7 @@ export default function useColumns() {
                             params.value ? 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + params.id + '/' + params.value : 
                             `https://placehold.co/100x100?text=${params.row.name}`
                         }
-                        style={{maxHeight: '90%', borderRadius: 100, margin: "2.5% 0"}}
+                        style={{maxHeight: '90%', width: '-webkit-fill-available', borderRadius: 100, margin: "2.5% 0"}}
                     />
                 )                
             },
