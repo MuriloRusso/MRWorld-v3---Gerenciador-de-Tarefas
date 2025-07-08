@@ -5,8 +5,10 @@ include('../protect.php');
 
 header('Content-Type: application/json; charset=utf-8');
 
+// Lê o corpo JSON da requisição
 $input = json_decode(file_get_contents('php://input'), true);
 
+// Valida se o ID foi enviado corretamente
 if (!isset($input['id']) || !is_numeric($input['id'])) {
     http_response_code(400);
     echo json_encode([
@@ -34,42 +36,11 @@ if ($stmt->num_rows === 0) {
 }
 $stmt->close();
 
-// Verifica dependências em outras tabelas
-$dependencias = [];
+// Atualiza o campo 'active' para 0 (false)
+$update = $mysqli->prepare("UPDATE cad_client SET active = 0 WHERE id = ?");
+$update->bind_param("i", $client_id);
 
-$checkTables = [
-    'projects' => 'Projetos',
-    'people' => 'Pessoas',
-    // Adicione aqui mais tabelas que referenciam o cliente
-];
-
-foreach ($checkTables as $table => $label) {
-    $query = $mysqli->prepare("SELECT COUNT(*) FROM $table WHERE client_id = ?");
-    $query->bind_param("i", $client_id);
-    $query->execute();
-    $query->bind_result($count);
-    $query->fetch();
-    $query->close();
-
-    if ($count > 0) {
-        $dependencias[] = $label;
-    }
-}
-
-if (!empty($dependencias)) {
-    http_response_code(409); // 409 Conflict
-    echo json_encode([
-        'message' => 'Não é possível excluir o cliente porque existem registros vinculados: ' . implode(', ', $dependencias) . '.',
-        'status' => 409,
-    ]);
-    exit;
-}
-
-// Excluir cliente
-$delete = $mysqli->prepare("DELETE FROM cad_client WHERE id = ?");
-$delete->bind_param("i", $client_id);
-
-if ($delete->execute()) {
+if ($update->execute()) {
     http_response_code(200);
     echo json_encode([
         'message' => 'Cliente excluído com sucesso.',
@@ -78,7 +49,7 @@ if ($delete->execute()) {
 } else {
     http_response_code(500);
     echo json_encode([
-        'message' => 'Erro ao excluir cliente: ' . $delete->error,
+        'message' => 'Erro ao excluir cliente: ' . $update->error,
         'status' => 500,
     ]);
 }
