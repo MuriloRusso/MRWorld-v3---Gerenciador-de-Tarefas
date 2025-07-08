@@ -3,7 +3,6 @@ import ListMenu from "../../templates/ListMenu";
 
 export default function usePersonColumns() {
 
-
     const columns: GridColDef[] = [
         { field: 'avatar', headerName: 'Foto', width: 70, renderCell(params) {                
                 return(
@@ -24,9 +23,8 @@ export default function usePersonColumns() {
         { field: 'function', headerName: 'Função', width: 200 },
         { field: 'notes', headerName: 'Anotações', width: 200 },
 
-
         {field: 'id', headerName: '', renderCell(params){
-            return <ListMenu/>
+            return <ListMenu item={params}/>
         }}
 
     ];

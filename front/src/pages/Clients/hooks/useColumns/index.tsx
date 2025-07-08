@@ -37,8 +37,8 @@ export default function useColumns() {
             }
         },
 
-        {field: 'id', headerName: '', renderCell(params){
-            return <ListMenu/>
+        {field: 'id', headerName: '', renderCell(params){            
+            return <ListMenu item={params}/>
         }}
 
     ];

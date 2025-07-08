@@ -5,8 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ListMenuContainer from '../../templates/ListMenuContainer';
+import { Client } from '../../../../types/client';
+import { GridRenderCellParams } from '@mui/x-data-grid';
 
-export default function ListMenu() {
+export default function ListMenu({item}:{item:GridRenderCellParams}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
 
@@ -20,8 +22,6 @@ export default function ListMenu() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    console.log('closing...');
-    
     setAnchorEl(null);
   };
 
@@ -48,7 +48,7 @@ export default function ListMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} />        
+        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} item={item}/>        
       </Menu>
     </div>
   );
