@@ -7,12 +7,12 @@ include('../protect.php');
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
 // Montar a query base
-$sql = "SELECT * FROM cad_client";
+$sql = "SELECT * FROM cad_client WHERE active = 1";
 
-// Se houver filtro de busca, adicionar cláusula WHERE
+// Se houver filtro de busca, adicionar cláusulas adicionais
 if (!empty($search)) {
     $searchLike = '%' . $mysqli->real_escape_string($search) . '%';
-    $sql .= " WHERE 
+    $sql .= " AND (
                 name LIKE '{$searchLike}' OR 
                 owner LIKE '{$searchLike}' OR 
                 email LIKE '{$searchLike}' OR 
@@ -22,7 +22,8 @@ if (!empty($search)) {
                 address LIKE '{$searchLike}' OR
                 city LIKE '{$searchLike}' OR
                 state LIKE '{$searchLike}' OR
-                country LIKE '{$searchLike}'";
+                country LIKE '{$searchLike}'
+            )";
 }
 
 $sql .= " ORDER BY name ASC";
@@ -45,15 +46,15 @@ while ($row = $result->fetch_assoc()) {
     if (!empty($row['cnpj'])) {
         $row['cnpj_formatado'] = formatarCNPJ($row['cnpj']);
     }
-    
+
     // Formatando o CEP para exibição (opcional)
     if (!empty($row['cep'])) {
         $row['cep_formatado'] = formatarCEP($row['cep']);
     }
-    
+
     // Criando um campo de endereço completo (opcional)
     $row['endereco_completo'] = formatarEndereco($row);
-    
+
     $clientes[] = $row;
 }
 
@@ -63,12 +64,9 @@ echo json_encode([
 ]);
 http_response_code(200);
 
-// Função para formatar CNPJ (opcional)
+// Funções auxiliares
 function formatarCNPJ($cnpj) {
-    // Remove caracteres não numéricos
     $cnpj = preg_replace('/[^0-9]/', '', $cnpj);
-    
-    // Formata: XX.XXX.XXX/XXXX-XX
     return substr($cnpj, 0, 2) . '.' . 
            substr($cnpj, 2, 3) . '.' . 
            substr($cnpj, 5, 3) . '/' . 
@@ -76,19 +74,14 @@ function formatarCNPJ($cnpj) {
            substr($cnpj, 12, 2);
 }
 
-// Função para formatar CEP (opcional)
 function formatarCEP($cep) {
-    // Remove caracteres não numéricos
     $cep = preg_replace('/[^0-9]/', '', $cep);
-    
-    // Formata: XXXXX-XXX
     return substr($cep, 0, 5) . '-' . substr($cep, 5, 3);
 }
 
-// Função para formatar endereço completo (opcional)
 function formatarEndereco($dados) {
     $endereco = [];
-    
+
     if (!empty($dados['address'])) {
         $endereco[] = $dados['address'];
     }
@@ -104,6 +97,6 @@ function formatarEndereco($dados) {
     if (!empty($dados['country'])) {
         $endereco[] = $dados['country'];
     }
-    
+
     return implode(', ', $endereco);
 }
