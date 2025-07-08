@@ -24,59 +24,58 @@ export default function TableDataGrid({rows, columns, sx, headerTable}:TableData
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[5, 10, 20]}
           checkboxSelection
-          localeText={
-              {
-                  noRowsLabel: 'Sem linhas',
-                  columnMenuHideColumn: "Ocultar Coluna",
-                  columnsManagementNoColumns: "Gerenciar Colunas",
-                  columnMenuSortAsc: "Crescente",
-                  columnMenuSortDesc: "Decrescente",
-                  columnMenuUnsort: "Desordenar",
-                  columnMenuFilter: "Filtro",
-                  columnHeaderSortIconLabel: "Organizar",
-                  filterOperatorContains: "Contém",
-                  filterOperatorDoesNotContain: "Não Contem",
-                  filterOperatorEquals: "Igual",
-                  filterOperatorDoesNotEqual: "Não é igual",
-                  filterOperatorStartsWith: "Começa com",
-                  filterOperatorEndsWith: "Termina com",
-                  filterOperatorIsEmpty: "Está vázio",
-                  filterOperatorIsNotEmpty: "Não está vázio",
-                  filterOperatorIsAnyOf: "Qualquer um",
-                  columnMenuShowColumns: "Mostar Coluna",
-                  columnsManagementReset: "Resetar",
-                  columnsManagementShowHideAllText: "Ocultar/Exibir",
-                  columnsManagementSearchTitle: "Buscar",
-                  filterPanelOperator: "Operador",
-                  filterPanelColumns: "Coluna",
-                  filterPanelInputLabel: "Valor",
-                  filterPanelInputPlaceholder: "Valor do filtro",
-                  paginationRowsPerPage: "Itens por página",
-                  paginationDisplayedRows(params) {
-                      return params.from + '-' + params.to + ' de ' + params.count
-                  },
-                  footerRowSelected(params) {
-                      return  params + " Itens selecionados"
-                  },
-                  paginationItemAriaLabel(type) {
-                      switch (type) {
-                          case 'next':
-                          return 'Próxima Página';
-                          case 'previous':
-                          return 'Página Anterior';
-                          case 'first':
-                          return 'Primeira Página';
-                          case 'last':
-                          return 'Última Página';
-                          default:
-                          return `Página ${type}`;
-                      }
-                  }
-
+          disableRowSelectionOnClick // <- esta linha evita seleção ao clicar na linha
+          localeText={{
+            noRowsLabel: 'Sem linhas',
+            columnMenuHideColumn: "Ocultar Coluna",
+            columnsManagementNoColumns: "Gerenciar Colunas",
+            columnMenuSortAsc: "Crescente",
+            columnMenuSortDesc: "Decrescente",
+            columnMenuUnsort: "Desordenar",
+            columnMenuFilter: "Filtro",
+            columnHeaderSortIconLabel: "Organizar",
+            filterOperatorContains: "Contém",
+            filterOperatorDoesNotContain: "Não Contem",
+            filterOperatorEquals: "Igual",
+            filterOperatorDoesNotEqual: "Não é igual",
+            filterOperatorStartsWith: "Começa com",
+            filterOperatorEndsWith: "Termina com",
+            filterOperatorIsEmpty: "Está vázio",
+            filterOperatorIsNotEmpty: "Não está vázio",
+            filterOperatorIsAnyOf: "Qualquer um",
+            columnMenuShowColumns: "Mostar Coluna",
+            columnsManagementReset: "Resetar",
+            columnsManagementShowHideAllText: "Ocultar/Exibir",
+            columnsManagementSearchTitle: "Buscar",
+            filterPanelOperator: "Operador",
+            filterPanelColumns: "Coluna",
+            filterPanelInputLabel: "Valor",
+            filterPanelInputPlaceholder: "Valor do filtro",
+            paginationRowsPerPage: "Itens por página",
+            paginationDisplayedRows(params) {
+              return params.from + '-' + params.to + ' de ' + params.count;
+            },
+            footerRowSelected(params) {
+              return params + " Itens selecionados";
+            },
+            paginationItemAriaLabel(type) {
+              switch (type) {
+                case 'next':
+                  return 'Próxima Página';
+                case 'previous':
+                  return 'Página Anterior';
+                case 'first':
+                  return 'Primeira Página';
+                case 'last':
+                  return 'Última Página';
+                default:
+                  return `Página ${type}`;
               }
-          }
+            }
+          }}
           sx={{ border: 0 }}
         />
+
       </Grid>
     </Paper>
   );
