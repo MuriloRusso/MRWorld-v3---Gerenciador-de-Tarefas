@@ -34,7 +34,7 @@ try {
             state VARCHAR(45) DEFAULT NULL,
             country VARCHAR(45) DEFAULT NULL,
             created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            is_active BOOLEAN NOT NULL DEFAULT FALSE,
+            active BOOLEAN NOT NULL DEFAULT TRUE,
             FOREIGN KEY (user_id) REFERENCES cad_user(id),
             FOREIGN KEY (id_client) REFERENCES cad_client(id) ON DELETE SET NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
