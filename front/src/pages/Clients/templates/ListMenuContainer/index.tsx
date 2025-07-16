@@ -10,10 +10,10 @@ type ListMenuContainerProps = {
     anchorEl: null | HTMLElement;
     open: any;
     item: GridRenderCellParams;
-    drop: (id: number) => void;
+    handleModalDelete: (value: boolean) => void;
 }
 
-export default function ListMenuContainer({handleClose, anchorEl, open, item, drop}:ListMenuContainerProps){
+export default function ListMenuContainer({handleClose, anchorEl, open, item, handleModalDelete}:ListMenuContainerProps){
 
     
     return (
@@ -31,7 +31,7 @@ export default function ListMenuContainer({handleClose, anchorEl, open, item, dr
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
             <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose} item={item}/>
             {/* <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleClose} item={item}/> */}
-            <ButtonDelete handleClose={handleClose} item={item} drop={drop}/>
+            <ButtonDelete handleClose={handleClose} item={item} handleModalDelete={handleModalDelete}/>
         </Menu>
     )
 }
