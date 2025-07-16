@@ -1,9 +1,14 @@
-import { useState } from "react"
+import {  useState } from "react"
 
 export default function useModals(){
-    const [ modalVisible, setModalVisible ] = useState<boolean>(false);    
+    const [ modalVisible, setModalVisible ] = useState<boolean>(false);
     const handleModal = (value:boolean) => {
         setModalVisible(value);
+    }
+
+    const [ modalDeleteVisible, setModalDeleteVisible ] = useState<boolean>(true);
+    const handleModalDelete = (value:boolean) => {
+        setModalDeleteVisible(value);
     }
 
     const [ formPersonVisible, setFormPersonVisible ] = useState<boolean>(false);
@@ -11,5 +16,5 @@ export default function useModals(){
         setFormPersonVisible(value);
     }
 
-    return {modalVisible, handleModal, formPersonVisible, handleFormPerson}
+    return {modalVisible, handleModal, formPersonVisible, handleFormPerson, modalDeleteVisible, handleModalDelete}
 }

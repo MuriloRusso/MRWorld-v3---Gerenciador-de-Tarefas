@@ -16,7 +16,7 @@ import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
 
-    const { modalVisible, handleModal, formPersonVisible, handleFormPerson } = useModals();
+    const { modalVisible, handleModal, formPersonVisible, handleFormPerson, modalDeleteVisible, handleModalDelete } = useModals();
     const { fieldsData, handleChange, handleChangeFile, validateFields } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients } = useGetList();
@@ -48,7 +48,7 @@ export default function Clients(){
                 formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
             />
-            <ModalDeleteConfirm visible={true} handleModal={()=>{}}  /*drop={()=>{}}*/ />
+            <ModalDeleteConfirm visible={modalDeleteVisible} handleModal={handleModalDelete}  /*drop={()=>{}}*/ />
             <Toast toasts={toast} />
         </Grid>
     )
