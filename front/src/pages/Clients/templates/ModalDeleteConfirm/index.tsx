@@ -1,17 +1,15 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
-import ModalPanel from "../ModalPanel";
-import ModalFooter from "../ModalFooter";
 import { ClientData } from "../../../../types/client";
-import { FormPersonParamsProps } from "../../../../types/person";
-import ModalFooterConfirmDelete from "../ModalFooterConfirmDelete";
+import ButtonSecondary from "../../../../components/ButtonSecondary";
+import ButtonPrimary from "../../../../components/ButtonPrimary";
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 1000,
+  width: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -24,10 +22,7 @@ type ModalProps = {
     visible: boolean;
     handleModal: (value:boolean) => void;
     fieldsData:ClientData;
-    //drop: () => void;
 }
-
-
 
 export default function ModalDeleteConfirm({visible, handleModal, fieldsData/*, drop*/}:ModalProps){
     return (
@@ -39,9 +34,15 @@ export default function ModalDeleteConfirm({visible, handleModal, fieldsData/*, 
         >
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Criar Empresa/Cliente
+                    Excluír Empresa/Cliente
                 </Typography>
-                <ModalFooterConfirmDelete handleModal={handleModal} /*drop={drop}*/ fieldsData={fieldsData}/>
+                <Typography id="modal-modal-title" variant="inherit" component="p">
+                    Tem certeza de que deseja excluír esse cliente?
+                </Typography>
+                <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
+                    <ButtonSecondary value="Cancelar" />
+                    <ButtonPrimary value="Confirmar" />
+                </Grid>
             </Box>
         </Modal>
     )
