@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import List from "../List";
 import { Client } from "../../../../types/client";
 
-export default function Container({rows, handleModal}:{rows: Client[]; handleModal: (value:boolean) => void;}) {
+export default function Container({rows, handleModal, drop}:{rows: Client[]; handleModal: (value:boolean) => void; drop: (id: number) => void}) {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
@@ -48,7 +48,7 @@ export default function Container({rows, handleModal}:{rows: Client[]; handleMod
             
             {loading ? <Skeleton variant="rounded" width={450} height={90} /> : <Search/>}
 
-            {loading ? <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : <List handleModal={handleModal} rows={rows}/>}
+            {loading ? <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : <List handleModal={handleModal} rows={rows} drop={drop}/>}
         </Box>
     )
 }

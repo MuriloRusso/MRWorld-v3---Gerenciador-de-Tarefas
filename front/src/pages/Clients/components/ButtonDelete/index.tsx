@@ -3,7 +3,7 @@ import ListMenuItem from "../../templates/ListMenuItem";
 import DeleteIcon from '@mui/icons-material/Delete';
 import useDelete from "../../hooks/useDelete";
 
-export default function ButtonDelete({handleClose, item}:{handleClose: () => void; item: GridRenderCellParams;}) {
+export default function ButtonDelete({handleClose, item, drop}:{handleClose: () => void; item: GridRenderCellParams; drop: (id: number) => void;}) {
     const dropItem = () => {
         drop(item.row.id);
         handleClose();

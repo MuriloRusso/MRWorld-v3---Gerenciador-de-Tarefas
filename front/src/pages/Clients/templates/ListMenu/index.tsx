@@ -8,7 +8,7 @@ import ListMenuContainer from '../../templates/ListMenuContainer';
 import { Client } from '../../../../types/client';
 import { GridRenderCellParams } from '@mui/x-data-grid';
 
-export default function ListMenu({item}:{item:GridRenderCellParams}) {
+export default function ListMenu({item, drop}:{item:GridRenderCellParams; drop: (id: number) => void;}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
 
@@ -48,7 +48,7 @@ export default function ListMenu({item}:{item:GridRenderCellParams}) {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} item={item}/>        
+        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} item={item} drop={drop}/>        
       </Menu>
     </div>
   );
