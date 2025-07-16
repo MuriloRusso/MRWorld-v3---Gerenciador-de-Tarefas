@@ -21,10 +21,9 @@ const style = {
 type ModalProps = {
     visible: boolean;
     handleModal: (value:boolean) => void;
-    fieldsData:ClientData;
 }
 
-export default function ModalDeleteConfirm({visible, handleModal, fieldsData/*, drop*/}:ModalProps){
+export default function ModalDeleteConfirm({visible, handleModal}:ModalProps){
     return (
         <Modal
             open={visible}
@@ -37,8 +36,9 @@ export default function ModalDeleteConfirm({visible, handleModal, fieldsData/*, 
                     Excluír Empresa/Cliente
                 </Typography>
                 <Typography id="modal-modal-title" variant="inherit" component="p">
-                    Tem certeza de que deseja excluír esse cliente?
+                    Tem certeza de que deseja excluir esse cliente?
                 </Typography>
+
                 <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
                     <ButtonSecondary value="Cancelar" />
                     <ButtonPrimary value="Confirmar" />
