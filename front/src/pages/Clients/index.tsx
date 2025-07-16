@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import useGetList from "./hooks/useGetList";
 import { Client } from "../../types/client";
+import useDelete from "./hooks/useDelete";
 
 export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
@@ -19,10 +20,7 @@ export default function Clients(){
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
-
-    // useEffect(()=>{
-    //     getList();
-    // }, [])
+    const { drop } = useDelete({handleModal, addToast, getList});
 
     useEffect(() => {
         const fetch = async () => {
@@ -39,7 +37,7 @@ export default function Clients(){
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
-            <Container handleModal={handleModal} rows={rows}/>
+            <Container handleModal={handleModal} rows={rows} drop={drop}/>
             <ModalCreateUpdate
                 visible={modalVisible}
                 handleModal={handleModal}
