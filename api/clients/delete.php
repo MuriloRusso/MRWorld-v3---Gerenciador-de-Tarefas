@@ -38,8 +38,8 @@ $stmt->close();
 $dependencias = [];
 
 $checkTables = [
-    'projects' => 'Projetos',
-    'people' => 'Pessoas',
+    'cad_project' => 'Projetos',
+    'car_person' => 'Pessoas',
     // Adicione aqui mais tabelas que referenciam o cliente
 ];
 
