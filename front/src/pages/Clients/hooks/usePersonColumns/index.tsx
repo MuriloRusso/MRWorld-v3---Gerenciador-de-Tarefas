@@ -24,7 +24,7 @@ export default function usePersonColumns() {
         { field: 'notes', headerName: 'Anotações', width: 200 },
 
         {field: 'id', headerName: '', renderCell(params){
-            return <ListMenu item={params}/>
+            return <ListMenu item={params} drop={()=>{}}/>
         }}
 
     ];
