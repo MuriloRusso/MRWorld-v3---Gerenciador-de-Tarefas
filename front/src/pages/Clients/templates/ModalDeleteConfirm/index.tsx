@@ -40,7 +40,7 @@ export default function ModalDeleteConfirm({visible, handleModal}:ModalProps){
                 </Typography>
 
                 <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
-                    <ButtonSecondary value="Cancelar" />
+                    <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} />
                     <ButtonPrimary value="Confirmar" />
                 </Grid>
             </Box>

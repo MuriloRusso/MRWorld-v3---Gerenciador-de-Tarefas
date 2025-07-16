@@ -1,13 +1,15 @@
 import TableDataGrid from "../../../../templates/TableDataGrid";
 import { Client } from "../../../../types/client";
 import useColumns from "../../hooks/useColumns";
-import useGetList from "../../hooks/useGetList";
 import HeaderList from "../HeaderList";
-// import List from "../../../Tasks/templates/List";
 
-export default function List({rows, handleModal, drop}:{rows: Client[]; handleModal: (value: boolean) => void; drop: (id: number) => void;}){
-    // const { rows } = useGetList();
-    const { columns } = useColumns({drop});
+type ListProps = {
+    rows: Client[];
+    handleModal: (value: boolean) => void;
+    handleModalDelete: (value: boolean) => void;
+}
 
+export default function List({rows, handleModal, handleModalDelete}:ListProps){
+    const { columns } = useColumns({handleModalDelete});
     return <TableDataGrid rows={rows} columns={columns} sx={{ maxHeight: "60vh" }} headerTable={<HeaderList handleModal={handleModal}/>} />
 }

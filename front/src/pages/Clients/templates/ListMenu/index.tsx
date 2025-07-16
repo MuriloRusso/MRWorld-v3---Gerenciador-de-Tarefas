@@ -8,7 +8,7 @@ import ListMenuContainer from '../../templates/ListMenuContainer';
 import { Client } from '../../../../types/client';
 import { GridRenderCellParams } from '@mui/x-data-grid';
 
-export default function ListMenu({item, drop}:{item:GridRenderCellParams; drop: (id: number) => void;}) {
+export default function ListMenu({item, handleModalDelete}:{item:GridRenderCellParams; handleModalDelete: (value: boolean) => void;}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
 

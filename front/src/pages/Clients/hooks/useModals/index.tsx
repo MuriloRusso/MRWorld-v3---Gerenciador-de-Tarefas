@@ -6,7 +6,7 @@ export default function useModals(){
         setModalVisible(value);
     }
 
-    const [ modalDeleteVisible, setModalDeleteVisible ] = useState<boolean>(true);
+    const [ modalDeleteVisible, setModalDeleteVisible ] = useState<boolean>(false);
     const handleModalDelete = (value:boolean) => {
         setModalDeleteVisible(value);
     }

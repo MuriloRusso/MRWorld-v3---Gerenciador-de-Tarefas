@@ -38,7 +38,7 @@ export default function Clients(){
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
-            <Container handleModal={handleModal} rows={rows} drop={drop}/>
+            <Container handleModal={handleModal} rows={rows} handleModalDelete={handleModalDelete}/>
             <ModalCreateUpdate
                 visible={modalVisible}
                 handleModal={handleModal}

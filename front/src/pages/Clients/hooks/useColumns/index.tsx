@@ -1,7 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
 
-export default function useColumns({drop}:{drop: (id: number) => void;}) {
+export default function useColumns({handleModalDelete}:{handleModalDelete: (value: boolean) => void;}) {
     const columns: GridColDef[] = [
         { field: 'logo', headerName: 'Logo', width: 70, renderCell(params) {                
                 return(
@@ -38,7 +38,7 @@ export default function useColumns({drop}:{drop: (id: number) => void;}) {
         },
 
         {field: 'id', headerName: '', renderCell(params){            
-            return <ListMenu item={params} drop={drop}/>
+            return <ListMenu item={params} handleModalDelete={handleModalDelete}/>
         }}
 
     ];
