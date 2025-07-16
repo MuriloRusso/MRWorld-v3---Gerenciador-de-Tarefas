@@ -1,12 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import { ClientData } from "../../../../types/client";
+import { useContext, useState } from "react";
+import { Client, ClientData } from "../../../../types/client";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 
 export default function useFields() {
 
   const { addToast } = useContext(GlobalContext);
 
-  const [fieldsData, setFieldsData] = useState<ClientData>({
+  const [ selectedItem, setSelectedItem ] = useState<Client | null>(null);
+
+  const changeSelectedItem = (item: Client | null) => {
+    setSelectedItem(item);
+  }
+
+  const [ fieldsData, setFieldsData ] = useState<ClientData>({
     name: {
       label: "Nome da Empresa/Cliente",
       value: "",
@@ -168,10 +174,5 @@ export default function useFields() {
     return isValid;
   };
 
-  useEffect(()=>{
-    console.log(fieldsData);
-    
-  }, [fieldsData])
-
-  return { fieldsData, handleChange, handleChangeFile, validateFields };
+  return { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem };
 }

@@ -12,7 +12,7 @@ export default function useColumns({handleModalDelete}:{handleModalDelete: (valu
                         }
                         style={{maxHeight: '90%', width: '-webkit-fill-available', borderRadius: 100, margin: "2.5% 0"}}
                     />
-                )                
+                )
             },
         },
         { field: 'name', headerName: 'Empresa/Cliente', width: 200 },
