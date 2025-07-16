@@ -11,6 +11,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import useGetList from "./hooks/useGetList";
 import { Client } from "../../types/client";
 import useDelete from "./hooks/useDelete";
+import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 
 export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
@@ -47,6 +48,7 @@ export default function Clients(){
                 formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
             />
+            <ModalDeleteConfirm visible={true} handleModal={()=>{}} fieldsData={fieldsData} /*drop={()=>{}}*/ />
             <Toast toasts={toast} />
         </Grid>
     )
