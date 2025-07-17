@@ -11,6 +11,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import useGetList from "./hooks/useGetList";
 import { Client } from "../../types/client";
 import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
+import useDelete from "./hooks/useDelete";
 
 export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
@@ -20,6 +21,7 @@ export default function Clients(){
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
+    const { drop } = useDelete({handleModal, addToast, getList});
 
     useEffect(() => {
         const fetch = async () => {
@@ -46,7 +48,7 @@ export default function Clients(){
                 formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
             />
-            <ModalDeleteConfirm visible={modalDeleteVisible} item={selectedItem} handleModal={handleModalDelete}  /*drop={()=>{}}*/ />
+            <ModalDeleteConfirm visible={modalDeleteVisible} item={selectedItem} handleModal={handleModalDelete}  drop={drop} />
             <Toast toasts={toast} />
         </Grid>
     )

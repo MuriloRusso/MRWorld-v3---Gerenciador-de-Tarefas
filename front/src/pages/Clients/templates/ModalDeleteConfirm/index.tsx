@@ -22,9 +22,10 @@ type ModalProps = {
     visible: boolean;
     item: Client | null;
     handleModal: (value:boolean) => void;
+    drop: (id: number) => void;
 }
 
-export default function ModalDeleteConfirm({visible, item, handleModal}:ModalProps){
+export default function ModalDeleteConfirm({visible, item, handleModal, drop}:ModalProps){
 
     if(item === null){
         return (<></>);
@@ -48,11 +49,9 @@ export default function ModalDeleteConfirm({visible, item, handleModal}:ModalPro
                 <Typography id="modal-modal-title" variant="inherit" component="p">
                     {item.name}
                 </Typography>
-
-
                 <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
                     <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} />
-                    <ButtonPrimary value="Confirmar" />
+                    <ButtonPrimary value="Confirmar" onClick={()=> {drop(item.id)}}/>
                 </Grid>
             </Box>
         </Modal>

@@ -33,7 +33,7 @@ if ($stmt->num_rows === 0) {
     exit;
 }
 $stmt->close();
-
+/*
 // Verifica dependências em outras tabelas
 $dependencias = [];
 
@@ -63,7 +63,7 @@ if (!empty($dependencias)) {
         'status' => 409,
     ]);
     exit;
-}
+}*/
 
 // Excluir cliente
 $delete = $mysqli->prepare("DELETE FROM cad_client WHERE id = ?");
