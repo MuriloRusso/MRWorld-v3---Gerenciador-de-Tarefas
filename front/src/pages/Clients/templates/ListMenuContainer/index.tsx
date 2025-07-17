@@ -1,6 +1,6 @@
 import { Button, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
-import ListMenuItem from "../ListMenuItem";
+import ListMenuItem from "../../components/ListMenuItem";
 import EditIcon from '@mui/icons-material/Edit';
 import { GridRenderCellParams } from "@mui/x-data-grid";
 import ButtonDelete from "../../components/ButtonDelete";

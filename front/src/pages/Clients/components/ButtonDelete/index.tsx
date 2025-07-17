@@ -1,5 +1,5 @@
 import { GridRenderCellParams } from "@mui/x-data-grid";
-import ListMenuItem from "../../templates/ListMenuItem";
+import ListMenuItem from "../ListMenuItem";
 import DeleteIcon from '@mui/icons-material/Delete';
 import useDelete from "../../hooks/useDelete";
 
