@@ -42,12 +42,18 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Excluír Empresa/Cliente
                 </Typography>
-                <Typography id="modal-modal-title" variant="inherit" component="p">
-                    Tem certeza de que deseja excluir esse cliente?
-                </Typography>
-
-                <Typography id="modal-modal-title" variant="inherit" component="p">
-                    {item.name}
+                <Grid sx={{display: 'flex', flexDirection: 'row', gap: '10px', paddingY: '10px'}}>
+                    <img 
+                        src={
+                            item.id ? 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + item.id + '/' + item.logo : 
+                            `https://placehold.co/100x100?text=${item.name}`
+                        }
+                        style={{maxHeight: '80px', width: 'auto', borderRadius: 100}}
+                    />
+                    <Typography id="modal-modal-item-name" variant="h5" component="p">{item.name}</Typography>
+                </Grid>
+                <Typography id="modal-modal-text" variant="inherit" component="p" sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px',}}>
+                    Tem certeza de que deseja excluir o cliente {item.name}?
                 </Typography>
                 <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
                     <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} />
