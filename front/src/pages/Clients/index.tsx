@@ -46,7 +46,7 @@ export default function Clients(){
                 formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
             />
-            <ModalDeleteConfirm visible={modalDeleteVisible} handleModal={handleModalDelete}  /*drop={()=>{}}*/ />
+            <ModalDeleteConfirm visible={modalDeleteVisible} item={selectedItem} handleModal={handleModalDelete}  /*drop={()=>{}}*/ />
             <Toast toasts={toast} />
         </Grid>
     )

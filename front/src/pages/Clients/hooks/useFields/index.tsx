@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Client, ClientData } from "../../../../types/client";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 
@@ -11,6 +11,11 @@ export default function useFields() {
   const changeSelectedItem = (item: Client | null) => {
     setSelectedItem(item);
   }
+
+  useEffect(()=>{
+    console.log('selectedItem');
+    console.log(selectedItem);
+  })
 
   const [ fieldsData, setFieldsData ] = useState<ClientData>({
     name: {

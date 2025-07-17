@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
-import { ClientData } from "../../../../types/client";
+import { Client, ClientData } from "../../../../types/client";
 import ButtonSecondary from "../../../../components/ButtonSecondary";
 import ButtonPrimary from "../../../../components/ButtonPrimary";
 
@@ -20,10 +20,16 @@ const style = {
 
 type ModalProps = {
     visible: boolean;
+    item: Client | null;
     handleModal: (value:boolean) => void;
 }
 
-export default function ModalDeleteConfirm({visible, handleModal}:ModalProps){
+export default function ModalDeleteConfirm({visible, item, handleModal}:ModalProps){
+
+    if(item === null){
+        return (<></>);
+    }
+
     return (
         <Modal
             open={visible}
@@ -38,6 +44,11 @@ export default function ModalDeleteConfirm({visible, handleModal}:ModalProps){
                 <Typography id="modal-modal-title" variant="inherit" component="p">
                     Tem certeza de que deseja excluir esse cliente?
                 </Typography>
+
+                <Typography id="modal-modal-title" variant="inherit" component="p">
+                    {item.name}
+                </Typography>
+
 
                 <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
                     <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} />
