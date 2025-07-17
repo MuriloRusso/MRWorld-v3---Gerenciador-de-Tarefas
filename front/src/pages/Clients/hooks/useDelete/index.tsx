@@ -3,14 +3,14 @@ import api from '../../../../services/api';
 import { ToastProps } from "../../../../types/toast";
 
 type useCreateProps = {
-  handleModal: (value: boolean) => void;
+  handleModalDelete: (value: boolean) => void;
   addToast: (value: ToastProps) => void;
   getList: () => void;
 };
 
 
 export default function useDelete({
-  handleModal,
+  handleModalDelete,
   addToast,
   getList
 }: useCreateProps){
@@ -27,7 +27,7 @@ export default function useDelete({
         })
         .then(response => {
             console.log('Sucesso:', response.data);
-            handleModal(false);
+            handleModalDelete(false);
             addToast({
             id: Date.now(),
             severity: 'success',
