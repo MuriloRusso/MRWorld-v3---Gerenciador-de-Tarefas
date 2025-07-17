@@ -6,10 +6,10 @@ import ModalPanelIntro from '../ModalPanelIntro';
 import ModalPanelNotes from '../ModalPanelNotes';
 import ModalPanelContact from '../ModalPanelContact';
 import { ClientData } from '../../../../types/client';
-import ModalPanelPerson from '../ModalPanelPerson';
 import ModalPanelProjects from '../ModalPanelProjects';
 import { FormPersonParamsProps } from '../../../../types/person';
 import ModalPanelAddress from '../ModalPanelAddress';
+import ModalPanelPerson from '../../modules/Person';
 
 interface TabPanelProps {
   children?: React.ReactNode;

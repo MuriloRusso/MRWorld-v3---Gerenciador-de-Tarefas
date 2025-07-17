@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import api from '../../../../services/api';
-import { Person } from '../../../../types/person';
+import { Person } from '../../../../../../types/person';
 
 
-export default function useGetPersonList() {
+
+export default function useGetList() {
     
     const [ rows, setRows ] = useState<Person[]>([]);
 

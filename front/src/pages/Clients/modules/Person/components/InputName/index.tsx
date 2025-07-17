@@ -1,7 +1,7 @@
-import InputLabel from "../../../../../components/InputLabel";
-import { ClientData } from "../../../../../types/client";
+import InputLabel from "../../../../../../components/InputLabel";
+import { ClientData } from "../../../../../../types/client";
 
-export default function InputNamePerson(/*{fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}*/) {
+export default function InputName(/*{fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}*/) {
     return (
         <InputLabel 
             // label={fieldsData.name.label}

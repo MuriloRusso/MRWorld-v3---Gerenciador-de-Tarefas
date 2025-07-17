@@ -1,7 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
-import ListMenu from "../../templates/ListMenu";
+import ListMenu from "../../../../templates/ListMenu";
 
-export default function usePersonColumns() {
+export default function useColumns() {
 
     const columns: GridColDef[] = [
         { field: 'avatar', headerName: 'Foto', width: 70, renderCell(params) {                
