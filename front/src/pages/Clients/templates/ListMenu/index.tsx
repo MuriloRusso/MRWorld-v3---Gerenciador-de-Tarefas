@@ -5,8 +5,9 @@ import Fade from '@mui/material/Fade';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ListMenuContainer from '../../templates/ListMenuContainer';
 import { GridRenderCellParams } from '@mui/x-data-grid';
+import { Client } from '../../../../types/client';
 
-export default function ListMenu({item, handleModalDelete}:{item:GridRenderCellParams; handleModalDelete: (value: boolean) => void;}) {
+export default function ListMenu({item, handleModalDelete, changeSelectedItem}:{item:GridRenderCellParams; handleModalDelete: (value: boolean) => void; changeSelectedItem: (item: Client | null) => void;}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
 
@@ -46,7 +47,7 @@ export default function ListMenu({item, handleModalDelete}:{item:GridRenderCellP
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} item={item} handleModalDelete={handleModalDelete}/>        
+        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} item={item} handleModalDelete={handleModalDelete} changeSelectedItem={changeSelectedItem}/>        
       </Menu>
     </div>
   );

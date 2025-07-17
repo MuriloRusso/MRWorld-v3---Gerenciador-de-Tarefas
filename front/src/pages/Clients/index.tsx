@@ -10,18 +10,16 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import useGetList from "./hooks/useGetList";
 import { Client } from "../../types/client";
-import useDelete from "./hooks/useDelete";
 import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 
 export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
 
     const { modalVisible, handleModal, formPersonVisible, handleFormPerson, modalDeleteVisible, handleModalDelete } = useModals();
-    const { fieldsData, handleChange, handleChangeFile, validateFields } = useFields();
+    const { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
-    const { drop } = useDelete({handleModal, addToast, getList});
 
     useEffect(() => {
         const fetch = async () => {
@@ -38,7 +36,7 @@ export default function Clients(){
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
-            <Container handleModal={handleModal} rows={rows} handleModalDelete={handleModalDelete}/>
+            <Container handleModal={handleModal} rows={rows} handleModalDelete={handleModalDelete} changeSelectedItem={changeSelectedItem}/>
             <ModalCreateUpdate
                 visible={modalVisible}
                 handleModal={handleModal}

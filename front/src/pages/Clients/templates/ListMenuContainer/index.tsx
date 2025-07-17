@@ -4,6 +4,7 @@ import ListMenuItem from "../ListMenuItem";
 import EditIcon from '@mui/icons-material/Edit';
 import { GridRenderCellParams } from "@mui/x-data-grid";
 import ButtonDelete from "../../components/ButtonDelete";
+import { Client } from "../../../../types/client";
 
 type ListMenuContainerProps = {
     handleClose: () => void;
@@ -11,10 +12,15 @@ type ListMenuContainerProps = {
     open: any;
     item: GridRenderCellParams;
     handleModalDelete: (value: boolean) => void;
+    changeSelectedItem: (item: Client | null) => void;
 }
 
-export default function ListMenuContainer({handleClose, anchorEl, open, item, handleModalDelete}:ListMenuContainerProps){
+export default function ListMenuContainer({handleClose, anchorEl, open, item, handleModalDelete, changeSelectedItem}:ListMenuContainerProps){
 
+    const handleDeleteItem = () => {
+        handleModalDelete(true);
+        changeSelectedItem(item.row);
+    }
     
     return (
         <Menu
@@ -31,7 +37,7 @@ export default function ListMenuContainer({handleClose, anchorEl, open, item, ha
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
             <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose} item={item}/>
             {/* <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleClose} item={item}/> */}
-            <ButtonDelete handleClose={handleClose} item={item} handleModalDelete={handleModalDelete}/>
+            <ButtonDelete handleClose={handleClose} item={item} handleModalDelete={handleDeleteItem}/>
         </Menu>
     )
 }

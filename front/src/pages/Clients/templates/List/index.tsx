@@ -7,9 +7,10 @@ type ListProps = {
     rows: Client[];
     handleModal: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
+    changeSelectedItem: (item: Client | null) => void;
 }
 
-export default function List({rows, handleModal, handleModalDelete}:ListProps){
-    const { columns } = useColumns({handleModalDelete});
+export default function List({rows, handleModal, handleModalDelete, changeSelectedItem}:ListProps){
+    const { columns } = useColumns({handleModalDelete, changeSelectedItem});
     return <TableDataGrid rows={rows} columns={columns} sx={{ maxHeight: "60vh" }} headerTable={<HeaderList handleModal={handleModal}/>} />
 }

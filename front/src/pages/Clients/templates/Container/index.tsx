@@ -9,9 +9,10 @@ type ContainerProps = {
     rows: Client[];
     handleModal: (value:boolean) => void;
     handleModalDelete: (value: boolean) => void;
+    changeSelectedItem: (item: Client | null) => void;
 }
 
-export default function Container({rows, handleModal, handleModalDelete}:ContainerProps) {
+export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem}:ContainerProps) {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
@@ -54,7 +55,16 @@ export default function Container({rows, handleModal, handleModalDelete}:Contain
             
             {loading ? <Skeleton variant="rounded" width={450} height={90} /> : <Search/>}
 
-            {loading ? <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : <List handleModal={handleModal} rows={rows} handleModalDelete={handleModalDelete}/>}
+            {
+                loading ? 
+                <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : 
+                <List
+                    handleModal={handleModal}
+                    rows={rows}
+                    handleModalDelete={handleModalDelete}
+                    changeSelectedItem={changeSelectedItem}
+                />
+            }
         </Box>
     )
 }
