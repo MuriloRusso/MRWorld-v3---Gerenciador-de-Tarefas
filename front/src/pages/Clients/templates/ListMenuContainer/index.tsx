@@ -40,6 +40,7 @@ export default function ListMenuContainer({
         handleChange('address_number', item.row.address_number);
         handleChange('city', item.row.city);
         handleChange('country', item.row.country);
+        handleChange('state', item.row.state);
         handleChange('neighborhood', item.row.neighborhood);
     }
     
