@@ -6,8 +6,7 @@ import useDelete from "../../hooks/useDelete";
 type ButtonDeleteProps = {
     handleClose: () => void;
     item: GridRenderCellParams;
-    handleModalDelete: (value: boolean) => void;
-}
+    handleModalDelete: (value: boolean) => void;}
 
 export default function ButtonDelete({handleClose, item, handleModalDelete}:ButtonDeleteProps) {
     const handleModalDeletePressed = () => {

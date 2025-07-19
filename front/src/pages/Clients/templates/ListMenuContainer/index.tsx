@@ -27,11 +27,13 @@ export default function ListMenuContainer({
 }:ListMenuContainerProps){
 
     const handleEditItem = () => {
+        console.log('handleEditItem');
+
         handleModal(true);
         changeSelectedItem(item.row);
     }
     
-    const handleDeleteItem = () => {
+    const handleDeleteItem = () => {       
         handleModalDelete(true);
         changeSelectedItem(item.row);
     }
