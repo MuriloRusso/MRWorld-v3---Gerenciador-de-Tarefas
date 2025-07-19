@@ -179,5 +179,12 @@ export default function useFields() {
     return isValid;
   };
 
+
+  useEffect(()=>{
+    console.log('selectedItem');
+    console.log(selectedItem);
+    
+  }, [selectedItem])
+
   return { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem };
 }

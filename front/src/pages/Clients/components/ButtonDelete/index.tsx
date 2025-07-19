@@ -3,7 +3,11 @@ import ListMenuItem from "../ListMenuItem";
 import DeleteIcon from '@mui/icons-material/Delete';
 import useDelete from "../../hooks/useDelete";
 
-type ButtonDeleteProps = {handleClose: () => void; item: GridRenderCellParams; handleModalDelete: (value: boolean) => void;}
+type ButtonDeleteProps = {
+    handleClose: () => void;
+    item: GridRenderCellParams;
+    handleModalDelete: (value: boolean) => void;
+}
 
 export default function ButtonDelete({handleClose, item, handleModalDelete}:ButtonDeleteProps) {
     const handleModalDeletePressed = () => {
