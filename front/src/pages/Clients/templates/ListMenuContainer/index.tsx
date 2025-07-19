@@ -1,10 +1,10 @@
-import { Button, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
+import { Menu } from "@mui/material";
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import ListMenuItem from "../../components/ListMenuItem";
-import EditIcon from '@mui/icons-material/Edit';
 import { GridRenderCellParams } from "@mui/x-data-grid";
 import ButtonDelete from "../../components/ButtonDelete";
 import { Client } from "../../../../types/client";
+import ButtonEdit from "../../components/ButtonEdit";
 
 type ListMenuContainerProps = {
     handleClose: () => void;
@@ -16,7 +16,15 @@ type ListMenuContainerProps = {
     changeSelectedItem: (item: Client | null) => void;
 }
 
-export default function ListMenuContainer({handleClose, anchorEl, open, item, handleModal, handleModalDelete, changeSelectedItem}:ListMenuContainerProps){
+export default function ListMenuContainer({
+    handleClose,
+    anchorEl,
+    open,
+    item,
+    handleModal,
+    handleModalDelete,
+    changeSelectedItem
+}:ListMenuContainerProps){
 
     const handleEditItem = () => {
         handleModal(true);
@@ -41,7 +49,8 @@ export default function ListMenuContainer({handleClose, anchorEl, open, item, ha
             }}
         >        
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
-            <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose} item={item}/>
+            {/* <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose} item={item}/> */}
+            <ButtonEdit handleClose={handleClose} item={item} handleModal={handleEditItem}/>
             {/* <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleClose} item={item}/> */}
             <ButtonDelete handleClose={handleClose} item={item} handleModalDelete={handleDeleteItem}/>
         </Menu>
