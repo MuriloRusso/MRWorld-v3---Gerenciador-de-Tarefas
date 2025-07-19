@@ -9,11 +9,11 @@ type ButtonEditProps = {
 }
 
 export default function ButtonEdit({handleClose, item, handleModal}:ButtonEditProps){
-    const handleModlaPressed = () => {
+    const handlePressed = () => {
         handleModal(true);
         handleClose();
     }
 
-    return <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleModlaPressed} item={item}/>
+    return <ListMenuItem Icon={EditIcon} text="Editar" onClick={handlePressed} item={item}/>
     
 }

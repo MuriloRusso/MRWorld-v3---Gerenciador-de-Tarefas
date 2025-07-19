@@ -27,8 +27,6 @@ export default function ListMenuContainer({
 }:ListMenuContainerProps){
 
     const handleEditItem = () => {
-        console.log('handleEditItem');
-
         handleModal(true);
         changeSelectedItem(item.row);
     }
@@ -51,10 +49,8 @@ export default function ListMenuContainer({
             }}
         >        
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
-            {/* <ListMenuItem Icon={EditIcon} text="Editar" onClick={handleClose} item={item}/> */}
             <ButtonEdit handleClose={handleClose} item={item} handleModal={handleEditItem}/>
-            {/* <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleClose} item={item}/> */}
-            <ButtonDelete handleClose={handleClose} item={item} handleModalDelete={handleDeleteItem}/>
+            <ButtonDelete handleClose={handleClose} item={item} handleModalDelete={handleDeleteItem} />
         </Menu>
     )
 }
