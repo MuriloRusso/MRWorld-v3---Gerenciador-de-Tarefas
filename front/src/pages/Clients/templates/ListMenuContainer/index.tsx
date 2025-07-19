@@ -11,12 +11,18 @@ type ListMenuContainerProps = {
     anchorEl: null | HTMLElement;
     open: any;
     item: GridRenderCellParams;
+    handleModal: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
 }
 
-export default function ListMenuContainer({handleClose, anchorEl, open, item, handleModalDelete, changeSelectedItem}:ListMenuContainerProps){
+export default function ListMenuContainer({handleClose, anchorEl, open, item, handleModal, handleModalDelete, changeSelectedItem}:ListMenuContainerProps){
 
+    const handleEditItem = () => {
+        handleModal(true);
+        changeSelectedItem(item.row);
+    }
+    
     const handleDeleteItem = () => {
         handleModalDelete(true);
         changeSelectedItem(item.row);

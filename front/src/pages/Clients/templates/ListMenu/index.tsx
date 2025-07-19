@@ -54,7 +54,15 @@ export default function ListMenu({item, handleModal, handleModalDelete, changeSe
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <ListMenuContainer handleClose={handleClose} anchorEl={anchorEl} open={open} item={item} handleModalDelete={handleModalDelete} changeSelectedItem={changeSelectedItem}/>        
+        <ListMenuContainer
+          handleClose={handleClose}
+          anchorEl={anchorEl}
+          open={open}
+          item={item}
+          handleModal={handleModal}
+          handleModalDelete={handleModalDelete}
+          changeSelectedItem={changeSelectedItem}
+        />        
       </Menu>
     </div>
   );

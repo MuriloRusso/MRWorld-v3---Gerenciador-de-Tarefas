@@ -24,7 +24,7 @@ export default function useColumns() {
         { field: 'notes', headerName: 'Anotações', width: 200 },
 
         {field: 'id', headerName: '', renderCell(params){
-            return <ListMenu item={params} handleModalDelete={()=>{}} changeSelectedItem={()=>{}}/>
+            return <ListMenu item={params} handleModal={()=>{}} handleModalDelete={()=>{}} changeSelectedItem={()=>{}}/>
         }}
 
     ];
