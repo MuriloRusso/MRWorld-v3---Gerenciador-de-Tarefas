@@ -32,6 +32,15 @@ export default function ListMenuContainer({
         handleModal(true);
         changeSelectedItem(item.row);
         handleChange('name', item.row.name);
+        handleChange('cnpj', item.row.cnpj);
+        handleChange('phone', item.row.phone);
+        handleChange('email', item.row.email);
+        handleChange('cep', item.row.cep);
+        handleChange('address', item.row.address);
+        handleChange('address_number', item.row.address_number);
+        handleChange('city', item.row.city);
+        handleChange('country', item.row.country);
+        handleChange('neighborhood', item.row.neighborhood);
     }
     
     const handleDeleteItem = () => {       
