@@ -2,7 +2,13 @@ import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
 import { Client } from "../../../../types/client";
 
-export default function useColumns({handleModalDelete, changeSelectedItem}:{handleModalDelete: (value: boolean) => void; changeSelectedItem: (item: Client | null) => void;}) {
+type useColumnsProps = {
+    handleModal: (value: boolean) => void;
+    handleModalDelete: (value: boolean) => void;
+    changeSelectedItem: (item: Client | null) => void;
+}
+
+export default function useColumns({handleModal, handleModalDelete, changeSelectedItem}:useColumnsProps) {
     const columns: GridColDef[] = [
         { field: 'logo', headerName: 'Logo', width: 70, renderCell(params) {                
                 return(
