@@ -7,7 +7,14 @@ import ListMenuContainer from '../../templates/ListMenuContainer';
 import { GridRenderCellParams } from '@mui/x-data-grid';
 import { Client } from '../../../../types/client';
 
-export default function ListMenu({item, handleModalDelete, changeSelectedItem}:{item:GridRenderCellParams; handleModalDelete: (value: boolean) => void; changeSelectedItem: (item: Client | null) => void;}) {
+type ListMenuProps = {
+  item:GridRenderCellParams;
+  handleModal: (value: boolean) => void;
+  handleModalDelete: (value: boolean) => void;
+  changeSelectedItem: (item: Client | null) => void;
+}
+
+export default function ListMenu({item, handleModal, handleModalDelete, changeSelectedItem}:ListMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const open = Boolean(anchorEl);
 

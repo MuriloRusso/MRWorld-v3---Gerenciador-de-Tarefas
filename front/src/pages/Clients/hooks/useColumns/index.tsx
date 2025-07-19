@@ -45,7 +45,7 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
         },
 
         {field: 'id', headerName: '', renderCell(params){            
-            return <ListMenu item={params} handleModalDelete={handleModalDelete} changeSelectedItem={changeSelectedItem}/>
+            return <ListMenu item={params} handleModal={handleModal}  handleModalDelete={handleModalDelete} changeSelectedItem={changeSelectedItem}/>
         }}
 
     ];
