@@ -5,15 +5,13 @@ import EditIcon from '@mui/icons-material/Edit';
 type ButtonEditProps = {
     handleClose: () => void;
     item: GridRenderCellParams;
-    handleModal: (value: boolean) => void;
+    onClick: () => void;
 }
 
-export default function ButtonEdit({handleClose, item, handleModal}:ButtonEditProps){
+export default function ButtonEdit({handleClose, item, onClick}:ButtonEditProps){
     const handlePressed = () => {
-        handleModal(true);
+        onClick();
         handleClose();
     }
-
     return <ListMenuItem Icon={EditIcon} text="Editar" onClick={handlePressed} item={item}/>
-    
 }

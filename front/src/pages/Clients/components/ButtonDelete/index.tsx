@@ -6,12 +6,12 @@ import useDelete from "../../hooks/useDelete";
 type ButtonDeleteProps = {
     handleClose: () => void;
     item: GridRenderCellParams;
-    handleModalDelete: (value: boolean) => void;}
+    onClick: () => void;}
 
-export default function ButtonDelete({handleClose, item, handleModalDelete}:ButtonDeleteProps) {
-    const handleModalDeletePressed = () => {
-        handleModalDelete(true);
+export default function ButtonDelete({handleClose, item, onClick}:ButtonDeleteProps) {
+    const handlePressed = () => {
+        onClick();
         handleClose();
     }
-    return <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handleModalDeletePressed} item={item}/>
+    return <ListMenuItem Icon={DeleteIcon} text="Excluir" onClick={handlePressed} item={item}/>
 }

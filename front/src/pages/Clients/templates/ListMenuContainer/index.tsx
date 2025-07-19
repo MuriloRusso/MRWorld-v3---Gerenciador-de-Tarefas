@@ -49,8 +49,8 @@ export default function ListMenuContainer({
             }}
         >        
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
-            <ButtonEdit handleClose={handleClose} item={item} handleModal={handleEditItem}/>
-            <ButtonDelete handleClose={handleClose} item={item} handleModalDelete={handleDeleteItem} />
+            <ButtonEdit handleClose={handleClose} item={item} onClick={handleEditItem}/>
+            <ButtonDelete handleClose={handleClose} item={item} onClick={handleDeleteItem} />
         </Menu>
     )
 }
