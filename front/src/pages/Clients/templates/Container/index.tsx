@@ -3,16 +3,17 @@ import ButtonNew from "../../components/ButtonNew";
 import Search from "../Search";
 import { useEffect, useState } from "react";
 import List from "../List";
-import { Client } from "../../../../types/client";
+import { Client, ClientData } from "../../../../types/client";
 
 type ContainerProps = {
     rows: Client[];
     handleModal: (value:boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
+    handleChange: (fieldName: keyof ClientData, newValue: string) => void;
 }
 
-export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem}:ContainerProps) {
+export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange}:ContainerProps) {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
@@ -63,6 +64,7 @@ export default function Container({rows, handleModal, handleModalDelete, changeS
                     rows={rows}
                     handleModalDelete={handleModalDelete}
                     changeSelectedItem={changeSelectedItem}
+                    handleChange={handleChange}
                 />
             }
         </Box>

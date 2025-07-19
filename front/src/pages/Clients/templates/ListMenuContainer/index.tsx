@@ -3,7 +3,7 @@ import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import ListMenuItem from "../../components/ListMenuItem";
 import { GridRenderCellParams } from "@mui/x-data-grid";
 import ButtonDelete from "../../components/ButtonDelete";
-import { Client } from "../../../../types/client";
+import { Client, ClientData } from "../../../../types/client";
 import ButtonEdit from "../../components/ButtonEdit";
 
 type ListMenuContainerProps = {
@@ -14,6 +14,7 @@ type ListMenuContainerProps = {
     handleModal: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
+    handleChange: (fieldName: keyof ClientData, newValue: string) => void;
 }
 
 export default function ListMenuContainer({
@@ -23,12 +24,14 @@ export default function ListMenuContainer({
     item,
     handleModal,
     handleModalDelete,
-    changeSelectedItem
+    changeSelectedItem,
+    handleChange
 }:ListMenuContainerProps){
 
     const handleEditItem = () => {
         handleModal(true);
         changeSelectedItem(item.row);
+        handleChange('name', item.row.name);
     }
     
     const handleDeleteItem = () => {       

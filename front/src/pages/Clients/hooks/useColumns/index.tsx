@@ -1,14 +1,15 @@
 import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
-import { Client } from "../../../../types/client";
+import { Client, ClientData } from "../../../../types/client";
 
 type useColumnsProps = {
     handleModal: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
+    handleChange: (fieldName: keyof ClientData, newValue: string) => void;
 }
 
-export default function useColumns({handleModal, handleModalDelete, changeSelectedItem}:useColumnsProps) {
+export default function useColumns({handleModal, handleModalDelete, changeSelectedItem, handleChange}:useColumnsProps) {
     const columns: GridColDef[] = [
         { field: 'logo', headerName: 'Logo', width: 70, renderCell(params) {                
                 return(
@@ -45,7 +46,15 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
         },
 
         {field: 'id', headerName: '', renderCell(params){            
-            return <ListMenu item={params} handleModal={handleModal}  handleModalDelete={handleModalDelete} changeSelectedItem={changeSelectedItem}/>
+            return (
+                <ListMenu
+                    item={params}
+                    handleModal={handleModal}
+                    handleModalDelete={handleModalDelete}
+                    changeSelectedItem={changeSelectedItem}
+                    handleChange={handleChange}
+                />
+            )
         }}
 
     ];

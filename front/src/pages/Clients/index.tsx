@@ -38,7 +38,13 @@ export default function Clients(){
     return (
         <Grid sx={{display: "flex", flexDirection: "row"}}>
             <Menu/>
-            <Container handleModal={handleModal} rows={rows} handleModalDelete={handleModalDelete} changeSelectedItem={changeSelectedItem}/>
+            <Container
+                handleModal={handleModal}
+                rows={rows}
+                handleModalDelete={handleModalDelete}
+                changeSelectedItem={changeSelectedItem}
+                handleChange={handleChange}    
+            />
             <ModalCreateUpdate
                 visible={modalVisible}
                 handleModal={handleModal}
