@@ -12,6 +12,7 @@ import useGetList from "./hooks/useGetList";
 import { Client } from "../../types/client";
 import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 import useDelete from "./hooks/useDelete";
+import useSearch from "./hooks/useSearch";
 
 export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
@@ -22,6 +23,7 @@ export default function Clients(){
     const { getList, clients } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
     const { drop } = useDelete({handleModalDelete, addToast, getList});
+    const { search, handleSearch } = useSearch();
 
     useEffect(() => {
         const fetch = async () => {
@@ -43,7 +45,9 @@ export default function Clients(){
                 rows={rows}
                 handleModalDelete={handleModalDelete}
                 changeSelectedItem={changeSelectedItem}
-                handleChange={handleChange}    
+                handleChange={handleChange}
+                search={search}
+                handleSearch={handleSearch}
             />
             <ModalCreateUpdate
                 visible={modalVisible}
