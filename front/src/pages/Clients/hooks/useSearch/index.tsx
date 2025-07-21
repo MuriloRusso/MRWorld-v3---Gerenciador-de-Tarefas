@@ -4,8 +4,8 @@ export default function useSearch() {
     
     const [ search, setSearch ] = useState<string>('');
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
+    const handleSearch = (e:string) => {
+        setSearch(e);
     }
     
     return {search, handleSearch}

@@ -12,7 +12,7 @@ type ContainerProps = {
     changeSelectedItem: (item: Client | null) => void;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
     search: string;
-    handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleSearch: (e: string) => void;
 }
     
 export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, search, handleSearch}:ContainerProps) {

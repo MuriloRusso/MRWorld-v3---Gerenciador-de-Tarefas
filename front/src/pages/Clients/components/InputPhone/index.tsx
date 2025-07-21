@@ -1,4 +1,3 @@
-import InputLabel from "../../../../components/InputLabel";
 import MasketInputLabel from "../../../../components/MasketInputLabel";
 import { ClientData } from "../../../../types/client";
 
