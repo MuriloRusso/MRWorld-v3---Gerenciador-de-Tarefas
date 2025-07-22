@@ -13,6 +13,7 @@ import { Client } from "../../types/client";
 import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 import useDelete from "./hooks/useDelete";
 import useSearch from "./hooks/useSearch";
+import useUpdate from "./hooks/useUpdate";
 
 export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
@@ -22,6 +23,7 @@ export default function Clients(){
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
+    const { update } = useUpdate({handleModal, addToast, validateFields, getList});
     const { drop } = useDelete({handleModalDelete, addToast, getList});
     const { search, handleSearch } = useSearch();
 
@@ -57,6 +59,7 @@ export default function Clients(){
                 handleChangeFile={handleChangeFile}
                 formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
+                update={update}
             />
             <ModalDeleteConfirm
                 visible={modalDeleteVisible}

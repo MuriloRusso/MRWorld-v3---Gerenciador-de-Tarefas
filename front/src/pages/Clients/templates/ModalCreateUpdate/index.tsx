@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import ModalPanel from "../ModalPanel";
 import ModalFooter from "../ModalFooter";
-import { ClientData } from "../../../../types/client";
+import { Client, ClientData } from "../../../../types/client";
 import { FormPersonParamsProps } from "../../../../types/person";
 
 const style = {
@@ -27,11 +27,12 @@ type ModalProps = {
     handleChangeFile: (fieldName: keyof ClientData, newValue: File) => void;
     formPersonParams: FormPersonParamsProps;
     create: (newClient:ClientData) => void;
+    update: (selectedItem: Client, clienteData: ClientData) => void;
 }
 
 
 
-export default function ModalCreateUpdate({visible, handleModal, fieldsData, formPersonParams, handleChange, handleChangeFile, create}:ModalProps){
+export default function ModalCreateUpdate({visible, handleModal, fieldsData, formPersonParams, handleChange, handleChangeFile, create, update}:ModalProps){
     return (
         <Modal
             open={visible}
@@ -44,7 +45,7 @@ export default function ModalCreateUpdate({visible, handleModal, fieldsData, for
                     Criar Empresa/Cliente
                 </Typography>
                 <ModalPanel fieldsData={fieldsData} handleChange={handleChange} handleChangeFile={handleChangeFile} formPersonParams={formPersonParams}/>
-                <ModalFooter handleModal={handleModal} create={create} fieldsData={fieldsData}/>
+                <ModalFooter handleModal={handleModal} create={create} fieldsData={fieldsData} update={update}/>
             </Box>
         </Modal>
     )
