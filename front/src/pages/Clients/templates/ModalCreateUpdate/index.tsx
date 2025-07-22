@@ -28,11 +28,21 @@ type ModalProps = {
     formPersonParams: FormPersonParamsProps;
     create: (newClient:ClientData) => void;
     update: (selectedItem: Client, clienteData: ClientData) => void;
+    selectedItem: Client | null;
 }
 
 
 
-export default function ModalCreateUpdate({visible, handleModal, fieldsData, formPersonParams, handleChange, handleChangeFile, create, update}:ModalProps){
+export default function ModalCreateUpdate({visible,
+    handleModal,
+    fieldsData,
+    formPersonParams,
+    handleChange,
+    handleChangeFile,
+    create,
+    update,
+    selectedItem
+}:ModalProps){
     return (
         <Modal
             open={visible}
@@ -44,7 +54,13 @@ export default function ModalCreateUpdate({visible, handleModal, fieldsData, for
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Criar Empresa/Cliente
                 </Typography>
-                <ModalPanel fieldsData={fieldsData} handleChange={handleChange} handleChangeFile={handleChangeFile} formPersonParams={formPersonParams}/>
+                <ModalPanel
+                    fieldsData={fieldsData}
+                    handleChange={handleChange}
+                    handleChangeFile={handleChangeFile}
+                    formPersonParams={formPersonParams}
+                    selectedItem={selectedItem}
+                />
                 <ModalFooter handleModal={handleModal} create={create} fieldsData={fieldsData} update={update}/>
             </Box>
         </Modal>

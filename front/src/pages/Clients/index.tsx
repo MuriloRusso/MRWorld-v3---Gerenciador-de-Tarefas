@@ -60,6 +60,7 @@ export default function Clients(){
                 formPersonParams={{state: formPersonVisible, handleFormFunction: handleFormPerson}}
                 create={create}
                 update={update}
+                selectedItem={selectedItem}
             />
             <ModalDeleteConfirm
                 visible={modalDeleteVisible}
