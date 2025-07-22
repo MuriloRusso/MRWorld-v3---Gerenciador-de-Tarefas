@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import ModalPanelIntro from '../ModalPanelIntro';
 import ModalPanelNotes from '../ModalPanelNotes';
 import ModalPanelContact from '../ModalPanelContact';
-import { Client, ClientData } from '../../../../types/client';
+import { ClientData } from '../../../../types/client';
 import ModalPanelProjects from '../ModalPanelProjects';
 import { FormPersonParamsProps } from '../../../../types/person';
 import ModalPanelAddress from '../ModalPanelAddress';
@@ -46,10 +46,9 @@ type ModalPanelProps = {
   handleChange: (fieldName: keyof ClientData, newValue: string) => void;
   handleChangeFile: (fieldName: keyof ClientData, newValue: File) => void;
   formPersonParams: FormPersonParamsProps;
-  selectedItem: Client | null;
 }
 
-export default function ModalPanel({fieldsData, handleChange, handleChangeFile, formPersonParams, selectedItem}:ModalPanelProps ) {
+export default function ModalPanel({fieldsData, handleChange, handleChangeFile, formPersonParams}:ModalPanelProps ) {
   const [value, setValue] = React.useState(0);
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {

@@ -59,9 +59,14 @@ export default function ModalCreateUpdate({visible,
                     handleChange={handleChange}
                     handleChangeFile={handleChangeFile}
                     formPersonParams={formPersonParams}
+                />
+                <ModalFooter
+                    handleModal={handleModal}
+                    create={create}
+                    fieldsData={fieldsData}
+                    update={update}
                     selectedItem={selectedItem}
                 />
-                <ModalFooter handleModal={handleModal} create={create} fieldsData={fieldsData} update={update}/>
             </Box>
         </Modal>
     )

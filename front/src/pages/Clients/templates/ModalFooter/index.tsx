@@ -9,22 +9,19 @@ type ModalFooterProps = {
     create: (newClient:ClientData)=> void;
     fieldsData: ClientData;
     update: (selectedItem: Client, clienteData: ClientData) => void;
+    selectedItem: Client | null;
 }
 
-export default function ModalFooter({handleModal, create, fieldsData, update}:ModalFooterProps){
+export default function ModalFooter({handleModal, create, fieldsData, update, selectedItem}:ModalFooterProps){
 
-    const handleCreate = () => {
-        create(fieldsData);
+    const handleSubmit = () => {
+        selectedItem === null ? create(fieldsData) : update(selectedItem, fieldsData);
     }
-    const handleUpdate = () => {
-        // update(fieldsData, );
 
-        // update();
-    }
     return(
         <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
             <ButtonCancel handleModal={handleModal}/>
-            <ButtonSubmit handleCreate={handleCreate}/>
+            <ButtonSubmit handleSubmit={handleSubmit}/>
         </Grid>
     )
 }
