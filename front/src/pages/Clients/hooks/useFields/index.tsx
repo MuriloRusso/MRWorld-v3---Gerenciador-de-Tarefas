@@ -185,6 +185,12 @@ export default function useFields() {
     console.log(selectedItem);
     
   }, [selectedItem])
+  
+  useEffect(()=>{
+    console.log('fieldsData');
+    console.log(fieldsData);
+    
+  }, [fieldsData])
 
   return { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem };
 }
