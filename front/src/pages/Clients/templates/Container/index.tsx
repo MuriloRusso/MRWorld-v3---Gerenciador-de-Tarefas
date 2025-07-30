@@ -13,9 +13,10 @@ type ContainerProps = {
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
     search: string;
     handleChangeSearch: (e: string) => void;
+    getListSearch: () => void;
 }
     
-export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, search, handleChangeSearch}:ContainerProps) {
+export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, search, handleChangeSearch, getListSearch}:ContainerProps) {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
@@ -55,7 +56,10 @@ export default function Container({rows, handleModal, handleModalDelete, changeS
                 <Typography variant="h2" component="h2" sx={{fontSize: 25}}>Empresas/Clientes</Typography>
             </Grid>
             
-            {loading ? <Skeleton variant="rounded" width={450} height={90} /> : <Search search={search} handleChangeSearch={handleChangeSearch}/>}
+            {
+                loading ?
+                <Skeleton variant="rounded" width={450} height={90} /> :
+                <Search search={search} handleChangeSearch={handleChangeSearch} getListSearch={getListSearch}/>}
 
             {
                 loading ? 

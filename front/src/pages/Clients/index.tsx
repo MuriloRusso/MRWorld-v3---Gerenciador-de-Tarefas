@@ -49,6 +49,7 @@ export default function Clients(){
                 handleChange={handleChange}
                 search={search}
                 handleChangeSearch={handleChangeSearch}
+                getListSearch={getListSearch}
             />
             <ModalCreateUpdate
                 visible={modalVisible}
