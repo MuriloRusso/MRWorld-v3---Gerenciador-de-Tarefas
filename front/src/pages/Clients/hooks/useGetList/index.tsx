@@ -6,11 +6,21 @@ import { Client } from '../../../../types/client';
 export default function useGetList() {
     
     const [clients, setClients ] = useState<Client[]>([]);
+    const [search, setSearch] = useState<string>('');
 
-    const getList = () => {
-        console.log('--------getList----------');
-        
+    const handleSearch = (e:string) => {
+        setSearch(e);
+    }
+
+    const getList = () => {        
         api.get('/clients/get.php'/*, { params: { search } }*/)
+            .then(response => setClients(response.data.data))
+            .catch(error => console.error(error));
+    }
+
+    const getListSearch = () => {
+        console.log('--------getListSearch----------');        
+        api.get('/clients/get.php', { params: { search } })
             .then(response => setClients(response.data.data))
             .catch(error => console.error(error));
     }
@@ -21,5 +31,5 @@ export default function useGetList() {
     }, []);
 
 
-    return { clients, getList };
+    return { clients, getList, search, handleSearch, getListSearch };
 }

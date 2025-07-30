@@ -12,20 +12,19 @@ import useGetList from "./hooks/useGetList";
 import { Client } from "../../types/client";
 import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 import useDelete from "./hooks/useDelete";
-import useSearch from "./hooks/useSearch";
 import useUpdate from "./hooks/useUpdate";
 
 export default function Clients(){
+    
     const [ rows, setRows ] = useState<Client[]>([]);
 
     const { modalVisible, handleModal, formPersonVisible, handleFormPerson, modalDeleteVisible, handleModalDelete } = useModals();
     const { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
-    const { getList, clients } = useGetList();
+    const { getList, clients, search, handleSearch, getListSearch } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
     const { update } = useUpdate({handleModal, addToast, validateFields, getList});
     const { drop } = useDelete({handleModalDelete, addToast, getList});
-    const { search, handleSearch } = useSearch();
 
     useEffect(() => {
         const fetch = async () => {
