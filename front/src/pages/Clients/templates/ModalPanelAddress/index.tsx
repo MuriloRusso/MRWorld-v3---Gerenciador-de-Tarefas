@@ -17,7 +17,7 @@ export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsDat
     
     const { getAddress } = useSearchCep();
 
-    const handleSearchCep =  () => {
+    const handleChangeSearchCep =  () => {
         getAddress(fieldsData.cep.value, handleChange);
         // handleChange('city');
     }
@@ -26,7 +26,7 @@ export default function ModalPanelAddress({fieldsData, handleChange}: {fieldsDat
         <Grid sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
             <Grid sx={{display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'flex-end'}}>
                 <InputCep fieldsData={fieldsData} handleChange={handleChange}/>
-                <ButtonSearchCep handleSearchCep={handleSearchCep}/>
+                <ButtonSearchCep handleChangeSearchCep={handleChangeSearchCep}/>
             </Grid>
             <Grid sx={{display: "flex", flexDirection: "row", justifyContent: 'space-between', gap: 2}}>
                 <InputAddress fieldsData={fieldsData} handleChange={handleChange}/>

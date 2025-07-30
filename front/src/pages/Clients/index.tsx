@@ -21,7 +21,7 @@ export default function Clients(){
     const { modalVisible, handleModal, formPersonVisible, handleFormPerson, modalDeleteVisible, handleModalDelete } = useModals();
     const { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
-    const { getList, clients, search, handleSearch, getListSearch } = useGetList();
+    const { getList, clients, search, handleChangeSearch, getListSearch } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
     const { update } = useUpdate({handleModal, addToast, validateFields, getList});
     const { drop } = useDelete({handleModalDelete, addToast, getList});
@@ -48,7 +48,7 @@ export default function Clients(){
                 changeSelectedItem={changeSelectedItem}
                 handleChange={handleChange}
                 search={search}
-                handleSearch={handleSearch}
+                handleChangeSearch={handleChangeSearch}
             />
             <ModalCreateUpdate
                 visible={modalVisible}

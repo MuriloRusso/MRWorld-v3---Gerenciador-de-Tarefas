@@ -2,10 +2,10 @@ import { Grid } from "@mui/material";
 import InputSearch from "../../components/InputSearch";
 import ButtonSubmitSearch from "../../components/ButtonSubmitSearch";
 
-export default function Search({search, handleSearch}:{search: string, handleSearch: (e: string) => void}){
+export default function Search({search, handleChangeSearch}:{search: string, handleChangeSearch: (e: string) => void}){
     return(
         <Grid sx={{display: 'flex', flexDirection: "row", gap: 1, maxWidth: '100%', width: 400, alignItems: 'center'}}>
-            <InputSearch search={search} handleSearch={handleSearch}/>
+            <InputSearch search={search} handleChangeSearch={handleChangeSearch}/>
             <ButtonSubmitSearch/>
         </Grid>
     )

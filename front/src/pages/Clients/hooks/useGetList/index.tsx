@@ -8,7 +8,7 @@ export default function useGetList() {
     const [clients, setClients ] = useState<Client[]>([]);
     const [search, setSearch] = useState<string>('');
 
-    const handleSearch = (e:string) => {
+    const handleChangeSearch = (e:string) => {
         setSearch(e);
     }
 
@@ -31,5 +31,5 @@ export default function useGetList() {
     }, []);
 
 
-    return { clients, getList, search, handleSearch, getListSearch };
+    return { clients, getList, search, handleChangeSearch, getListSearch };
 }
