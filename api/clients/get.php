@@ -14,7 +14,6 @@ if (!empty($search)) {
     $searchLike = '%' . $mysqli->real_escape_string($search) . '%';
     $sql .= " AND (
                 name LIKE '{$searchLike}' OR 
-                owner LIKE '{$searchLike}' OR 
                 email LIKE '{$searchLike}' OR 
                 phone LIKE '{$searchLike}' OR 
                 cnpj LIKE '{$searchLike}' OR
