@@ -42,6 +42,7 @@ export default function ListMenuContainer({
         handleChange('country', item.row.country);
         handleChange('state', item.row.state);
         handleChange('neighborhood', item.row.neighborhood);
+        handleChange('notes', item.row.notes);
     }
     
     const handleDeleteItem = () => {       

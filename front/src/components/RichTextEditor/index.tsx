@@ -7,13 +7,13 @@ export default function RichTextEditor({value, onChange}:{value: string, onChang
 
   return (
     <div style={{ width: '100%' }}>
-      <ReactQuill theme="snow" value={value} onChange={onChange} />
-      <div style={{ marginTop: '20px' }}>
+      <ReactQuill theme="snow" value={value} onChange={onChange} style={{height: 150}}/>
+      {/* <div style={{ marginTop: '20px' }}>
         <strong>Conteúdo HTML gerado:</strong>
         <div style={{ border: '1px solid #ccc', padding: '10px' }}>
           <div dangerouslySetInnerHTML={{ __html: value }} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
