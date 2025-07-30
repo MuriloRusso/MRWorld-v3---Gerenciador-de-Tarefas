@@ -26,7 +26,7 @@ export default function TableDataGrid({rows, columns, sx, headerTable}:TableData
           checkboxSelection
           disableRowSelectionOnClick // <- esta linha evita seleção ao clicar na linha
           localeText={{
-            noRowsLabel: 'Sem linhas',
+            noRowsLabel: 'Nenhum item encontrado.',
             columnMenuHideColumn: "Ocultar Coluna",
             columnsManagementNoColumns: "Gerenciar Colunas",
             columnMenuSortAsc: "Crescente",
