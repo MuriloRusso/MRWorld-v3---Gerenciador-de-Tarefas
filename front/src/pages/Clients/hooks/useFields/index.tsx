@@ -152,15 +152,20 @@ export default function useFields() {
   };
 
   const resetFields = () => {
-    setFieldsData(prev => ({
-      ...prev,
-      ["name"]: {
-        ...prev["name"],
-        value: "",
-        error: false
-      }
-    }));
-  }
+    setFieldsData(prev =>
+      Object.fromEntries(
+        Object.entries(prev).map(([key, field]) => [
+          key,
+          {
+            ...field,
+            value: typeof field.value === "string" ? "" : null,
+            error: false
+          }
+        ])
+      ) as ClientData
+    );
+  };
+
 
   const handleChangeFile = (fieldName: keyof ClientData, newValue: File) => {
     setFieldsData(prev => ({
