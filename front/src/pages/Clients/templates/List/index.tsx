@@ -13,5 +13,12 @@ type ListProps = {
 
 export default function List({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange}:ListProps){
     const { columns } = useColumns({handleModal, handleModalDelete, changeSelectedItem, handleChange});
-    return <TableDataGrid rows={rows} columns={columns} sx={{ maxHeight: "60vh" }} headerTable={<HeaderList handleModal={handleModal}/>} />
+    return (
+        <TableDataGrid
+            rows={rows}
+            columns={columns}
+            sx={{ maxHeight: "60vh" }}
+            headerTable={<HeaderList handleModal={handleModal} changeSelectedItem={changeSelectedItem}/>} 
+        />
+    )
 }
