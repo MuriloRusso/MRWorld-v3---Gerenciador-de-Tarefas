@@ -5,14 +5,14 @@ import { Client, ClientData } from "../../../../types/client";
 type HeaderListProps = {
   handleModal: (value: boolean) => void;
   changeSelectedItem: (item: Client | null) => void;
-  handleChange: (fieldName: keyof ClientData, newValue: string) => void;
+  resetFields: () => void;
 }
 
-export default function HeaderList({handleModal, changeSelectedItem, handleChange}:HeaderListProps){
+export default function HeaderList({handleModal, changeSelectedItem, resetFields}:HeaderListProps){
 
   const handleNewwClick = () => {
     changeSelectedItem(null);
-    handleChange("name", "");
+    resetFields();
     handleModal(true);
   }
   return (

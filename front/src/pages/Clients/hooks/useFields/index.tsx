@@ -151,6 +151,16 @@ export default function useFields() {
     }));
   };
 
+  const resetFields = () => {
+    setFieldsData(prev => ({
+      ...prev,
+      ["name"]: {
+        ...prev["name"],
+        value: "",
+        error: false
+      }
+    }));
+  }
 
   const handleChangeFile = (fieldName: keyof ClientData, newValue: File) => {
     setFieldsData(prev => ({
@@ -192,5 +202,5 @@ export default function useFields() {
     
   }, [fieldsData])
 
-  return { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem };
+  return { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem, resetFields };
 }

@@ -11,12 +11,13 @@ type ContainerProps = {
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
+    resetFields: () => void;
     search: string;
     handleChangeSearch: (e: string) => void;
     getListSearch: () => void;
 }
     
-export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, search, handleChangeSearch, getListSearch}:ContainerProps) {
+export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, search, handleChangeSearch, getListSearch, resetFields}:ContainerProps) {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
@@ -70,6 +71,7 @@ export default function Container({rows, handleModal, handleModalDelete, changeS
                     handleModalDelete={handleModalDelete}
                     changeSelectedItem={changeSelectedItem}
                     handleChange={handleChange}
+                    resetFields={resetFields}
                 />
             }
         </Box>

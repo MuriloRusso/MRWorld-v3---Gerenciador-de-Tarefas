@@ -9,16 +9,23 @@ type ListProps = {
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
+    resetFields: () => void;
 }
 
-export default function List({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange}:ListProps){
+export default function List({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, resetFields}:ListProps){
     const { columns } = useColumns({handleModal, handleModalDelete, changeSelectedItem, handleChange});
     return (
         <TableDataGrid
             rows={rows}
             columns={columns}
             sx={{ maxHeight: "60vh" }}
-            headerTable={<HeaderList handleModal={handleModal} changeSelectedItem={changeSelectedItem} handleChange={handleChange}/>} 
+            headerTable={
+                <HeaderList
+                    handleModal={handleModal}
+                    changeSelectedItem={changeSelectedItem}
+                    resetFields={resetFields}
+                />
+            } 
         />
     )
 }

@@ -19,7 +19,7 @@ export default function Clients(){
     const [ rows, setRows ] = useState<Client[]>([]);
 
     const { modalVisible, handleModal, formPersonVisible, handleFormPerson, modalDeleteVisible, handleModalDelete } = useModals();
-    const { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem } = useFields();
+    const { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem, resetFields } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients, search, handleChangeSearch, getListSearch } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
@@ -47,6 +47,7 @@ export default function Clients(){
                 handleModalDelete={handleModalDelete}
                 changeSelectedItem={changeSelectedItem}
                 handleChange={handleChange}
+                resetFields={resetFields}
                 search={search}
                 handleChangeSearch={handleChangeSearch}
                 getListSearch={getListSearch}
