@@ -18,7 +18,7 @@ export default function List({rows, handleModal, handleModalDelete, changeSelect
             rows={rows}
             columns={columns}
             sx={{ maxHeight: "60vh" }}
-            headerTable={<HeaderList handleModal={handleModal} changeSelectedItem={changeSelectedItem}/>} 
+            headerTable={<HeaderList handleModal={handleModal} changeSelectedItem={changeSelectedItem} handleChange={handleChange}/>} 
         />
     )
 }
