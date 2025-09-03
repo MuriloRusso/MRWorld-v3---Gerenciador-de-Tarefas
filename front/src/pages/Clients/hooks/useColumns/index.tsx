@@ -1,6 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
 import { Client, ClientData } from "../../../../types/client";
+import { Grid } from "@mui/material";
 
 type useColumnsProps = {
     handleModal: (value: boolean) => void;
@@ -28,8 +29,17 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
             field: 'client_by',
             headerName: 'Cliente de:',
             width: 150,
-            renderCell: (params) => {                
-                return `${params.value?.name ?? ''}`;
+            renderCell: (params) => {
+                console.log(params);
+
+                if (!params.row?.client_by) return '';
+                
+                const url = 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + params.row?.client_by?.id + '/' + params.row?.client_by?.logo;
+                return (
+                    <Grid>
+                        <img src={url}/>{params.row?.client_by.name ?? ''}
+                    </Grid>
+                );
             }
         },
         { field: 'cnpj', headerName: 'CNPJ', width: 150 },
