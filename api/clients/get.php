@@ -12,7 +12,8 @@ $sql = "SELECT
             cli.name as client_by_name,
             cli.email as client_by_email,
             cli.phone as client_by_phone,
-            cli.cnpj as client_by_cnpj
+            cli.cnpj as client_by_cnpj,
+            cli.logo as client_by_logo  -- Adicionando o campo logo
         FROM cad_client c
         LEFT JOIN cad_client cli ON c.id_client = cli.id
         WHERE c.active = 1";
@@ -72,6 +73,7 @@ while ($row = $result->fetch_assoc()) {
             'email' => $row['client_by_email'],
             'phone' => $row['client_by_phone'],
             'cnpj' => $row['client_by_cnpj'],
+            'logo' => $row['client_by_logo'],  // Adicionando o campo logo
             'cnpj_formatado' => !empty($row['client_by_cnpj']) ? formatarCNPJ($row['client_by_cnpj']) : null
         ];
     }
@@ -81,7 +83,8 @@ while ($row = $result->fetch_assoc()) {
         $row['client_by_name'],
         $row['client_by_email'],
         $row['client_by_phone'],
-        $row['client_by_cnpj']
+        $row['client_by_cnpj'],
+        $row['client_by_logo']  // Removendo o campo auxiliar do logo
     );
 
     $clientes[] = $row;
