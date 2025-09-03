@@ -32,7 +32,6 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
                 return `${params.value?.name ?? ''}`;
             }
         },
-
         { field: 'cnpj', headerName: 'CNPJ', width: 150 },
         { field: 'email', headerName: 'E-mail', width: 150 },
         { field: 'phone', headerName: 'Telefone', width: 150 },
@@ -53,8 +52,7 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
                 return `${day}/${month}/${year} ${hours}:${minutes}`;
             }
         },
-
-        {field: 'id', headerName: '', renderCell(params){            
+        { field: 'id', headerName: '', renderCell(params){
             return (
                 <ListMenu
                     item={params}
@@ -65,7 +63,6 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
                 />
             )
         }}
-
     ];
     return {columns}
 }
