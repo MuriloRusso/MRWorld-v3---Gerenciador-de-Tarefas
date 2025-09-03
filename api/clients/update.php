@@ -22,6 +22,9 @@
         $erros[] = 'CNPJ inválido';
     }
 
+
+    $idClient = $data['id_client'] ?? '';
+
     $email = $data['email'] ?? '';
     $phone = $data['phone'] ?? '';
     $notes = $data['notes'] ?? '';
@@ -53,13 +56,13 @@
 
     // Atualiza dados principais
     $sql_code = "UPDATE cad_client SET 
-        name = ?, cnpj = ?, email = ?, phone = ?, notes = ?, 
+        name = ?, cnpj = ?, id_client = ?, email = ?, phone = ?, notes = ?, 
         cep = ?, address = ?, addressNumber = ?, neighborhood = ?, 
         city = ?, state = ?, country = ?
         WHERE id = ?";
 
     $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param("ssssssssssssi", $name, $cnpj, $email, $phone, $notes, $cep, $address, $addressNumber, $neighborhood, $city, $state, $country, $id);
+    $stmt->bind_param("sssssssssssssi", $name, $cnpj, $idClient, $email, $phone, $notes, $cep, $address, $addressNumber, $neighborhood, $city, $state, $country, $id);
 
     if ($stmt->execute()) {
         $logo_filename = '';

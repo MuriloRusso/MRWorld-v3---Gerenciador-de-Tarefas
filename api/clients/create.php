@@ -18,6 +18,9 @@
         $erros[] = 'CNPJ inválido';
     }
 
+    $idClient = $data['id_client'] ?? '';
+
+
     $email = $data['email'] ?? '';
     $phone = $data['phone'] ?? '';
     $notes = $data['notes'] ?? '';
@@ -48,10 +51,10 @@
     }
 
     // Insere dados iniciais (sem logo ainda)
-    $sql_code = "INSERT INTO cad_client (name, cnpj, email, phone, notes, cep, address, addressNumber, neighborhood, city, state, country) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql_code = "INSERT INTO cad_client (name, id_client, cnpj, email, phone, notes, cep, address, addressNumber, neighborhood, city, state, country) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param("ssssssssssss", $name, $cnpj, $email, $phone, $notes, $cep, $address, $addressNumber, $neighborhood, $city, $state, $country);
+    $stmt->bind_param("sssssssssssss", $name, $idClient, $cnpj, $email, $phone, $notes, $cep, $address, $addressNumber, $neighborhood, $city, $state, $country);
 
     if ($stmt->execute()) {
         $client_id = $stmt->insert_id;

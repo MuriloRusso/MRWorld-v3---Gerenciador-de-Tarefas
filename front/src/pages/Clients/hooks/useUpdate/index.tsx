@@ -39,6 +39,9 @@ export default function useUpdate({
       formData.append('logo', clienteData.logo.value);
     }
 
+    formData.append('id_client', Number(clienteData.client.value).toString());
+
+
     // Campos opcionais
     formData.append('phone', clienteData.phone?.value || "");
     formData.append('email', clienteData.email?.value || "");

@@ -12,7 +12,7 @@ export default function InputClientBy({fieldsData, handleChange, options}: Input
         <AutoComplete
             onChange={handleChange}
             options={[...options.map((option) => ({value: option.id, text: option.name}))]}
-            state={fieldsData.client} 
+            state={fieldsData.client}
         />
     )
 }
