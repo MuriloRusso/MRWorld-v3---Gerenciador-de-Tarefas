@@ -109,7 +109,7 @@ export default function ModalPanel({fieldsData, handleChange, handleChangeFile, 
                 },
                 }}
             />
-            <Tab
+            {/* <Tab
                 label="Pessoas"
                 {...a11yProps(4)}
                 sx={{
@@ -129,7 +129,7 @@ export default function ModalPanel({fieldsData, handleChange, handleChangeFile, 
                     fontWeight: 'bold',
                 },
                 }}
-            />
+            /> */}
             </Tabs>
 
       </Box>

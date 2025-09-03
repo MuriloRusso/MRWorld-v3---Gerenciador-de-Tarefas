@@ -4,6 +4,7 @@ import InputLogo from "../../components/InputLogo";
 import { ClientData } from "../../../../types/client";
 import InputCNPJ from "../../components/InputCNPJ";
 import InputClient from "../../components/InputClient";
+import InputClientBy from "../../components/InputClientBy";
 
 type ModalPanelIntroProps =  {
     fieldsData: ClientData;
@@ -19,6 +20,7 @@ export default function ModalPanelIntro({fieldsData, handleChange, handleChangeF
                 <InputName fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputCNPJ fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputClient fieldsData={fieldsData} handleChange={handleChange} />
+                <InputClientBy fieldsData={fieldsData} handleChange={handleChange} />
             </Grid>
         </Grid>
     )
