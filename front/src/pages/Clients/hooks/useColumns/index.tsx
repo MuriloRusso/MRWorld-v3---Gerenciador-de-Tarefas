@@ -24,6 +24,15 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
             },
         },
         { field: 'name', headerName: 'Empresa/Cliente', width: 200 },
+        { 
+            field: 'client_by',
+            headerName: 'Cliente de:',
+            width: 150,
+            renderCell: (params) => {                
+                return `${params.value?.name ?? ''}`;
+            }
+        },
+
         { field: 'cnpj', headerName: 'CNPJ', width: 150 },
         { field: 'email', headerName: 'E-mail', width: 150 },
         { field: 'phone', headerName: 'Telefone', width: 150 },
