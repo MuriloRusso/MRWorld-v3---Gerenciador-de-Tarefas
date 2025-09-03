@@ -62,6 +62,7 @@ export default function Clients(){
                 create={create}
                 update={update}
                 selectedItem={selectedItem}
+                clients={rows}
             />
             <ModalDeleteConfirm
                 visible={modalDeleteVisible}

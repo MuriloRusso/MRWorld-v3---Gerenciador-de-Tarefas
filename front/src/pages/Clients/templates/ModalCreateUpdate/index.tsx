@@ -30,6 +30,7 @@ type ModalProps = {
     create: (newClient:ClientData) => void;
     update: (selectedItem: Client, clienteData: ClientData) => void;
     selectedItem: Client | null;
+    clients: Client[];
 }
 
 
@@ -42,7 +43,8 @@ export default function ModalCreateUpdate({visible,
     handleChangeFile,
     create,
     update,
-    selectedItem
+    selectedItem,
+    clients
 }:ModalProps){
     return (
         <Modal
@@ -60,6 +62,7 @@ export default function ModalCreateUpdate({visible,
                     handleChange={handleChange}
                     handleChangeFile={handleChangeFile}
                     formPersonParams={formPersonParams}
+                    clients={clients}
                 />
                 <ModalFooter
                     handleModal={handleModal}
