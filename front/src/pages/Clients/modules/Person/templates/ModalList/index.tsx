@@ -21,11 +21,13 @@ const style = {
 type ModalListProps = {
     visible: boolean;
     handleModal: (value:boolean) => void;
+    handleFormPerson: (value: boolean) => void;
 }
 
 export default function ModalList({
     visible,
     handleModal,
+    handleFormPerson
 }:ModalListProps){
     return (
         <Modal
@@ -38,8 +40,20 @@ export default function ModalList({
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Pessoas
                 </Typography>
-                <List handleModal={()=>{}} />
-                <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
+                <List handleModal={()=> handleFormPerson(true)} />
+                <Grid
+                    sx={{
+                        borderWidth: 0,
+                        borderTopWidth: 1,
+                        borderColor: "#ccc",
+                        borderStyle: 'solid',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: '20px',
+                        paddingY: '20px',
+                        justifyContent: "flex-end"
+                    }}
+                >
                     <ButtonSecondary onClick={()=> handleModal(false)} value="Voltar"/>
                 </Grid>
             </Box>
