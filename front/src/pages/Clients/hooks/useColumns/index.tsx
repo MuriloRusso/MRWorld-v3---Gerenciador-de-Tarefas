@@ -11,15 +11,18 @@ type useColumnsProps = {
 }
 
 export default function useColumns({handleModal, handleModalDelete, changeSelectedItem, handleChange}:useColumnsProps) {
+
+    const baseUrl = 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/';
+
     const columns: GridColDef[] = [
-        { field: 'logo', headerName: 'Logo', width: 55, renderCell(params) {                
+        { field: 'logo', headerName: 'Logo', width: 55, renderCell(params) {
+            const url = 
+                params.value ? baseUrl + params.id + '/' + params.value : 
+                `https://placehold.co/100x100?text=${params.row.name}`;
                 return(
                     <Grid sx={{display: 'flex', gap: 1, alignItems: 'center', height: "100%"}}>
                         <img 
-                            src={
-                                params.value ? 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + params.id + '/' + params.value : 
-                                `https://placehold.co/100x100?text=${params.row.name}`
-                            }
+                            src={url}
                             style={{maxHeight: '90%', width: '-webkit-fill-available', borderRadius: 100, margin: "2.5% 0"}}
                         />
                     </Grid>
@@ -32,11 +35,12 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
             headerName: 'Cliente de:',
             width: 150,
             renderCell: (params) => {
-                console.log(params);
-
-                if (!params.row?.client_by) return '';
+                if (!params.row?.client_by) return '';                
+                const url = 
+                    params.row.client_by.logo ? 
+                    baseUrl + params.row.client_by.id + '/' + params.row.client_by.logo : 
+                    `https://placehold.co/100x100?text=${params.row.client_by.name}`;
                 
-                const url = 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + params.row?.client_by?.id + '/' + params.row?.client_by?.logo;
                 return (
                     <Grid sx={{display: "flex", gap: 1, alignItems: 'center'}}>
                         <img width={25} src={url}/>{params.row?.client_by.name ?? ''}
