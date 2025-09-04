@@ -4,18 +4,48 @@ import { PersonData } from "../../../../../../types/person"
 export default function useFields(){
     const [fieldsPersonData, setFieldsPersonData] = useState<PersonData>({
         name: {
-            label: "Nome da Pessoa",
+            label: "Nome",
             placeholder: "Digite o nome da pessoa",
             value: ""
         },
         id_client: {
             label: "Empresa",
-            placeholder: "Empresa da pessoa",
+            placeholder: "Selecione a empresa da pessoa",
+            value: ""
+        },
+        avatar: {
+            label: "Avatar",
+            placeholder: "Inclua uma foto da pessoa",
+            value: ""
+        },
+        phone: {
+            label: "Telefone",
+            placeholder: "Digite o telefone da pessoa",
+            value: ""
+        },
+        email: {
+            label: "E-mail",
+            placeholder: "Digite o e-mail da pessoa",
+            value: ""
+        },
+        position: {
+            label: "Cargo",
+            placeholder: "Digite o cargo da pessoa",
+            value: ""
+        },
+        function: {
+            label: "Função",
+            placeholder: "Digite a função da pessoa",
             value: ""
         },
         is_owner: {
-            label: "Proprietário",
+            label: "Proprietário?",
             placeholder: "Proprietário",
+            value: ""
+        },
+        notes: {
+            label: "Anotaçõess",
+            placeholder: "Digite as anotações da pessoa",
             value: ""
         }
     });

@@ -18,13 +18,13 @@ export type Person = {
 export type PersonData = {
     name: inputProps;
     id_client: inputProps;
-    avatar?: inputProps;
-    phone?: inputProps;
-    email?: inputProps;
-    position?: inputProps; //cargo
-    function?: inputProps;
+    avatar: inputProps;
+    phone: inputProps;
+    email: inputProps;
+    position: inputProps; //cargo
+    function: inputProps;
     is_owner: inputProps;
-    notes?: inputProps;
+    notes: inputProps;
 }
 
 
