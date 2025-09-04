@@ -14,6 +14,7 @@ import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 import useDelete from "./hooks/useDelete";
 import useUpdate from "./hooks/useUpdate";
 import ModalList from "./modules/Person/templates/ModalList";
+import ModalCrudPerson from "./modules/Person/templates/ModalCrudPerson";
 
 export default function Clients(){
     
@@ -72,6 +73,7 @@ export default function Clients(){
                 drop={drop}
             />
             <ModalList handleModal={()=> {}} visible={true} />
+            <ModalCrudPerson handleModal={()=> {}} visible={true}/>
             <Toast toasts={toast} />
         </Grid>
     )

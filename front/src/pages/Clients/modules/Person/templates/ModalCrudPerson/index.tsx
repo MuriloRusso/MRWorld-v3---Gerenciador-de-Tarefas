@@ -1,14 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
-import List from "../List";
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 1200,
-//   width: 700,
+  width: 700,
   bgcolor: 'background.paper',
 //   border: '2px solid #000',
   boxShadow: 24,
@@ -16,15 +14,15 @@ const style = {
   maxWidth: '100%',
 };
 
-type ModalListProps = {
+type ModalCrudPersonProps = {
     visible: boolean;
     handleModal: (value:boolean) => void;
 }
 
-export default function ModalList({
+export default function ModalCrudPerson({
     visible,
     handleModal,
-}:ModalListProps){
+}:ModalCrudPersonProps){
     return (
         <Modal
             open={visible}
@@ -34,9 +32,8 @@ export default function ModalList({
         >
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Pessoas
+                    Criar pessoa
                 </Typography>
-                <List handleModal={()=>{}} />
             </Box>
         </Modal>
     )
