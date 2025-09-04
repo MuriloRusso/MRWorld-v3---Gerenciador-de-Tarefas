@@ -6,12 +6,14 @@ export default function useFields(){
         name: {
             label: "Nome",
             placeholder: "Digite o nome da pessoa",
-            value: ""
+            value: "",
+            required: true
         },
         id_client: {
             label: "Empresa",
             placeholder: "Selecione a empresa da pessoa",
-            value: ""
+            value: "",
+            required: true
         },
         avatar: {
             label: "Avatar",

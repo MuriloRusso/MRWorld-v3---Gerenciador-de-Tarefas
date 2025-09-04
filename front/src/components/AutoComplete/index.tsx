@@ -1,16 +1,20 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import { TextField } from '@mui/material';
 import { inputProps, Option } from '../../types/input';
-import { ClientData } from '../../types/client';
 
-type AutoCompleteProps = {
+type AutoCompleteProps<T> = {
   options: Option[];
-  // state: keyof ClientData;
   state: inputProps;
-  onChange: (fieldName: keyof ClientData, newValue: string) => void;
+  onChange: (fieldName: keyof T, newValue: string) => void;
+  fieldName: keyof T; // Novo prop para especificar o campo
 };
 
-export default function AutoComplete({ options, state, onChange }: AutoCompleteProps) {
+export default function AutoComplete<T>({ 
+  options, 
+  state, 
+  onChange, 
+  fieldName 
+}: AutoCompleteProps<T>) {
   // Encontrar o objeto da opção correspondente ao value atual
   const selectedOption = options.find(option => option.value.toString() === state.value.toString()) || null;
 
@@ -20,7 +24,7 @@ export default function AutoComplete({ options, state, onChange }: AutoCompleteP
       value={selectedOption}
       noOptionsText="Sem resultados"
       onChange={(_, newValue: Option | null) => {
-        onChange("client", newValue?.value.toString() || '');
+        onChange(fieldName, newValue?.value.toString() || '');
       }}
       options={options}
       getOptionLabel={(option) => option.text}

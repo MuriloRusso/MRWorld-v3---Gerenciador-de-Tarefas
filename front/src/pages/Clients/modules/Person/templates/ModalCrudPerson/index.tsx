@@ -32,9 +32,7 @@ export default function ModalCrudPerson({
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Criar pessoa
-                </Typography>
+
                 <Form/>
             </Box>
         </Modal>

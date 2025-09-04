@@ -9,7 +9,8 @@ type InputClientByProps = {
 
 export default function InputClientBy({fieldsData, handleChange, options}: InputClientByProps){
     return (
-        <AutoComplete
+        <AutoComplete<ClientData>
+            fieldName="client"
             onChange={handleChange}
             options={[...options.map((option) => ({value: option.id, text: option.name}))]}
             state={fieldsData.client}
