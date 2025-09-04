@@ -23,7 +23,12 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
                     <Grid sx={{display: 'flex', gap: 1, alignItems: 'center', height: "100%"}}>
                         <img 
                             src={url}
-                            style={{maxHeight: '90%', width: '-webkit-fill-available', borderRadius: 100, margin: "2.5% 0"}}
+                            style={{
+                                maxHeight: '90%',
+                                width: '-webkit-fill-available',
+                                borderRadius: 100,
+                                margin: "2.5% 0"
+                            }}
                         />
                     </Grid>
                 )
