@@ -1,6 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import List from "../List";
+import ModalFooter from "../../../../templates/ModalFooter";
+import ButtonSecondary from "../../../../../../components/ButtonSecondary";
 
 const style = {
   position: 'absolute',
@@ -37,6 +39,9 @@ export default function ModalList({
                     Pessoas
                 </Typography>
                 <List handleModal={()=>{}} />
+                <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
+                    <ButtonSecondary onClick={()=> handleModal(false)} value="Voltar"/>
+                </Grid>
             </Box>
         </Modal>
     )
