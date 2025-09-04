@@ -14,7 +14,7 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
     const columns: GridColDef[] = [
         { field: 'logo', headerName: 'Logo', width: 55, renderCell(params) {                
                 return(
-                    <Grid sx={{display: 'flex', gap: 1, alignItems: 'center', height: "100&"}}>
+                    <Grid sx={{display: 'flex', gap: 1, alignItems: 'center', height: "100%"}}>
                         <img 
                             src={
                                 params.value ? 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + params.id + '/' + params.value : 
