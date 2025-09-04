@@ -8,6 +8,7 @@ import { Client, ClientData } from "../../../../types/client";
 type ContainerProps = {
     rows: Client[];
     handleModal: (value:boolean) => void;
+    handleModalPerson: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
@@ -20,6 +21,7 @@ type ContainerProps = {
 export default function Container({
     rows,
     handleModal,
+    handleModalPerson,
     handleModalDelete,
     changeSelectedItem,
     handleChange,
@@ -77,8 +79,9 @@ export default function Container({
                 <Skeleton variant="rounded" width={'100%'} height={'60vh'} /> : 
                 <List
                     handleModal={handleModal}
-                    rows={rows}
+                    handleModalPerson={handleModalPerson}
                     handleModalDelete={handleModalDelete}
+                    rows={rows}
                     changeSelectedItem={changeSelectedItem}
                     handleChange={handleChange}
                     resetFields={resetFields}

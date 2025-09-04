@@ -52,6 +52,7 @@ export default function Clients(){
             <Menu/>
             <Container
                 handleModal={handleModal}
+                handleModalPerson={handleModalPerson}
                 handleModalDelete={handleModalDelete}
                 rows={rows}
                 changeSelectedItem={changeSelectedItem}

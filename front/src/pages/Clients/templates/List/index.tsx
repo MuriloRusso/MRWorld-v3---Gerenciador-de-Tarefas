@@ -6,6 +6,7 @@ import HeaderList from "../HeaderList";
 type ListProps = {
     rows: Client[];
     handleModal: (value: boolean) => void;
+    handleModalPerson: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
@@ -14,11 +15,19 @@ type ListProps = {
 
 export default function List({rows,
     handleModal,
+    handleModalPerson,
     handleModalDelete,
     changeSelectedItem,
     handleChange,
     resetFields}:ListProps){
-    const { columns } = useColumns({handleModal, handleModalDelete, changeSelectedItem, handleChange});
+        
+    const { columns } = useColumns({
+        handleModal,
+        handleModalPerson,
+        handleModalDelete,
+        changeSelectedItem,
+        handleChange});
+        
     return (
         <TableDataGrid
             rows={rows}

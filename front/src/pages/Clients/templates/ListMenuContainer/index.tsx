@@ -14,6 +14,7 @@ type ListMenuContainerProps = {
     open: any;
     item: GridRenderCellParams;
     handleModal: (value: boolean) => void;
+    handleModalPerson: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
@@ -25,6 +26,7 @@ export default function ListMenuContainer({
     open,
     item,
     handleModal,
+    handleModalPerson,
     handleModalDelete,
     changeSelectedItem,
     handleChange
@@ -53,6 +55,7 @@ export default function ListMenuContainer({
         handleModalDelete(true);
         changeSelectedItem(item.row);
     }
+
     
     return (
         <Menu
@@ -67,7 +70,7 @@ export default function ListMenuContainer({
             }}
         >        
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
-            <ListMenuItem Icon={PeopleIcon} text="Pessoas" onClick={handleClose} item={item}/>
+            <ListMenuItem Icon={PeopleIcon} text="Pessoas" onClick={()=> handleModalPerson(true)} item={item}/>
             <ListMenuItem Icon={ConstructionIcon} text="Projetos" onClick={handleClose} item={item}/>
 
             <ButtonEdit handleClose={handleClose} item={item} onClick={handleEditItem}/>

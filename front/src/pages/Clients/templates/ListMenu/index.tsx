@@ -10,15 +10,20 @@ import { Client, ClientData } from '../../../../types/client';
 type ListMenuProps = {
   item:GridRenderCellParams;
   handleModal: (value: boolean) => void;
+  handleModalPerson: (value: boolean) => void;
   handleModalDelete: (value: boolean) => void;
   changeSelectedItem: (item: Client | null) => void;
   handleChange: (fieldName: keyof ClientData, newValue: string) => void;
 }
 
-export default function ListMenu({item, handleModal, handleModalDelete, changeSelectedItem, handleChange}:ListMenuProps) {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const open = Boolean(anchorEl);
+export default function ListMenu({item,
+  handleModal,
+  handleModalPerson,
+  handleModalDelete,
+  changeSelectedItem,
+  handleChange}:ListMenuProps) {
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [open, setOpen] = React.useState<boolean>(Boolean(anchorEl));
 
   React.useEffect(()=>{
@@ -61,6 +66,7 @@ export default function ListMenu({item, handleModal, handleModalDelete, changeSe
           open={open}
           item={item}
           handleModal={handleModal}
+          handleModalPerson={handleModalPerson}
           handleModalDelete={handleModalDelete}
           changeSelectedItem={changeSelectedItem}
           handleChange={handleChange}

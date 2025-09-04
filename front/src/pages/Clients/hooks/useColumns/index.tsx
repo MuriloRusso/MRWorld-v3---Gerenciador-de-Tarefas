@@ -11,12 +11,18 @@ type useColumnsProps = {
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;
 }
 
-export default function useColumns({handleModal, handleModalDelete, changeSelectedItem, handleChange}:useColumnsProps) {
+export default function useColumns({
+    handleModal,
+    handleModalPerson,
+    handleModalDelete,
+    changeSelectedItem,
+    handleChange}:useColumnsProps) {
 
     const baseUrl = 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/';
 
     const columns: GridColDef[] = [
-        { field: 'logo', headerName: 'Logo', width: 55, renderCell(params) {
+        { field: 'logo',
+            headerName: 'Logo', width: 55, renderCell(params) {
             const url = 
                 params.value ? baseUrl + params.id + '/' + params.value : 
                 `https://placehold.co/100x100?text=${params.row.name}`;
@@ -79,6 +85,7 @@ export default function useColumns({handleModal, handleModalDelete, changeSelect
                 <ListMenu
                     item={params}
                     handleModal={handleModal}
+                    handleModalPerson={handleModalPerson}
                     handleModalDelete={handleModalDelete}
                     changeSelectedItem={changeSelectedItem}
                     handleChange={handleChange}
