@@ -26,6 +26,16 @@ export default function InputFile({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(()=>{
+    console.log('value', value);
+    // setImageSrc(value ? value.toString() : '')
+  }, [value])
+
+  useEffect(()=>{
+    console.log('imageSrc', imageSrc);
+    
+  },[imageSrc])
+
   // Caso receba um File como `value`, converte em base64 para exibir
   useEffect(() => {
     if (value instanceof File) {
@@ -36,9 +46,17 @@ export default function InputFile({
       };
       reader.readAsDataURL(value);
     } else {
-      setImageSrc(null);
+      if(value){
+        setImageSrc(value);
+
+      }else{
+        
+        setImageSrc(null);
+      }
       setFileName("");
     }
+    console.log('aquiii');
+    
   }, [value]);
 
   const handleButtonClick = () => {
