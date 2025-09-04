@@ -5,6 +5,8 @@ import { GridRenderCellParams } from "@mui/x-data-grid";
 import ButtonDelete from "../../components/ButtonDelete";
 import { Client, ClientData } from "../../../../types/client";
 import ButtonEdit from "../../components/ButtonEdit";
+import PeopleIcon from '@mui/icons-material/People';
+import ConstructionIcon from '@mui/icons-material/Construction';
 
 type ListMenuContainerProps = {
     handleClose: () => void;
@@ -65,6 +67,9 @@ export default function ListMenuContainer({
             }}
         >        
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
+            <ListMenuItem Icon={PeopleIcon} text="Pessoas" onClick={handleClose} item={item}/>
+            <ListMenuItem Icon={ConstructionIcon} text="Projetos" onClick={handleClose} item={item}/>
+
             <ButtonEdit handleClose={handleClose} item={item} onClick={handleEditItem}/>
             <ButtonDelete handleClose={handleClose} item={item} onClick={handleDeleteItem} />
         </Menu>
