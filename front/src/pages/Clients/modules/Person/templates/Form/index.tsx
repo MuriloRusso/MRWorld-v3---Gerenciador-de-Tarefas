@@ -5,7 +5,6 @@ import InputName from "../../components/InputName";
 export default function Form(){
     return (
         <Grid>
-            <Typography variant="h3" component="h3">Criar Pessoa</Typography>
             <InputName/>
         </Grid>
     )

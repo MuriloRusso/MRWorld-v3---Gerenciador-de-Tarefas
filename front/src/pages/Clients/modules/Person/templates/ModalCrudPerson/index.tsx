@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
+import Form from "../Form";
 
 const style = {
   position: 'absolute',
@@ -34,6 +35,7 @@ export default function ModalCrudPerson({
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Criar pessoa
                 </Typography>
+                <Form/>
             </Box>
         </Modal>
     )
