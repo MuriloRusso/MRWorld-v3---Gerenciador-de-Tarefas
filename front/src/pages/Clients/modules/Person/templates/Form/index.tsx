@@ -1,11 +1,14 @@
 import { Grid, Typography } from "@mui/material";
-import InputNamePerson from "../../components/InputName";
 import InputName from "../../components/InputName";
+import useFields from "../../hooks/useFields";
 
 export default function Form(){
+
+    const {fieldsPersonData, handleChangePerson} = useFields();
+
     return (
         <Grid>
-            <InputName/>
+            <InputName fieldsData={fieldsPersonData} handleChange={handleChangePerson}/>
         </Grid>
     )
 }

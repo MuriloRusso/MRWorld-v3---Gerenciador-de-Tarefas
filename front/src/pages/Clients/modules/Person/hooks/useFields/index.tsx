@@ -4,7 +4,7 @@ import { PersonData } from "../../../../../../types/person"
 export default function useFields(){
     const [fieldsPersonData, setFieldsPersonData] = useState<PersonData>({
         name: {
-            label: "Nome da Pesoa",
+            label: "Nome da Pessoa",
             placeholder: "Digite o nome da pessoa",
             value: ""
         },
