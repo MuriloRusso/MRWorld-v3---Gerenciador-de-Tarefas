@@ -17,7 +17,17 @@ type ContainerProps = {
     getListSearch: () => void;
 }
     
-export default function Container({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, search, handleChangeSearch, getListSearch, resetFields}:ContainerProps) {
+export default function Container({
+    rows,
+    handleModal,
+    handleModalDelete,
+    changeSelectedItem,
+    handleChange,
+    search,
+    handleChangeSearch,
+    getListSearch,
+    resetFields
+}:ContainerProps) {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 

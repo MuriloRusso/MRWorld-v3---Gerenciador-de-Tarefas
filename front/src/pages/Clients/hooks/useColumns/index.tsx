@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 
 type useColumnsProps = {
     handleModal: (value: boolean) => void;
+    handleModalPerson: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
     changeSelectedItem: (item: Client | null) => void;
     handleChange: (fieldName: keyof ClientData, newValue: string) => void;

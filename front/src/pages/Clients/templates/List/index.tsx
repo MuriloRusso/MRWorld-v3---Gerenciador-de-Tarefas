@@ -12,7 +12,12 @@ type ListProps = {
     resetFields: () => void;
 }
 
-export default function List({rows, handleModal, handleModalDelete, changeSelectedItem, handleChange, resetFields}:ListProps){
+export default function List({rows,
+    handleModal,
+    handleModalDelete,
+    changeSelectedItem,
+    handleChange,
+    resetFields}:ListProps){
     const { columns } = useColumns({handleModal, handleModalDelete, changeSelectedItem, handleChange});
     return (
         <TableDataGrid

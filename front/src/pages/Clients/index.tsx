@@ -20,7 +20,14 @@ export default function Clients(){
     
     const [ rows, setRows ] = useState<Client[]>([]);
 
-    const { modalVisible, handleModal, formPersonVisible, handleFormPerson, modalDeleteVisible, handleModalDelete } = useModals();
+    const { modalVisible,
+        handleModal,
+        modalPerson,
+        handleModalPerson,
+        formPersonVisible,
+        handleFormPerson,
+        modalDeleteVisible,
+        handleModalDelete } = useModals();
     const { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem, resetFields } = useFields();
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients, search, handleChangeSearch, getListSearch } = useGetList();
@@ -45,8 +52,8 @@ export default function Clients(){
             <Menu/>
             <Container
                 handleModal={handleModal}
-                rows={rows}
                 handleModalDelete={handleModalDelete}
+                rows={rows}
                 changeSelectedItem={changeSelectedItem}
                 handleChange={handleChange}
                 resetFields={resetFields}
@@ -72,8 +79,8 @@ export default function Clients(){
                 handleModal={handleModalDelete}
                 drop={drop}
             />
-            <ModalList handleModal={()=> {}} visible={true} />
-            <ModalCrudPerson handleModal={()=> {}} visible={true}/>
+            <ModalList handleModal={handleModalPerson} visible={modalPerson} />
+            <ModalCrudPerson handleModal={()=> {}} visible={false}/>
             <Toast toasts={toast} />
         </Grid>
     )

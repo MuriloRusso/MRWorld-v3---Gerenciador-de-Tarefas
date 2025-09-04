@@ -10,14 +10,14 @@ type HeaderListProps = {
 
 export default function HeaderList({handleModal, changeSelectedItem, resetFields}:HeaderListProps){
 
-  const handleNewwClick = () => {
+  const handleNewClick = () => {
     changeSelectedItem(null);
     resetFields();
     handleModal(true);
   }
   return (
       <Grid sx={{display: 'flex', justifyContent: "flex-end", padding: 2}}>
-        <ButtonNew handleModal={handleNewwClick}/>
+        <ButtonNew handleModal={handleNewClick}/>
       </Grid>
   )
 }
