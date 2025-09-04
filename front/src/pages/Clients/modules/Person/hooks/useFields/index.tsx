@@ -1,10 +1,8 @@
 import { useState } from "react"
-import { Person, PersonData } from "../../../../../../types/person"
+import { PersonData } from "../../../../../../types/person"
 
 export default function useFields(){
-    // const [fieldsData, setFieldsData] = useState<PersonData>({} as PersonData);
-
-    const [fieldsData, setFieldsData] = useState<PersonData>({
+    const [fieldsPersonData, setFieldsPersonData] = useState<PersonData>({
         name: {
             label: "Nome da Pesoa",
             placeholder: "Digite o nome da pessoa",
@@ -23,8 +21,8 @@ export default function useFields(){
     });
 
 
-    const handleChange = (fieldName: keyof PersonData, newValue: string) => {
-        setFieldsData(prev => {
+    const handleChangePerson = (fieldName: keyof PersonData, newValue: string) => {
+        setFieldsPersonData(prev => {
         const prevField = prev?.[fieldName] ?? { value: "", required: false, error: false };
 
         return {
@@ -38,5 +36,5 @@ export default function useFields(){
         });
     };
 
-    return {fieldsData, handleChange}
+    return {fieldsPersonData, handleChangePerson}
 }
