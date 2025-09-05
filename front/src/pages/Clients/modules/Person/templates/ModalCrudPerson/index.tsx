@@ -3,6 +3,7 @@ import Modal from '@mui/material/Modal';
 import Form from "../Form";
 import ButtonSecondary from "../../../../../../components/ButtonSecondary";
 import ButtonPrimary from "../../../../../../components/ButtonPrimary";
+import ModalCrudPersonFooter from "../ModalCrudPersonFooter";
 
 const style = {
   position: 'absolute',
@@ -35,10 +36,7 @@ export default function ModalCrudPerson({
         >
             <Box sx={style}>
                 <Form/>
-                <Grid sx={{display: 'flex', flexDirection: 'row', gap: 2, justifyContent: 'flex-end'}}>
-                    <ButtonSecondary value="Cancelar"/>
-                    <ButtonPrimary value="Salvar" />
-                </Grid>
+                <ModalCrudPersonFooter/>
             </Box>
         </Modal>
     )
