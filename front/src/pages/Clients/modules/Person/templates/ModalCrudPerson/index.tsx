@@ -36,7 +36,7 @@ export default function ModalCrudPerson({
         >
             <Box sx={style}>
                 <Form/>
-                <ModalCrudPersonFooter/>
+                <ModalCrudPersonFooter handleModal={()=> handleModal(false)}/>
             </Box>
         </Modal>
     )
