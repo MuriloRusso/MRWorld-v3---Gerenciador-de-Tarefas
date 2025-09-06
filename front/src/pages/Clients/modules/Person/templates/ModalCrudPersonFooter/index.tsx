@@ -8,7 +8,17 @@ type ModalCrudPersonFooterProps = {
 
 export default function ModalCrudPersonFooter({handleModal}:ModalCrudPersonFooterProps){
     return(
-        <Grid sx={{display: 'flex', flexDirection: 'row', gap: 2, justifyContent: 'flex-end'}}>
+        <Grid 
+            sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 2,
+                justifyContent: 'flex-end',
+                borderTop: '1px solid #ccc',
+                paddingTop: 5,
+                marginTop: 5
+            }}
+        >
             <ButtonSecondary onClick={handleModal} value="Cancelar"/>
             <ButtonPrimary value="Salvar" />
         </Grid>
