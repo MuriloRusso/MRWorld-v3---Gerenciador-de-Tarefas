@@ -56,6 +56,10 @@ export default function ListMenuContainer({
         changeSelectedItem(item.row);
     }
 
+    const handlePeople = () => {
+        changeSelectedItem(item.row);
+        handleModalPerson(true)
+    }
     
     return (
         <Menu
@@ -70,7 +74,7 @@ export default function ListMenuContainer({
             }}
         >        
             <ListMenuItem Icon={SpeakerNotesIcon} text="Anotações" onClick={handleClose} item={item}/>
-            <ListMenuItem Icon={PeopleIcon} text="Pessoas" onClick={()=> handleModalPerson(true)} item={item}/>
+            <ListMenuItem Icon={PeopleIcon} text="Pessoas" onClick={handlePeople} item={item}/>
             <ListMenuItem Icon={ConstructionIcon} text="Projetos" onClick={handleClose} item={item}/>
 
             <ButtonEdit handleClose={handleClose} item={item} onClick={handleEditItem}/>
