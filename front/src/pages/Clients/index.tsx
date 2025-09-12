@@ -90,7 +90,12 @@ export default function Clients(){
                 handleModal={handleModalDelete}
                 drop={drop}
             />
-            <ModalList handleModal={handleModalPerson} visible={modalPerson} handleFormPerson={handleFormPerson} selectedItem={selectedItem}/>
+            <ModalList
+                handleModal={handleModalPerson}
+                visible={modalPerson}
+                handleFormPerson={handleFormPerson}
+                selectedItem={selectedItem}
+            />
             <ModalCrudPerson handleModal={handleFormPerson} visible={formPersonVisible}/>
             <Toast toasts={toast} />
         </Grid>
