@@ -1,5 +1,5 @@
 import { GridColDef } from "@mui/x-data-grid";
-import ListMenu from "../../../../templates/ListMenu";
+import ListMenu from "../../templates/ListMenu";
 
 export default function useColumns() {
 
@@ -24,8 +24,16 @@ export default function useColumns() {
         { field: 'notes', headerName: 'Anotações', width: 200 },
 
         {field: 'id', headerName: '', renderCell(params){
-            return <></>
-            // return <ListMenu item={params} handleModal={()=>{}} handleModalDelete={()=>{}} changeSelectedItem={()=>{}}/>
+            return (
+                <ListMenu
+                    item={params}
+                    handleModal={()=>{}}
+                    handleModalPerson={()=>{}}
+                    handleModalDelete={()=>{}}
+                    changeSelectedItem={()=>{}}
+                    handleChange={()=>{}}
+                />
+            )
         }}
 
     ];
