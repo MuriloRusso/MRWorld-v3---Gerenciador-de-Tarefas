@@ -4,8 +4,8 @@ import useGetList from "../../hooks/useGetList";
 import HeaderList from "../HeaderList";
 
 export default function List({handleModal}:{handleModal: (value: boolean) => void;}){
-    const { rows } = useGetList();
+    const { people } = useGetList();
     const { columns } = useColumns();
 
-    return <TableDataGrid rows={rows} columns={columns} sx={{ height: "500px" }} headerTable={<HeaderList  handleModal={handleModal}/>}/>
+    return <TableDataGrid rows={people} columns={columns} sx={{ height: "500px" }} headerTable={<HeaderList  handleModal={handleModal}/>}/>
 }

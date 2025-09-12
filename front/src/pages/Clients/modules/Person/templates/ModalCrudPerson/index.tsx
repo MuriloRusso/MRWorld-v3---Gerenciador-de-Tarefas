@@ -1,9 +1,8 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import Form from "../Form";
-import ButtonSecondary from "../../../../../../components/ButtonSecondary";
-import ButtonPrimary from "../../../../../../components/ButtonPrimary";
 import ModalCrudPersonFooter from "../ModalCrudPersonFooter";
+
 
 const style = {
   position: 'absolute',

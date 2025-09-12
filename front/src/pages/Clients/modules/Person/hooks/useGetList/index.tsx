@@ -12,6 +12,8 @@ export default function useGetList() {
     // }
 
     const getList = () => {        
+        console.log('geting list person');
+        
         api.get('/person/get.php'/*, { params: { search } }*/)
             .then(response => setPeople(response.data.data))
             .catch(error => console.error(error));

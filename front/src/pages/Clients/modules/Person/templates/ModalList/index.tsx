@@ -1,8 +1,9 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import List from "../List";
-import ModalFooter from "../../../../templates/ModalFooter";
 import ButtonSecondary from "../../../../../../components/ButtonSecondary";
+import useGetList from "../../hooks/useGetList";
+import { useEffect } from "react";
 
 const style = {
   position: 'absolute',
@@ -29,6 +30,18 @@ export default function ModalList({
     handleModal,
     handleFormPerson
 }:ModalListProps){
+
+    const { getList, people} = useGetList();
+
+
+    useEffect(() => {
+        const fetch = async () => {
+            await getList();           
+        }
+        fetch();
+    }, []);
+
+
     return (
         <Modal
             open={visible}
