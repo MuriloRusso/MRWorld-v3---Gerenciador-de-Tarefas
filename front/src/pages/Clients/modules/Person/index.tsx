@@ -7,7 +7,7 @@ import List from "./templates/List";
 export default function ModalPanelPerson({formPersonParams}:{formPersonParams:FormPersonParamsProps}){
     return (
         <Grid sx={{display: 'flex', flexDirection: "column", gap: 3}}>
-            { formPersonParams.state ? <Form/> : <List handleModal={formPersonParams.handleFormFunction}/> }
+            {/* { formPersonParams.state ? <Form/> : <List handleModal={formPersonParams.handleFormFunction}/> } */}
         </Grid>
     )
 }

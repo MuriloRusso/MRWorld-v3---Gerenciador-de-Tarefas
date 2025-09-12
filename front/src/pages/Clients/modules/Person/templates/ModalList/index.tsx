@@ -4,6 +4,7 @@ import List from "../List";
 import ButtonSecondary from "../../../../../../components/ButtonSecondary";
 import useGetList from "../../hooks/useGetList";
 import { useEffect } from "react";
+import { Client } from "../../../../../../types/client";
 
 const style = {
   position: 'absolute',
@@ -23,15 +24,17 @@ type ModalListProps = {
     visible: boolean;
     handleModal: (value:boolean) => void;
     handleFormPerson: (value: boolean) => void;
+    selectedItem: Client | null;
 }
 
 export default function ModalList({
     visible,
     handleModal,
-    handleFormPerson
+    handleFormPerson,
+    selectedItem
 }:ModalListProps){
 
-    const { getList, people} = useGetList();
+    const { getList, people} = useGetList({selectedItem});
 
 
     useEffect(() => {
@@ -53,7 +56,7 @@ export default function ModalList({
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Pessoas
                 </Typography>
-                <List handleModal={()=> handleFormPerson(true)} />
+                <List handleModal={()=> handleFormPerson(true)} selectedItem={selectedItem}/>
                 <Grid
                     sx={{
                         borderWidth: 0,

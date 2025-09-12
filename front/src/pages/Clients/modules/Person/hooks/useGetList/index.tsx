@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Person } from '../../../../../../types/person';
 import api from '../../../../../../services/api';
+import { Client } from '../../../../../../types/client';
 
-export default function useGetList() {
+export default function useGetList({selectedItem}:{selectedItem:Client | null}) {
     
     const [people, setPeople ] = useState<Person[]>([]);
     // const [search, setSearch] = useState<string>('');
@@ -10,11 +11,16 @@ export default function useGetList() {
     // const handleChangeSearch = (e:string) => {
     //     setSearch(e);
     // }
+    
 
-    const getList = () => {        
+    const getList = () => {
+
+        if(!selectedItem){
+            return
+        }
         console.log('geting list person');
         
-        api.get('/person/get.php'/*, { params: { search } }*/)
+        api.get(`/person/get.php?id_client=${selectedItem.id}`/*, { params: { ...selectedItem.id } }*/)
             .then(response => setPeople(response.data.data))
             .catch(error => console.error(error));
     }
