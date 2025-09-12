@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import useGetList from "../../hooks/useGetList";
 import useColumns from "../../hooks/useColumns";
 
