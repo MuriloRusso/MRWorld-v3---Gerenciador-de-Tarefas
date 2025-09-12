@@ -4,6 +4,18 @@ import ListMenu from "../../templates/ListMenu";
 export default function useColumns() {
 
     const columns: GridColDef[] = [
+        {field: 'id', headerName: '', renderCell(params){
+            return (
+                <ListMenu
+                    item={params}
+                    handleModal={()=>{}}
+                    handleModalPerson={()=>{}}
+                    handleModalDelete={()=>{}}
+                    changeSelectedItem={()=>{}}
+                    handleChange={()=>{}}
+                />
+            )
+        }},
         { field: 'avatar', headerName: 'Foto', width: 70, renderCell(params) {                
                 return(
                     <img 
@@ -21,21 +33,7 @@ export default function useColumns() {
         { field: 'email', headerName: 'E-mail', width: 200 },
         { field: 'position', headerName: 'Cargo', width: 200 },
         { field: 'function', headerName: 'Função', width: 200 },
-        { field: 'notes', headerName: 'Anotações', width: 200 },
-
-        {field: 'id', headerName: '', renderCell(params){
-            return (
-                <ListMenu
-                    item={params}
-                    handleModal={()=>{}}
-                    handleModalPerson={()=>{}}
-                    handleModalDelete={()=>{}}
-                    changeSelectedItem={()=>{}}
-                    handleChange={()=>{}}
-                />
-            )
-        }}
-
+        { field: 'notes', headerName: 'Anotações', width: 200 }
     ];
     return {columns}
 }
