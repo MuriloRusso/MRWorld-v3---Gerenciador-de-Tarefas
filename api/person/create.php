@@ -1,110 +1,112 @@
 <?php
-    include('../connect.php');
-    include('../cors.php');
-    include('../protect.php');
+include('../connect.php');
+include('../cors.php');
+include('../protect.php');
 
-    $data = $_POST;
-    $erros = [];
+$data = $_POST;
+$erros = [];
 
-    // Verifica campos obrigatórios
-    if (!isset($data['name']) || trim($data['name']) === '') {
-        $erros[] = 'Nome da Empresa/Cliente em branco';
-    } else {
-        $name = trim($data['name']);
+// Verifica campos obrigatórios
+if (!isset($data['name']) || trim($data['name']) === '') {
+    $erros[] = 'Nome da pessoa em branco';
+} else {
+    $name = trim($data['name']);
+}
+
+if (!isset($data['id_client']) || !is_numeric($data['id_client'])) {
+    $erros[] = 'ID do cliente é obrigatório';
+} else {
+    $id_client = (int)$data['id_client'];
+}
+
+// Campos opcionais
+$avatar = $data['avatar'] ?? '';
+$phone = $data['phone'] ?? '';
+$email = $data['email'] ?? '';
+$position = $data['position'] ?? '';
+$profession = $data['profession'] ?? '';
+$notes = $data['notes'] ?? '';
+$is_owner = isset($data['is_owner']) ? (bool)$data['is_owner'] : false;
+
+// Validação de email se fornecido
+if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $erros[] = 'Email inválido';
+}
+
+// Verifica se o cliente existe
+if (!isset($erros['id_client'])) {
+    $check_client = $mysqli->prepare("SELECT id FROM cad_client WHERE id = ?");
+    $check_client->bind_param("i", $id_client);
+    $check_client->execute();
+    $check_client->store_result();
+    
+    if ($check_client->num_rows === 0) {
+        $erros[] = 'Cliente não encontrado';
     }
+    $check_client->close();
+}
 
-    $cnpj = $data['cnpj'] ?? '';
-    if ($cnpj !== '' && !validarCNPJ($cnpj)) {
-        $erros[] = 'CNPJ inválido';
-    }
+if (!empty($erros)) {
+    echo json_encode([
+        'message' => 'Erros de validação',
+        'errors' => $erros,
+        'status' => 400,
+    ]);
+    http_response_code(400);
+    exit;
+}
 
-    $idClient = $data['id_client'] ?? '';
+// Insere a pessoa no banco de dados
+$sql_code = "INSERT INTO cad_person (id_client, name, avatar, phone, email, position, profession, notes, is_owner) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = $mysqli->prepare($sql_code);
+$stmt->bind_param("isssssssi", $id_client, $name, $avatar, $phone, $email, $position, $profession, $notes, $is_owner);
 
-
-    $email = $data['email'] ?? '';
-    $phone = $data['phone'] ?? '';
-    $notes = $data['notes'] ?? '';
-    $cep = $data['cep'] ?? '';
-    $address = $data['address'] ?? '';
-    $addressNumber = $data['addressNumber'] ?? '';
-    $neighborhood = $data['neighborhood'] ?? '';
-    $city = $data['city'] ?? '';
-    $state = $data['state'] ?? '';
-    $country = $data['country'] ?? '';
-
-    if ($cep !== '' && !validarCEP($cep)) {
-        $erros[] = 'CEP inválido';
-    }
-
-    if (isset($_FILES['logo']) && $_FILES['logo']['error'] !== UPLOAD_ERR_OK) {
-        $erros[] = 'Erro ao fazer upload da logo';
-    }
-
-    if (!empty($erros)) {
-        echo json_encode([
-            'message' => 'Erros de validação',
-            'errors' => $erros,
-            'status' => 400,
-        ]);
-        http_response_code(400);
-        exit;
-    }
-
-    // Insere dados iniciais (sem logo ainda)
-    $sql_code = "INSERT INTO cad_client (name, id_client, cnpj, email, phone, notes, cep, address, addressNumber, neighborhood, city, state, country) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $mysqli->prepare($sql_code);
-    $stmt->bind_param("sssssssssssss", $name, $idClient, $cnpj, $email, $phone, $notes, $cep, $address, $addressNumber, $neighborhood, $city, $state, $country);
-
-    if ($stmt->execute()) {
-        $client_id = $stmt->insert_id;
-        $logo_filename = '';
-
-        if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = __DIR__ . "/uploads/$client_id/";
-            if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
-            }
-
-            $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
-            $logo_filename = 'logo.' . strtolower($ext); // ex: logo.png, logo.jpg
-            $destination = $uploadDir . $logo_filename;
-
-            if (move_uploaded_file($_FILES['logo']['tmp_name'], $destination)) {
-                // Atualiza o campo 'logo' no banco
-                $update = $mysqli->prepare("UPDATE cad_client SET logo = ? WHERE id = ?");
-                $update->bind_param("si", $logo_filename, $client_id);
-                $update->execute();
-            } else {
-                echo json_encode([
-                    'message' => 'Cliente cadastrado, mas falha ao mover o logo.',
-                    'status' => 206,
-                ]);
-                http_response_code(206);
-                exit;
-            }
+if ($stmt->execute()) {
+    $person_id = $stmt->insert_id;
+    
+    // Se houver upload de avatar
+    $avatar_filename = '';
+    
+    if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = __DIR__ . "/uploads/persons/$person_id/";
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
         }
 
-        echo json_encode([
-            'message' => 'Cliente cadastrado com sucesso!',
-            'status' => 200,
-        ]);
-        http_response_code(200);
-    } else {
-        echo json_encode([
-            'message' => 'Erro ao adicionar cliente: ' . $stmt->error,
-            'status' => 500,
-        ]);
-        http_response_code(500);
+        $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+        $avatar_filename = 'avatar.' . strtolower($ext); // ex: avatar.png, avatar.jpg
+        $destination = $uploadDir . $avatar_filename;
+
+        if (move_uploaded_file($_FILES['avatar']['tmp_name'], $destination)) {
+            // Atualiza o campo 'avatar' no banco
+            $update = $mysqli->prepare("UPDATE cad_person SET avatar = ? WHERE id = ?");
+            $update->bind_param("si", $avatar_filename, $person_id);
+            $update->execute();
+        } else {
+            echo json_encode([
+                'message' => 'Pessoa cadastrada, mas falha ao mover o avatar.',
+                'person_id' => $person_id,
+                'status' => 206,
+            ]);
+            http_response_code(206);
+            exit;
+        }
     }
 
-    // Validação auxiliar
-    function validarCNPJ($cnpj) {
-        $cnpj = preg_replace('/[^0-9]/', '', $cnpj);
-        return strlen($cnpj) === 14;
-    }
+    echo json_encode([
+        'message' => 'Pessoa cadastrada com sucesso!',
+        'person_id' => $person_id,
+        'status' => 200,
+    ]);
+    http_response_code(200);
+} else {
+    echo json_encode([
+        'message' => 'Erro ao adicionar pessoa: ' . $stmt->error,
+        'status' => 500,
+    ]);
+    http_response_code(500);
+}
 
-    function validarCEP($cep) {
-        $cep = preg_replace('/[^0-9]/', '', $cep);
-        return strlen($cep) === 8;
-    }
+$stmt->close();
+?>
