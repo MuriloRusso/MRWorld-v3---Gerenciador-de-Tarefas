@@ -17,6 +17,11 @@ export default function useCreate({
   getList
 }: useCreateProps) {
   const create = async (newItem: PersonData) => {
+    console.log('creating...');
+
+    console.log('newItem', newItem);
+    
+    
     if (!validateFields()) return;
 
     const formData = new FormData();

@@ -1,12 +1,22 @@
 import { Grid } from "@mui/material";
 import ButtonSecondary from "../../../../../../components/ButtonSecondary";
 import ButtonPrimary from "../../../../../../components/ButtonPrimary";
+import { PersonData } from "../../../../../../types/person";
 
 type ModalCrudPersonFooterProps = {
-    handleModal: () => void;
+    handleModal: (value: boolean) => void;
+    create: () => void;
 }
 
-export default function ModalCrudPersonFooter({handleModal}:ModalCrudPersonFooterProps){
+export default function ModalCrudPersonFooter({handleModal, create}:ModalCrudPersonFooterProps){
+
+    const handleSave = () => {
+        console.log('salvando pessoa');        
+        handleModal(false);
+        create();
+        console.log('fim do salvamento');
+        
+    }
     return(
         <Grid 
             sx={{
@@ -19,8 +29,8 @@ export default function ModalCrudPersonFooter({handleModal}:ModalCrudPersonFoote
                 marginTop: 5
             }}
         >
-            <ButtonSecondary onClick={handleModal} value="Cancelar"/>
-            <ButtonPrimary value="Salvar" />
+            <ButtonSecondary onClick={() => handleModal(false)} value="Cancelar"/>
+            <ButtonPrimary value="Salvar" onClick={handleSave} />
         </Grid>
     )
 }

@@ -96,7 +96,12 @@ export default function Clients(){
                 handleFormPerson={handleFormPerson}
                 selectedItem={selectedItem}
             />
-            <ModalCrudPerson handleModal={handleFormPerson} visible={formPersonVisible}/>
+            <ModalCrudPerson
+                handleModal={handleFormPerson}
+                visible={formPersonVisible}
+                addToast={addToast}
+                selectedItem={selectedItem}
+            />
             <Toast toasts={toast} />
         </Grid>
     )

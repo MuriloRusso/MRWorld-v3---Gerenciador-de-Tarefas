@@ -2,7 +2,11 @@ import { Box, Grid, Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import Form from "../Form";
 import ModalCrudPersonFooter from "../ModalCrudPersonFooter";
-
+import useCreate from "../../hooks/useCreate";
+import { ToastProps } from "../../../../../../types/toast";
+import useFields from "../../hooks/useFields";
+import useGetList from "../../hooks/useGetList";
+import { Client } from "../../../../../../types/client";
 
 const style = {
   position: 'absolute',
@@ -20,12 +24,21 @@ const style = {
 type ModalCrudPersonProps = {
     visible: boolean;
     handleModal: (value:boolean) => void;
+    addToast: (value: ToastProps) => void;
+    selectedItem: Client | null;
 }
 
 export default function ModalCrudPerson({
     visible,
     handleModal,
+    addToast,
+    selectedItem
 }:ModalCrudPersonProps){
+
+    const { fieldsPersonData, validateFields } = useFields();
+    const { getList } = useGetList({selectedItem});
+    const { create } = useCreate({handleModal, addToast, validateFields, getList});
+
     return (
         <Modal
             open={visible}
@@ -35,7 +48,11 @@ export default function ModalCrudPerson({
         >
             <Box sx={style}>
                 <Form/>
-                <ModalCrudPersonFooter handleModal={()=> handleModal(false)}/>
+                <ModalCrudPersonFooter
+                    handleModal={handleModal}
+                    create={() => create(fieldsPersonData)}
+
+                />
             </Box>
         </Modal>
     )

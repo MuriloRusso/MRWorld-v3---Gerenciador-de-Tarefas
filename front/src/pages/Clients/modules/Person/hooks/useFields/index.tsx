@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { PersonData } from "../../../../../../types/person"
+import { GlobalContext } from "../../../../../../contexts/GlobalContext";
 
 export default function useFields(){
+    const { addToast } = useContext(GlobalContext);
+    
     const [fieldsPersonData, setFieldsPersonData] = useState<PersonData>({
         name: {
             label: "Nome",
@@ -68,5 +71,21 @@ export default function useFields(){
         });
     };
 
-    return {fieldsPersonData, handleChangePerson}
+
+    const validateFields = () => {
+        let isValid = true;
+        Object.entries(fieldsPersonData).forEach(([key, field]) => {
+            if (field.required && (!field.value || String(field.value).trim() === "")) {
+            isValid = false;
+            setFieldsPersonData(prev => ({
+                ...prev,
+                [key as keyof PersonData]: { ...prev[key as keyof PersonData], error: true }
+            }));
+            addToast({ id: 0, severity: "error", text: `Campo ${field.label} é obrigatório`, variant: "filled" }); 
+            }
+        });
+        return isValid;
+    };
+
+    return {fieldsPersonData, handleChangePerson, validateFields}
 }
