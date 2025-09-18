@@ -7,6 +7,7 @@ import { Client, ClientData } from "../../../../../../types/client";
 import ListMenuItem from "../../components/ListMenuItem";
 import ButtonEdit from "../../components/ButtonEdit";
 import ButtonDelete from "../../../../components/ButtonDelete";
+import API_URL from "../../../../../../config/api";
 
 type ListMenuContainerProps = {
     handleClose: () => void;
@@ -35,7 +36,7 @@ export default function ListMenuContainer({
     const handleEditItem = () => {
         handleModal(true);
         changeSelectedItem(item.row);
-        handleChange('logo', 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + item.row.id + '/' + item.row.logo);
+        handleChange('logo', API_URL + 'api/clients/uploads/' + item.row.id + '/' + item.row.logo);
 
         handleChange('name', item.row.name);
         handleChange('cnpj', item.row.cnpj);

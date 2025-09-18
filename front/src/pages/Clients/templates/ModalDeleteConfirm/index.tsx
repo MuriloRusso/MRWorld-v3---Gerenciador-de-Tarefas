@@ -3,6 +3,7 @@ import Modal from '@mui/material/Modal';
 import { Client, ClientData } from "../../../../types/client";
 import ButtonSecondary from "../../../../components/ButtonSecondary";
 import ButtonPrimary from "../../../../components/ButtonPrimary";
+import API_URL from "../../../../config/api";
 
 const style = {
   position: 'absolute',
@@ -45,7 +46,7 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
                 <Grid sx={{display: 'flex', flexDirection: 'row', gap: '10px', paddingY: '10px'}}>
                     <img 
                         src={
-                            item.id ? 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/' + item.id + '/' + item.logo : 
+                            item.id ? API_URL + '/api/clients/uploads/' + item.id + '/' + item.logo : 
                             `https://placehold.co/100x100?text=${item.name}`
                         }
                         style={{maxHeight: '80px', width: 'auto', borderRadius: 100}}

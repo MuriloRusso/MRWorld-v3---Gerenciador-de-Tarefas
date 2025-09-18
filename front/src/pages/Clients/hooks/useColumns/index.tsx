@@ -2,6 +2,7 @@ import { GridColDef, GridUpdateRowError } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
 import { Client, ClientData } from "../../../../types/client";
 import { Grid } from "@mui/material";
+import API_URL from "../../../../config/api";
 
 type useColumnsProps = {
     handleModal: (value: boolean) => void;
@@ -18,7 +19,7 @@ export default function useColumns({
     changeSelectedItem,
     handleChange}:useColumnsProps) {
 
-    const baseUrl = 'http://localhost/MRWorld/MRWorld-v3---Gerenciador-de-Tarefas/api/clients/uploads/';
+    const baseUrl = `${API_URL}api/clients/uploads/`;
 
     const columns: GridColDef[] = [
         { field: 'logo',
