@@ -8,11 +8,13 @@ import InputFunction from "../../components/InputFunction";
 import { PersonData } from "../../../../../../types/person";
 
 type FormProps = {
-    fieldsPersonData: PersonData;
-    handleChangePerson: (fieldName: keyof PersonData, newValue: string) => void
+    props: {
+        fieldsPersonData: PersonData;
+        handleChangePerson: (fieldName: keyof PersonData, newValue: string) => void
+    }
 }
 
-export default function Form({fieldsPersonData, handleChangePerson}:FormProps){
+export default function Form(props:FormProps){
 
 
     return (
@@ -24,11 +26,11 @@ export default function Form({fieldsPersonData, handleChangePerson}:FormProps){
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Criar pessoa
                 </Typography>
-                <InputName fieldsData={fieldsPersonData} handleChange={handleChangePerson}/>
-                <InputPhone fieldsData={fieldsPersonData} handleChange={handleChangePerson}/>
-                <InputEmail fieldsData={fieldsPersonData} handleChange={handleChangePerson}/>
-                <InputPosition fieldsData={fieldsPersonData} handleChange={handleChangePerson}/>
-                <InputFunction fieldsData={fieldsPersonData} handleChange={handleChangePerson}/>
+                <InputName fieldsData={props.props.fieldsPersonData} handleChange={props.props.handleChangePerson}/>
+                <InputPhone fieldsData={props.props.fieldsPersonData} handleChange={props.props.handleChangePerson}/>
+                <InputEmail fieldsData={props.props.fieldsPersonData} handleChange={props.props.handleChangePerson}/>
+                <InputPosition fieldsData={props.props.fieldsPersonData} handleChange={props.props.handleChangePerson}/>
+                <InputFunction fieldsData={props.props.fieldsPersonData} handleChange={props.props.handleChangePerson}/>
             </Grid>
         </Grid>
     )

@@ -47,7 +47,7 @@ export default function ModalCrudPerson({
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <Form fieldsPersonData={fieldsPersonData} handleChangePerson={handleChangePerson}/>
+                <Form props={{fieldsPersonData, handleChangePerson}}/>
                 <ModalCrudPersonFooter
                     handleModal={handleModal}
                     create={() => create(fieldsPersonData)}
