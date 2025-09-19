@@ -3,6 +3,6 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 
 export default function ButtonNew({handleModal}:{handleModal: (value: boolean) => void;}){
     return(
-        <ButtonPrimary value="Nova Empresa" Icon={AddCircleOutlineOutlinedIcon} onClick={() => handleModal(true)} />
+        <ButtonPrimary value="Nova Empresa" Icon={AddCircleOutlineOutlinedIcon} onClick={() => handleModal(true)} id="BtnNewClient" />
     )
 }

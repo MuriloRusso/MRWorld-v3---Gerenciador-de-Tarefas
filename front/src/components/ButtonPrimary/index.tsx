@@ -5,9 +5,10 @@ type ButtonProps = {
     onClick?: () => void;
     sx?: SxProps<Theme>;
     Icon? : React.ElementType;
+    id?: string;
 }
 
-export default function ButtonPrimary({value, onClick, sx, Icon}:ButtonProps){
+export default function ButtonPrimary({value, onClick, sx, Icon, id}:ButtonProps){
     return (
         <Button
             variant="text"
@@ -23,9 +24,10 @@ export default function ButtonPrimary({value, onClick, sx, Icon}:ButtonProps){
                 alignItems: 'center',
                 ...sx
             }}
+            id={id ?? ""}
         >
             {Icon && <Icon/>}
-            {value && value}                
+            {value && value}
         </Button>
     )
 }
