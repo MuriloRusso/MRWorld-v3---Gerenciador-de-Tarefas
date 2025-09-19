@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { PersonData } from "../../../../../../types/person"
 import { GlobalContext } from "../../../../../../contexts/GlobalContext";
 
@@ -86,6 +86,10 @@ export default function useFields(){
         });
         return isValid;
     };
+
+    useEffect(()=>{
+        console.log('fieldsPersonData dentro do hook', fieldsPersonData);
+    }, [fieldsPersonData])
 
     return {fieldsPersonData, handleChangePerson, validateFields}
 }

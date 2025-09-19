@@ -5,10 +5,15 @@ import InputPhone from "../../components/InputPhone";
 import InputEmail from "../../components/InputEmail";
 import InputPosition from "../../components/InputPosition";
 import InputFunction from "../../components/InputFunction";
+import { PersonData } from "../../../../../../types/person";
 
-export default function Form(){
+type FormProps = {
+    fieldsPersonData: PersonData;
+    handleChangePerson: (fieldName: keyof PersonData, newValue: string) => void
+}
 
-    const {fieldsPersonData, handleChangePerson} = useFields();
+export default function Form({fieldsPersonData, handleChangePerson}:FormProps){
+
 
     return (
         <Grid sx={{display: 'flex', flexDirection: 'row', gap: 2}}>

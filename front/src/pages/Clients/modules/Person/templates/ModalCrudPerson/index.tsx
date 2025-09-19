@@ -35,7 +35,7 @@ export default function ModalCrudPerson({
     selectedItem
 }:ModalCrudPersonProps){
 
-    const { fieldsPersonData, validateFields } = useFields();
+    const { fieldsPersonData, validateFields, handleChangePerson } = useFields();
     const { getList } = useGetList({selectedItem});
     const { create } = useCreate({handleModal, addToast, validateFields, getList});
 
@@ -47,11 +47,10 @@ export default function ModalCrudPerson({
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <Form/>
+                <Form fieldsPersonData={fieldsPersonData} handleChangePerson={handleChangePerson}/>
                 <ModalCrudPersonFooter
                     handleModal={handleModal}
                     create={() => create(fieldsPersonData)}
-
                 />
             </Box>
         </Modal>
