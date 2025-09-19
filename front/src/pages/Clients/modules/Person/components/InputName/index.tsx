@@ -1,16 +1,23 @@
 import InputLabel from "../../../../../../components/InputLabel";
 import { PersonData } from "../../../../../../types/person";
 
-export default function InputName({fieldsData, handleChange}: {fieldsData: PersonData; handleChange: (fieldName: keyof PersonData, newValue: string) => void;}) {
+type InputNameProps  = {
+    props: {
+        fieldsPersonData: PersonData;
+        handleChange: (fieldName: keyof PersonData, newValue: string) => void;
+    }
+}
+
+export default function InputName({props}:InputNameProps) {
     return (
         <InputLabel 
-            label={fieldsData.name.label}
-            value={fieldsData.name.value}
-            placeholder={fieldsData.name.placeholder}
-            error={fieldsData.name.error}
-            errorText={fieldsData.name.errorText}
-            required={fieldsData.name.required}
-            onChange={(newValue:string) => handleChange('name', newValue)}
+            label={props.fieldsPersonData.name.label}
+            value={props.fieldsPersonData.name.value}
+            placeholder={props.fieldsPersonData.name.placeholder}
+            error={props.fieldsPersonData.name.error}
+            errorText={props.fieldsPersonData.name.errorText}
+            required={props.fieldsPersonData.name.required}
+            onChange={(newValue:string) => props.handleChange('name', newValue)}
         />
     )
 }
