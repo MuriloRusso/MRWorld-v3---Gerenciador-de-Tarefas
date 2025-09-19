@@ -12,12 +12,12 @@ export default function useFields(){
             value: "",
             required: true
         },
-        id_client: {
-            label: "Empresa",
-            placeholder: "Selecione a empresa da pessoa",
-            value: "",
-            required: true
-        },
+        // id_client: {
+        //     label: "Empresa",
+        //     placeholder: "Selecione a empresa da pessoa",
+        //     value: "",
+        //     required: true
+        // },
         avatar: {
             label: "Avatar",
             placeholder: "Inclua uma foto da pessoa",

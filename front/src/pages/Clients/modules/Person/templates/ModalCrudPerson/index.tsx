@@ -37,7 +37,7 @@ export default function ModalCrudPerson({
 
     const { fieldsPersonData, validateFields, handleChangePerson } = useFields();
     const { getList } = useGetList({selectedItem});
-    const { create } = useCreate({handleModal, addToast, validateFields, getList});
+    const { create } = useCreate({handleModal, addToast, validateFields, getList, selectedItem});
 
     return (
         <Modal

@@ -1,4 +1,5 @@
 import api from "../../../../../../services/api";
+import { Client } from "../../../../../../types/client";
 import { PersonData } from "../../../../../../types/person";
 import { ToastProps } from "../../../../../../types/toast";
 
@@ -8,13 +9,15 @@ type useCreateProps = {
   addToast: (value: ToastProps) => void;
   validateFields: () => boolean;
   getList: () => void;
+  selectedItem: Client | null;
 };
 
 export default function useCreate({
   handleModal,
   addToast,
   validateFields,
-  getList
+  getList,
+  selectedItem
 }: useCreateProps) {
   const create = async (newItem: PersonData) => {
     console.log('creating...');
@@ -23,6 +26,9 @@ export default function useCreate({
     
     
     if (!validateFields()) return;
+
+    if (!selectedItem) return;
+
 
     const formData = new FormData();
 
@@ -34,7 +40,7 @@ export default function useCreate({
     //   formData.append('logo', newItem.logo.value);
     // }
 
-    formData.append('id_client', Number(newItem.id_client.value).toString());
+    formData.append('id_client', Number(selectedItem.id).toString());
 
 
     // Campos opcionais

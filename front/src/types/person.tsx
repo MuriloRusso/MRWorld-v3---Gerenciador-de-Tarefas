@@ -17,7 +17,7 @@ export type Person = {
 
 export type PersonData = {
     name: inputProps;
-    id_client: inputProps;
+    // id_client: inputProps;
     avatar: inputProps;
     phone: inputProps;
     email: inputProps;
