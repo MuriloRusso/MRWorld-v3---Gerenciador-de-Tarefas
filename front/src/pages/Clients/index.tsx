@@ -15,6 +15,7 @@ import useDelete from "./hooks/useDelete";
 import useUpdate from "./hooks/useUpdate";
 import ModalList from "./modules/Person/templates/ModalList";
 import ModalCrudPerson from "./modules/Person/templates/ModalCrudPerson";
+import Person from "./modules/Person";
 
 export default function Clients(){
     
@@ -90,7 +91,7 @@ export default function Clients(){
                 handleModal={handleModalDelete}
                 drop={drop}
             />
-            <ModalList
+            {/* <ModalList
                 handleModal={handleModalPerson}
                 visible={modalPerson}
                 handleFormPerson={handleFormPerson}
@@ -99,6 +100,14 @@ export default function Clients(){
             <ModalCrudPerson
                 handleModal={handleFormPerson}
                 visible={formPersonVisible}
+                addToast={addToast}
+                selectedItem={selectedItem}
+            /> */}
+            <Person
+                handleModal={handleModal}
+                formPersonVisible={formPersonVisible}
+                modalPerson={modalPerson}
+                handleFormPerson={handleFormPerson}
                 addToast={addToast}
                 selectedItem={selectedItem}
             />

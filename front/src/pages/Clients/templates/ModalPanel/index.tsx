@@ -152,9 +152,9 @@ export default function ModalPanel({
       <CustomTabPanel value={value} index={3}>
         <ModalPanelNotes fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={4}>
+      {/* <CustomTabPanel value={value} index={4}>
         <ModalPanelPerson formPersonParams={formPersonParams}/>
-      </CustomTabPanel>
+      </CustomTabPanel> */}
       <CustomTabPanel value={value} index={5}>
         <ModalPanelProjects/>
       </CustomTabPanel>
