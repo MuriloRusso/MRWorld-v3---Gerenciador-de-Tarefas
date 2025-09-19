@@ -104,7 +104,7 @@ export default function Clients(){
                 selectedItem={selectedItem}
             /> */}
             <Person
-                handleModal={handleModal}
+                handleModal={handleModalPerson}
                 formPersonVisible={formPersonVisible}
                 modalPerson={modalPerson}
                 handleFormPerson={handleFormPerson}

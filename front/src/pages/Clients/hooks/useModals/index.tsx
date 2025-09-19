@@ -1,4 +1,4 @@
-import {  useState } from "react"
+import {  useEffect, useState } from "react"
 
 export default function useModals(){
     const [ modalVisible, setModalVisible ] = useState<boolean>(false);
@@ -20,6 +20,11 @@ export default function useModals(){
     const handleFormPerson = (value:boolean) => {
         setFormPersonVisible(value);
     }
+
+    useEffect(()=>{
+        console.log('modalPerson', modalPerson);
+        
+    }, [modalPerson])
 
     return {
         modalVisible,

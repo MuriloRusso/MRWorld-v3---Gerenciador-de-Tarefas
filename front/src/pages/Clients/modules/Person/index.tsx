@@ -1,13 +1,9 @@
-import { Grid } from "@mui/material";
-import { FormPersonParamsProps } from "../../../../types/person";
-import Form from "./templates/Form";
-import List from "./templates/List";
 import ModalList from "./templates/ModalList";
 import ModalCrudPerson from "./templates/ModalCrudPerson";
 import { Client } from "../../../../types/client";
 import { ToastProps } from "../../../../types/toast";
 
-type NewType = {
+type PersonProps = {
     modalPerson: boolean;
     handleModal: (value: boolean) => void;
     formPersonVisible: boolean;
@@ -16,10 +12,8 @@ type NewType = {
     selectedItem: Client | null;
 };
 
-type PersonPros = NewType
 
-
-export default function Person({modalPerson, handleModal, formPersonVisible, handleFormPerson, addToast, selectedItem}:PersonPros){
+export default function Person({modalPerson, handleModal, formPersonVisible, handleFormPerson, addToast, selectedItem}:PersonProps){
     return (
         <>
             <ModalList
