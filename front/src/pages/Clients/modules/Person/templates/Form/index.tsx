@@ -14,8 +14,6 @@ type FormProps = {
 };
 
 export default function Form({ props }: FormProps) {
-  console.log(props.fieldsPersonData);
-
   return (
     <Grid sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
       <Grid sx={{ backgroundColor: "#ccc", width: 150, height: 150, borderRadius: 100 }} />
