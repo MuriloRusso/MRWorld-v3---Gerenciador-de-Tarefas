@@ -3,8 +3,9 @@ import Modal from '@mui/material/Modal';
 import List from "../List";
 import ButtonSecondary from "../../../../../../components/ButtonSecondary";
 import useGetList from "../../hooks/useGetList";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Client } from "../../../../../../types/client";
+import { Person } from "../../../../../../types/person";
 
 const style = {
   position: 'absolute',
@@ -27,23 +28,29 @@ type ModalListProps = {
     selectedItem: Client | null;
 }
 
-export default function ModalList({
-    visible,
-    handleModal,
-    handleFormPerson,
-    selectedItem
-}:ModalListProps){
+export default function ModalList({visible, handleModal, handleFormPerson, selectedItem}:ModalListProps){
 
     const { getList, people} = useGetList({selectedItem});
 
+    const [ rows, setRows ] = useState<Person[]>([]);
 
     useEffect(() => {
         const fetch = async () => {
             await getList();           
         }
         fetch();
-    }, []);
+    }, [selectedItem]);
 
+    useEffect(()=>{
+        setRows(people);
+        console.log('setrows...');
+        
+    }, [people])
+
+
+    useEffect(()=>{
+        console.log('rows person:', rows);
+    }, [rows])
 
     return (
         <Modal
@@ -56,7 +63,7 @@ export default function ModalList({
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Pessoas
                 </Typography>
-                <List handleModal={()=> handleFormPerson(true)} selectedItem={selectedItem}/>
+                <List rows={rows} handleModal={()=> handleFormPerson(true)} selectedItem={selectedItem}/>
                 <Grid
                     sx={{
                         borderWidth: 0,

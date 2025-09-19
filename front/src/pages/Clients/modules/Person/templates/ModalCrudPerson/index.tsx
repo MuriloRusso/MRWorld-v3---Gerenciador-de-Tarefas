@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import Form from "../Form";
 import ModalCrudPersonFooter from "../ModalCrudPersonFooter";
@@ -36,8 +36,9 @@ export default function ModalCrudPerson({
 }:ModalCrudPersonProps){
 
     const { fieldsPersonData, validateFields, handleChangePerson } = useFields();
-    const { getList } = useGetList({selectedItem});
+    const { people, getList } = useGetList({selectedItem});
     const { create } = useCreate({handleModal, addToast, validateFields, getList, selectedItem});
+
 
     return (
         <Modal

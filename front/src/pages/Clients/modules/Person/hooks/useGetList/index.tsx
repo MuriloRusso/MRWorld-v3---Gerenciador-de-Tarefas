@@ -14,7 +14,7 @@ export default function useGetList({selectedItem}:{selectedItem:Client | null}) 
     
 
     const getList = () => {
-
+        console.log('get list person');
         if(!selectedItem){
             return
         }

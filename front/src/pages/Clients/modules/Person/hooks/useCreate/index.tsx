@@ -46,6 +46,7 @@ export default function useCreate({
     // Campos opcionais
     formData.append('phone', newItem.phone?.value || "");
     formData.append('email', newItem.email?.value || "");
+    
     formData.append('notes', newItem.notes?.value || "");
 
 
