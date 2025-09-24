@@ -4,6 +4,7 @@ import Label from "../Label";
 import { Theme } from "@emotion/react";
 
 type InputLabelProps = {
+    id?: string;
     label?: string;
     value: string;
     placeholder?: string;
@@ -14,11 +15,12 @@ type InputLabelProps = {
     sx?: SxProps<Theme>;
 }
 
-export default function InputLabel({label, value, placeholder, error, errorText, required, onChange, sx}:InputLabelProps){
+export default function InputLabel({id, label, value, placeholder, error, errorText, required, onChange, sx}:InputLabelProps){
     return(
         <Box sx={sx}>
             <Label text={label}/>
             <Input
+                id={id}
                 onChange={onChange}
                 value={value}
                 placeholder={placeholder}
