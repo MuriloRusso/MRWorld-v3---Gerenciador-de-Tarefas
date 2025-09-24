@@ -5,6 +5,7 @@ import { Theme } from "@emotion/react";
 // import Input from "../Input";
 
 type MaskedInputProps = {
+  id?: string;
   mask: string;
   label?: string;
   value: string;
@@ -16,12 +17,13 @@ type MaskedInputProps = {
   sx?: SxProps<Theme>;
 }
 
-export default function MasketInputLabel({ mask, label, value, error, errorText, onChange, placeholder, required, sx }:MaskedInputProps) {
+export default function MasketInputLabel({ id, mask, label, value, error, errorText, onChange, placeholder, required, sx }:MaskedInputProps) {
   const borderColor = "#f00";
   return (
     <Box sx={sx}>
       <Label text={label}/>
       <InputMask
+        id={id}
         mask={mask}
         value={value}
           onChange={(e) => onChange(e.target.value)}

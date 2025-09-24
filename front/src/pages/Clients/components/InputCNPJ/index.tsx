@@ -9,6 +9,7 @@ import MasketInputLabel from "../../../../components/MasketInputLabel";
 export default function InputCNPJ({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     return (
         <MasketInputLabel
+            id="input-name-cnpj"
             mask="99.999.999/9999-99"
             label={fieldsData.cnpj.label}
             value={fieldsData.cnpj.value}
