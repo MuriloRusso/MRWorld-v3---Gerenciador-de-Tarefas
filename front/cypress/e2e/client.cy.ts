@@ -6,5 +6,6 @@ describe('Página de Clients', () => {
     cy.get('#input-name-client').type('Cypress');
     cy.get('#input-name-cnpj').type('16.554.000/0001-73');
     cy.get('#button-submit').click();
+    
   })
 })

@@ -28,7 +28,11 @@ export default function useCreate({
       formData.append('logo', newClient.logo.value);
     }
 
-    formData.append('id_client', Number(newClient.client.value).toString());
+    if (newClient.client.value !== "") {
+    formData.append('id_client',  Number(newClient.client.value).toString());
+  }
+
+
 
 
     // Campos opcionais

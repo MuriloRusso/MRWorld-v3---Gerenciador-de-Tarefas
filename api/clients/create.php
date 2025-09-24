@@ -18,7 +18,7 @@
         $erros[] = 'CNPJ inválido';
     }
 
-    $idClient = $data['id_client'] ?? '';
+    $idClient = $data['id_client'] ?? null;
 
 
     $email = $data['email'] ?? '';
