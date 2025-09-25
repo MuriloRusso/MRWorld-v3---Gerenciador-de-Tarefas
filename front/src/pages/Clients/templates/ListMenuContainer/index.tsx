@@ -34,12 +34,18 @@ export default function ListMenuContainer({
 }:ListMenuContainerProps){
 
     const handleEditItem = () => {
+
+        console.log('item.row', item.row);
+        
+
         handleModal(true);
         changeSelectedItem(item.row);
         handleChange('logo', API_URL + 'api/clients/uploads/' + item.row.id + '/' + item.row.logo);
 
         handleChange('name', item.row.name);
         handleChange('cnpj', item.row.cnpj);
+        handleChange('client', item.row.client_by.name);
+
         handleChange('phone', item.row.phone);
         handleChange('email', item.row.email);
         handleChange('cep', item.row.cep);

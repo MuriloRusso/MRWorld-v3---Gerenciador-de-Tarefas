@@ -18,7 +18,7 @@ type InputLabelProps = {
 export default function InputLabel({id, label, value, placeholder, error, errorText, required, onChange, sx}:InputLabelProps){
     return(
         <Box sx={sx}>
-            <Label text={label}/>
+            {/* <Label text={label}/> */}
             <Input
                 id={id}
                 onChange={onChange}

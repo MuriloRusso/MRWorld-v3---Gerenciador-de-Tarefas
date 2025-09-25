@@ -12,9 +12,10 @@ type InputProps = {
     onChange: (newValue: string) => void;
     required?: boolean;
     sx?: SxProps<Theme>;
+    label?: string;
 }
 
-export default function MaskedInput({ value, error, errorText, onChange, placeholder, required }:InputProps) {
+export default function MaskedInput({ value, error, errorText, onChange, placeholder, required, sx, label }:InputProps) {
   const borderColor = "#f00";
   return (
     <InputMask
@@ -24,6 +25,7 @@ export default function MaskedInput({ value, error, errorText, onChange, placeho
     >
       {(inputProps) => (
         <TextField
+          label={label}
           {...inputProps}
           // variant="outlined"
           value={value}

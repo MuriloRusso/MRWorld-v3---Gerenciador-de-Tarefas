@@ -8,15 +8,17 @@ type InputProps = {
     placeholder?: string;
     onChange: (newValue: string) => void;
     required?: boolean;
+    label?: string;
 }
 
-export default function Input({id, value, error, errorText, onChange, placeholder, required}:InputProps){
+export default function Input({id, value, error, errorText, onChange, placeholder, required, label}:InputProps){
     const borderColor = "#f00";
     return (
         <TextField
             id={id}
             value={value}
             onChange={(e) => onChange(e.target.value)}
+            label={label}
             error={error}
             helperText={error ? errorText : ""}
             required={required}

@@ -21,7 +21,7 @@ export default function MasketInputLabel({ id, mask, label, value, error, errorT
   const borderColor = "#f00";
   return (
     <Box sx={sx}>
-      <Label text={label}/>
+      {/* <Label text={label}/> */}
       <InputMask
         id={id}
         mask={mask}
