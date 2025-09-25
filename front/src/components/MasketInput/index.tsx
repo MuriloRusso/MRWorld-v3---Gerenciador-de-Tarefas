@@ -5,21 +5,24 @@ import Input from "../Input";
 import { Theme } from "@emotion/react";
 
 type InputProps = {
-    value: string;
-    error?: boolean;
-    errorText?: string;
-    placeholder?: string;
-    onChange: (newValue: string) => void;
-    required?: boolean;
-    sx?: SxProps<Theme>;
-    label?: string;
+  id?: string;
+  mask: string;
+  value: string;
+  error?: boolean;
+  errorText?: string;
+  placeholder?: string;
+  onChange: (newValue: string) => void;
+  required?: boolean;
+  sx?: SxProps<Theme>;
+  label?: string;
 }
 
-export default function MaskedInput({ value, error, errorText, onChange, placeholder, required, sx, label }:InputProps) {
+export default function MaskedInput({ id, mask, value, error, errorText, onChange, placeholder, required, sx, label }:InputProps) {
   const borderColor = "#f00";
   return (
     <InputMask
-      mask="(99) 99999-9999"
+      id={id ?? ""}
+      mask={mask}
       value={value}
         onChange={(e) => onChange(e.target.value)}
     >
