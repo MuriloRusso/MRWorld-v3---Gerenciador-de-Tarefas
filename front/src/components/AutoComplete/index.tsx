@@ -29,12 +29,14 @@ export default function AutoComplete<T>({
       options={options}
       getOptionLabel={(option) => option.text}
       sx={{ width: 300 }}
+      autoSelect={true}
       renderInput={(params) => (
         <TextField
           {...params}
           label={state.label}
           error={state.error}
           helperText={state.error ? state.errorText || 'Campo obrigatório' : ''}
+          // value={'teste'}
         />
       )}
     />
