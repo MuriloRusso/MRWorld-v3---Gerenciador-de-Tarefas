@@ -23,7 +23,7 @@
     }
 
 
-    $idClient = $data['id_client'] ?? '';
+    $idClient = $data['id_client'] ?? null;
 
     $email = $data['email'] ?? '';
     $phone = $data['phone'] ?? '';
