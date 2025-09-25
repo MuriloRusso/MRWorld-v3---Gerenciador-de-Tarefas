@@ -1,9 +1,9 @@
-import MasketInputLabel from "../../../../components/MasketInputLabel";
+import MaskedInput from "../../../../components/MasketInput";
 import { ClientData } from "../../../../types/client";
 
 export default function InputPhone({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     return (
-        <MasketInputLabel
+        <MaskedInput
             mask="(99) 99999-9999"
             label={fieldsData.phone.label}
             value={fieldsData.phone.value}

@@ -42,7 +42,7 @@ export default function AutoComplete<T>({options, state, onChange, fieldName}: A
       renderInput={(params) => (
         <TextField
           {...params}
-          label={state.value ?? state.label}
+          label={state.label}
           error={state.error}
           helperText={state.error ? state.errorText || 'Campo obrigatório' : ''}
           // value={state.value}

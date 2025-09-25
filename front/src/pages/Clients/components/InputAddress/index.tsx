@@ -1,9 +1,9 @@
-import InputLabel from "../../../../components/InputLabel";
+import Input from "../../../../components/Input";
 import { ClientData } from "../../../../types/client";
 
 export default function InputAddress({fieldsData, handleChange}: {fieldsData: ClientData; handleChange: (fieldName: keyof ClientData, newValue: string) => void;}){
     return (
-        <InputLabel
+        <Input
             label={fieldsData.address.label}
             value={fieldsData.address.value}
             placeholder={fieldsData.address.placeholder}
