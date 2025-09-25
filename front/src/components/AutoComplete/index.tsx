@@ -1,6 +1,7 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import { TextField } from '@mui/material';
 import { inputProps, Option } from '../../types/input';
+import { useEffect } from 'react';
 
 type AutoCompleteProps<T> = {
   options: Option[];
@@ -9,14 +10,22 @@ type AutoCompleteProps<T> = {
   fieldName: keyof T; // Novo prop para especificar o campo
 };
 
-export default function AutoComplete<T>({ 
-  options, 
-  state, 
-  onChange, 
-  fieldName 
-}: AutoCompleteProps<T>) {
+export default function AutoComplete<T>({options, state, onChange, fieldName}: AutoCompleteProps<T>) {
   // Encontrar o objeto da opção correspondente ao value atual
   const selectedOption = options.find(option => option.value.toString() === state.value.toString()) || null;
+
+  useEffect(()=>{
+    console.log('state.value');
+    onChange(fieldName, state.value);
+
+    console.log(state);
+
+    console.log('------');
+
+    
+  }, [])
+  
+
 
   return (
     <Autocomplete
