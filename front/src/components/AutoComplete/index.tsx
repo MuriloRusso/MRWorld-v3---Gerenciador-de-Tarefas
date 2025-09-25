@@ -19,11 +19,12 @@ export default function AutoComplete<T>({options, state, onChange, fieldName}: A
     onChange(fieldName, newValue?.value.toString() || '');
   }
 
-  useEffect(() => {
-    onChangeFunction('', selectedOption);
-    console.log('selectedOption...', selectedOption);
-    
-  }, [])
+  // useEffect(() => {
+  //   if(selectedOption){
+  //     onChangeFunction('', selectedOption);
+  //     console.log('selectedOption...', selectedOption);
+  //   }
+  // }, [])
   
   return (
     <Autocomplete
@@ -38,8 +39,8 @@ export default function AutoComplete<T>({options, state, onChange, fieldName}: A
       renderInput={(params) => (
         <TextField
           {...params}
-          label={state.label}
-          error={state.error}
+          label={state.label ?? ""}
+          error={state.error ?? false}
           helperText={state.error ? state.errorText || 'Campo obrigatório' : ''}
           // onSelect={}
           // value={state.value}
