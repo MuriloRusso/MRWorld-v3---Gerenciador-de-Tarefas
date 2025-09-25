@@ -12,21 +12,16 @@ type AutoCompleteProps<T> = {
 
 export default function AutoComplete<T>({options, state, onChange, fieldName}: AutoCompleteProps<T>) {
   // Encontrar o objeto da opção correspondente ao value atual
+  
   const selectedOption = options.find(option => option.value.toString() === state.value.toString()) || null;
 
   const onChangeFunction = (_:any, newValue: Option | null) => {
     onChange(fieldName, newValue?.value.toString() || '');
   }
 
-  useEffect(()=>{
-    console.log('state.value');
-    console.log('selectedOption', selectedOption);
-    
-    console.log(state);
-    console.log('------');
-    onChangeFunction('', selectedOption)
-
-    console.log('options', options);
+  useEffect(() => {
+    onChangeFunction('', selectedOption);
+    console.log('selectedOption...', selectedOption);
     
   }, [])
   
@@ -39,8 +34,7 @@ export default function AutoComplete<T>({options, state, onChange, fieldName}: A
       options={options}
       getOptionLabel={(option) => option.text}
       sx={{ width: 300 }}
-      autoSelect={true}
-      
+      // autoSelect={true}      
       renderInput={(params) => (
         <TextField
           {...params}

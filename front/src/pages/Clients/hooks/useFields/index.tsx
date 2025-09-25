@@ -13,8 +13,7 @@ export default function useFields() {
   }
 
   useEffect(()=>{
-    console.log('selectedItem');
-    console.log(selectedItem);
+    console.log('selectedItem', selectedItem);
   })
 
   const [ fieldsData, setFieldsData ] = useState<ClientData>({
@@ -196,15 +195,12 @@ export default function useFields() {
 
 
   useEffect(()=>{
-    console.log('selectedItem');
-    console.log(selectedItem);
+    console.log('selectedItem', selectedItem);
     
   }, [selectedItem])
   
   useEffect(()=>{
-    console.log('fieldsData');
-    console.log(fieldsData);
-    
+    console.log('fieldsData', fieldsData);
   }, [fieldsData])
 
   return { fieldsData, handleChange, handleChangeFile, validateFields, selectedItem, changeSelectedItem, resetFields };

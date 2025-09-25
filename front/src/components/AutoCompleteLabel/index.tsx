@@ -14,18 +14,6 @@ export default function AutoComplete<T>({options, state, onChange, fieldName}: A
   // Encontrar o objeto da opção correspondente ao value atual
   const selectedOption = options.find(option => option.value.toString() === state.value.toString()) || null;
 
-  useEffect(()=>{
-    console.log('state.value');
-    // onChange(fieldName, state.value);
-
-    console.log(state);
-
-    // selectedOption = "2up";
-    console.log('------');
-    
-  }, [])
-  
-
 
   return (
     <Autocomplete

@@ -19,7 +19,6 @@ export default function useGetList() {
     }
 
     const getListSearch = () => {
-        console.log('--------getListSearch----------');        
         api.get('/clients/get.php', { params: { search } })
             .then(response => setClients(response.data.data))
             .catch(error => console.error(error));

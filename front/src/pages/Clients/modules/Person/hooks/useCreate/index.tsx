@@ -19,12 +19,7 @@ export default function useCreate({
   getList,
   selectedItem
 }: useCreateProps) {
-  const create = async (newItem: PersonData) => {
-    console.log('creating...');
-
-    console.log('newItem', newItem);
-    
-    
+  const create = async (newItem: PersonData) => {    
     if (!validateFields()) return;
 
     if (!selectedItem) return;
