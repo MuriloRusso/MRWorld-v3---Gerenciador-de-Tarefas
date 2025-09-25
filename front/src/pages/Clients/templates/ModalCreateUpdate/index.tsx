@@ -33,8 +33,6 @@ type ModalProps = {
     clients: Client[];
 }
 
-
-
 export default function ModalCreateUpdate({visible,
     handleModal,
     fieldsData,

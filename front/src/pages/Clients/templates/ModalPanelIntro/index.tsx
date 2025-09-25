@@ -3,7 +3,6 @@ import InputName from "../../components/InputName";
 import InputLogo from "../../components/InputLogo";
 import { Client, ClientData } from "../../../../types/client";
 import InputCNPJ from "../../components/InputCNPJ";
-import InputClient from "../../components/InputClient";
 import InputClientBy from "../../components/InputClientBy";
 
 type ModalPanelIntroProps =  {
@@ -20,7 +19,6 @@ export default function ModalPanelIntro({fieldsData, handleChange, handleChangeF
             <Grid sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
                 <InputName fieldsData={fieldsData} handleChange={handleChange}/>
                 <InputCNPJ fieldsData={fieldsData} handleChange={handleChange}/>
-                <InputClient fieldsData={fieldsData} handleChange={handleChange} />
                 <InputClientBy fieldsData={fieldsData} handleChange={handleChange} options={clients} />
             </Grid>
         </Grid>

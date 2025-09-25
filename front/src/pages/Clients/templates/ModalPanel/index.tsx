@@ -116,27 +116,6 @@ export default function ModalPanel({
                 },
                 }}
             />
-            {/* <Tab
-                label="Pessoas"
-                {...a11yProps(4)}
-                sx={{
-                '&.Mui-selected': {
-                    color: 'black',
-                    fontWeight: 'bold',
-                },
-                }}
-            />
-
-            <Tab
-                label="Projetos"
-                {...a11yProps(5)}
-                sx={{
-                '&.Mui-selected': {
-                    color: 'black',
-                    fontWeight: 'bold',
-                },
-                }}
-            /> */}
             </Tabs>
 
       </Box>
@@ -152,9 +131,6 @@ export default function ModalPanel({
       <CustomTabPanel value={value} index={3}>
         <ModalPanelNotes fieldsData={fieldsData} handleChange={handleChange}/>
       </CustomTabPanel>
-      {/* <CustomTabPanel value={value} index={4}>
-        <ModalPanelPerson formPersonParams={formPersonParams}/>
-      </CustomTabPanel> */}
       <CustomTabPanel value={value} index={5}>
         <ModalPanelProjects/>
       </CustomTabPanel>
