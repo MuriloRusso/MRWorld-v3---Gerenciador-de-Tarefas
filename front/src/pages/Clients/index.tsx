@@ -91,18 +91,6 @@ export default function Clients(){
                 handleModal={handleModalDelete}
                 drop={drop}
             />
-            {/* <ModalList
-                handleModal={handleModalPerson}
-                visible={modalPerson}
-                handleFormPerson={handleFormPerson}
-                selectedItem={selectedItem}
-            />
-            <ModalCrudPerson
-                handleModal={handleFormPerson}
-                visible={formPersonVisible}
-                addToast={addToast}
-                selectedItem={selectedItem}
-            /> */}
             <Person
                 handleModal={handleModalPerson}
                 formPersonVisible={formPersonVisible}
