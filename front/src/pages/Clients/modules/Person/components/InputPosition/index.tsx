@@ -1,4 +1,4 @@
-import InputLabel from "../../../../../../components/InputLabel";
+import Input from "../../../../../../components/Input";
 import { PersonData } from "../../../../../../types/person";
 
 type InputPositionProps = {
@@ -10,7 +10,7 @@ type InputPositionProps = {
 
 export default function InputPosition({ props }: InputPositionProps) {
   return (
-    <InputLabel
+    <Input
       label={props.fieldsPersonData.position.label}
       value={props.fieldsPersonData.position.value}
       placeholder={props.fieldsPersonData.position.placeholder}

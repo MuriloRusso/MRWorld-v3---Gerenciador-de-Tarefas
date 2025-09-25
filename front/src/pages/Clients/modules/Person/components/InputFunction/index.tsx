@@ -1,4 +1,4 @@
-import InputLabel from "../../../../../../components/InputLabel";
+import Input from "../../../../../../components/Input";
 import { PersonData } from "../../../../../../types/person";
 
 type InputFunctionProps = {
@@ -10,7 +10,7 @@ type InputFunctionProps = {
 
 export default function InputFunction({ props }: InputFunctionProps) {
   return (
-    <InputLabel
+    <Input
       label={props.fieldsPersonData.function.label}
       value={props.fieldsPersonData.function.value}
       placeholder={props.fieldsPersonData.function.placeholder}

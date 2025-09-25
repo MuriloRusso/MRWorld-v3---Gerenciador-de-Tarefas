@@ -1,4 +1,4 @@
-import InputLabel from "../../../../../../components/InputLabel";
+import Input from "../../../../../../components/Input";
 import { PersonData } from "../../../../../../types/person";
 
 type InputEmailProps = {
@@ -9,7 +9,7 @@ type InputEmailProps = {
 }
 export default function InputEmail({props}:InputEmailProps) {
     return (
-        <InputLabel 
+        <Input 
             label={props.fieldsPersonData.email.label}
             value={props.fieldsPersonData.email.value}
             placeholder={props.fieldsPersonData.email.placeholder}

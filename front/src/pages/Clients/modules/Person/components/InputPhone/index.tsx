@@ -1,4 +1,4 @@
-import InputLabel from "../../../../../../components/InputLabel";
+import Input from "../../../../../../components/Input";
 import { PersonData } from "../../../../../../types/person";
 
 type InputPhoneProps = {
@@ -10,7 +10,7 @@ type InputPhoneProps = {
 
 export default function InputPhone({ props }: InputPhoneProps) {
   return (
-    <InputLabel
+    <Input
       label={props.fieldsPersonData.phone.label}
       value={props.fieldsPersonData.phone.value}
       placeholder={props.fieldsPersonData.phone.placeholder}
