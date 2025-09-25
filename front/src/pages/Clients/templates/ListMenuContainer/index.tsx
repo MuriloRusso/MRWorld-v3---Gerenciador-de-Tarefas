@@ -44,7 +44,7 @@ export default function ListMenuContainer({
 
         handleChange('name', item.row.name);
         handleChange('cnpj', item.row.cnpj);
-        handleChange('client', item.row.client_by.name);
+        handleChange('client', item.row.client_by.id.toString());
 
         handleChange('phone', item.row.phone);
         handleChange('email', item.row.email);

@@ -14,37 +14,40 @@ export default function AutoComplete<T>({options, state, onChange, fieldName}: A
   // Encontrar o objeto da opção correspondente ao value atual
   const selectedOption = options.find(option => option.value.toString() === state.value.toString()) || null;
 
+  const onChangeFunction = (_:any, newValue: Option | null) => {
+    onChange(fieldName, newValue?.value.toString() || '');
+  }
+
   useEffect(()=>{
     console.log('state.value');
-    // onChange(fieldName, state.value);
-
+    console.log('selectedOption', selectedOption);
+    
     console.log(state);
-
-    // selectedOption = "2up";
     console.log('------');
+    onChangeFunction('', selectedOption)
+
+    console.log('options', options);
     
   }, [])
   
-
-
   return (
     <Autocomplete
       disablePortal
-      // value={selectedOption}
+      value={selectedOption}
       noOptionsText="Sem resultados"
-      onChange={(_, newValue: Option | null) => {
-        onChange(fieldName, newValue?.value.toString() || '');
-      }}
+      onChange={onChangeFunction}
       options={options}
       getOptionLabel={(option) => option.text}
       sx={{ width: 300 }}
       autoSelect={true}
+      
       renderInput={(params) => (
         <TextField
           {...params}
           label={state.label}
           error={state.error}
           helperText={state.error ? state.errorText || 'Campo obrigatório' : ''}
+          // onSelect={}
           // value={state.value}
         />
       )}
