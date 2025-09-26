@@ -51,7 +51,7 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
                             item.id ? API_URL + '/api/clients/uploads/' + item.id + '/' + item.logo : 
                             `https://placehold.co/100x100?text=${item.name}`
                         }
-                        style={{maxHeight: '80px', width: 'auto', borderRadius: 100}}
+                        style={{maxHeight: '40px', width: 'auto', borderRadius: 100}}
                     />
                     <Typography id="modal-modal-item-name" variant="h5" component="p">{item.name}</Typography>
                 </Grid> */}
