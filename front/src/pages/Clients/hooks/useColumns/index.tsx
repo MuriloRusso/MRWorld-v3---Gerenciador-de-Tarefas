@@ -1,4 +1,4 @@
-import { GridColDef, GridUpdateRowError } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
 import { Client, ClientData } from "../../../../types/client";
 import { Grid } from "@mui/material";
