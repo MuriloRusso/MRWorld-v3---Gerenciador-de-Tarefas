@@ -13,16 +13,15 @@ type InputProps = {
   placeholder?: string;
 };
 
-export default function InputFile({
-  value,
-  onChange,
-  error,
-  errorText,
-  required,
-  placeholder = "Logo da Empresa",
-}: InputProps) {
+export default function InputFile({value,onChange,error,errorText,required,placeholder = "Logo da Empresa"}: InputProps) {
   const [fileName, setFileName] = useState("");
   const [imageSrc, setImageSrc] = useState<string | null>(null);
+
+
+  useEffect(()=>{
+    console.log('imageSrc', imageSrc);
+    
+  }, [])
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -95,15 +94,19 @@ export default function InputFile({
                 }}
                 onClick={handleRemove}
               />
-              <img
-                src={imageSrc}
-                alt="Logo selecionado"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
+              {imageSrc &&
+                (
+                  <img
+                    src={imageSrc}
+                    alt="Logo selecionado"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      objectFit: "cover",
+                    }}
+                  />
+                )
+              }
             </>
           ) : (
             <Typography
