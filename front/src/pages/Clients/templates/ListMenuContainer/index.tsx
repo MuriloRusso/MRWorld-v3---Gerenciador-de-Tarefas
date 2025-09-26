@@ -40,7 +40,9 @@ export default function ListMenuContainer({
 
         handleModal(true);
         changeSelectedItem(item.row);
-        handleChange('logo', API_URL + 'api/clients/uploads/' + item.row.id + '/' + item.row.logo);
+
+        const logo = item.row.logo ? API_URL + 'api/clients/uploads/' + item.row.id + '/' + item.row.logo : '';
+        handleChange('logo', logo);
 
         handleChange('name', item.row.name);
         handleChange('cnpj', item.row.cnpj);

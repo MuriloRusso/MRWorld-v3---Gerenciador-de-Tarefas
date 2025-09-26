@@ -167,6 +167,7 @@ export default function useFields() {
 
 
   const handleChangeFile = (fieldName: keyof ClientData, newValue: File) => {
+    const newValueConst = newValue ?? null;
     setFieldsData(prev => ({
       ...prev,
       [fieldName]: {

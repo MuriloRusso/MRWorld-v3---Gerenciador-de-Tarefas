@@ -20,8 +20,8 @@ export default function InputFile({value,onChange,error,errorText,required,place
 
   useEffect(()=>{
     console.log('imageSrc', imageSrc);
-    
-  }, [])
+    console.log('value', value);    
+  }, [imageSrc])
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -80,7 +80,7 @@ export default function InputFile({value,onChange,error,errorText,required,place
             position: "relative",
           }}
         >
-          {imageSrc ? (
+          {imageSrc != null ? (
             <>
               <CloseIcon
                 sx={{
@@ -94,19 +94,17 @@ export default function InputFile({value,onChange,error,errorText,required,place
                 }}
                 onClick={handleRemove}
               />
-              {imageSrc &&
-                (
-                  <img
-                    src={imageSrc}
-                    alt="Logo selecionado"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      objectFit: "cover",
-                    }}
-                  />
-                )
-              }
+
+              <img
+                src={imageSrc}
+                alt="Logo selecionado"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+              />
+   
             </>
           ) : (
             <Typography
