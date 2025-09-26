@@ -33,7 +33,7 @@ export default function useColumns({
                             src={url}
                             style={{
                                 maxHeight: '90%',
-                                width: '-webkit-fill-available',
+                                width: '50px',
                                 borderRadius: 100,
                                 margin: "2.5% 0"
                             }}
