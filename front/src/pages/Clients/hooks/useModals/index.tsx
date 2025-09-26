@@ -20,6 +20,13 @@ export default function useModals(){
     const handleFormPerson = (value:boolean) => {
         setFormPersonVisible(value);
     }
+
+
+    const [ modalDeletePersonVisible, setModalDeletePersonVisible ] = useState<boolean>(false);
+    const handleModalDeletePerson = (value:boolean) => {
+        setModalDeletePersonVisible(value);
+    }
+
     return {
         modalVisible,
         handleModal,
@@ -28,6 +35,8 @@ export default function useModals(){
         formPersonVisible,
         handleFormPerson,
         modalDeleteVisible,
-        handleModalDelete
+        handleModalDelete,
+        modalDeletePersonVisible,
+        handleModalDeletePerson
     }
 }
