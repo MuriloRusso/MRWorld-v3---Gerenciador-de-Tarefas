@@ -4,6 +4,7 @@ import { Client } from "../../../../types/client";
 import { ToastProps } from "../../../../types/toast";
 import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 import useModals from "../../hooks/useModals";
+import useFields from "./hooks/useFields";
 
 type PersonProps = {
     modalPerson: boolean;
@@ -18,6 +19,8 @@ type PersonProps = {
 export default function Person({modalPerson, handleModal, formPersonVisible, handleFormPerson, addToast, selectedItem}:PersonProps){
 
     const { modalDeletePersonVisible, handleModalDeletePerson } = useModals();
+    const { selectedPerson, changeSelectedPerson } = useFields();
+
 
     return (
         <>

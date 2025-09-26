@@ -31,6 +31,7 @@ export default function Clients(){
         modalDeleteVisible,
         handleModalDelete
     } = useModals();
+
     const { 
         fieldsData,
         handleChange,
@@ -40,6 +41,7 @@ export default function Clients(){
         changeSelectedItem,
         resetFields 
     } = useFields();
+    
     const { toast, addToast } = useContext(GlobalContext);
     const { getList, clients, search, handleChangeSearch, getListSearch } = useGetList();
     const { create } = useCreate({handleModal, addToast, validateFields, getList});

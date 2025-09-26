@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { PersonData } from "../../../../../../types/person"
+import { Person, PersonData } from "../../../../../../types/person"
 import { GlobalContext } from "../../../../../../contexts/GlobalContext";
 
 export default function useFields(){
@@ -87,9 +87,19 @@ export default function useFields(){
         return isValid;
     };
 
+    const [ selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+
+    const changeSelectedPerson = (person: Person | null) => {
+        setSelectedPerson(person);
+    }
+
     useEffect(()=>{
         console.log('fieldsPersonData dentro do hook', fieldsPersonData);
     }, [fieldsPersonData])
 
-    return {fieldsPersonData, handleChangePerson, validateFields}
+    useEffect(()=>{
+        console.log('selectedPerson', selectedPerson);
+    }, [selectedPerson])
+
+    return {fieldsPersonData, handleChangePerson, validateFields, selectedPerson, changeSelectedPerson}
 }

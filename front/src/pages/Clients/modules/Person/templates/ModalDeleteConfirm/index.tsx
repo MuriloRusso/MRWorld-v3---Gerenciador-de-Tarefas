@@ -21,7 +21,7 @@ const style = {
 
 type ModalProps = {
     visible: boolean;
-    item: Person | null;
+    item: Person | null ;
     handleModal: (value:boolean) => void;
     drop: (id: number) => void;
 }
