@@ -4,6 +4,8 @@ import { Client, ClientData } from "../../../../types/client";
 import ButtonSecondary from "../../../../components/ButtonSecondary";
 import ButtonPrimary from "../../../../components/ButtonPrimary";
 import API_URL from "../../../../config/api";
+import ButtonDanger from "../../../../components/ButtonDanger";
+import ButtonLink from "../../../../components/ButtonLink";
 
 const style = {
   position: 'absolute',
@@ -41,7 +43,7 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
         >
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Excluir definitivamente
+                    Excluir definitivamente?
                 </Typography>
                 {/* <Grid sx={{display: 'flex', flexDirection: 'row', gap: '10px', paddingY: '10px'}}>
                     <img 
@@ -62,8 +64,10 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
                     O item "{item.name}" será excluido definitivamente. Não é possível desfazer essa ação.
                 </Typography>
                 <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
-                    <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} />
-                    <ButtonPrimary value="Excluir definitivamente" onClick={()=> {drop(item.id)}}/>
+                    {/* <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} /> */}
+                    {/* <ButtonPrimary value="Excluir definitivamente" onClick={()=> {drop(item.id)}}/> */}
+                    <ButtonLink value="Cancelar" onClick={() => handleModal(false)} />
+                    <ButtonDanger value="Excluir definitivamente" onClick={()=> {drop(item.id)}}/>
                 </Grid>
             </Box>
         </Modal>
