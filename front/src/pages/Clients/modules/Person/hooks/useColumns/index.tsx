@@ -1,7 +1,22 @@
 import { GridColDef } from "@mui/x-data-grid";
 import ListMenu from "../../templates/ListMenu";
+import { Person, PersonData } from "../../../../../../types/person";
 
-export default function useColumns() {
+type useColumnsProps = {
+    // handleModal: (value: boolean) => void;
+    // handleModalPerson: (value: boolean) => void;
+    // handleModalDeletePerson: (value: boolean) => void;
+    // changeSelectedItem: (item: Person | null) => void;
+    // handleChange: (fieldName: keyof PersonData, newValue: string) => void;
+}
+
+export default function useColumns({
+    // handleModal,
+    // handleModalPerson,
+    // handleModalDeletePerson,
+    // changeSelectedItem,
+    // handleChange
+}:useColumnsProps) {
 
     const columns: GridColDef[] = [
         {field: 'id', headerName: '', renderCell(params){
@@ -10,7 +25,9 @@ export default function useColumns() {
                     item={params}
                     handleModal={()=>{}}
                     handleModalPerson={()=>{}}
+                    // handleModalDelete={handleModalDeletePerson}
                     handleModalDelete={()=>{}}
+
                     changeSelectedItem={()=>{}}
                     handleChange={()=>{}}
                 />

@@ -43,16 +43,6 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Excluir definitivamente?
                 </Typography>
-                {/* <Grid sx={{display: 'flex', flexDirection: 'row', gap: '10px', paddingY: '10px'}}>
-                    <img 
-                        src={
-                            item.id ? API_URL + '/api/clients/uploads/' + item.id + '/' + item.logo : 
-                            `https://placehold.co/100x100?text=${item.name}`
-                        }
-                        style={{maxHeight: '40px', width: 'auto', borderRadius: 100}}
-                    />
-                    <Typography id="modal-modal-item-name" variant="h5" component="p">{item.name}</Typography>
-                </Grid> */}
                 <Typography
                     id="modal-modal-text"
                     variant="inherit"

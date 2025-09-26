@@ -17,7 +17,8 @@ export default function useColumns({
     handleModalPerson,
     handleModalDelete,
     changeSelectedItem,
-    handleChange}:useColumnsProps) {
+    handleChange
+}:useColumnsProps) {
 
     const baseUrl = `${API_URL}api/clients/uploads/`;
 

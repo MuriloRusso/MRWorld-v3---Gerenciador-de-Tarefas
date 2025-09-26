@@ -1,4 +1,4 @@
-import {  useState } from "react"
+import {  useEffect, useState } from "react"
 
 export default function useModals(){
     const [ modalVisible, setModalVisible ] = useState<boolean>(false);
@@ -22,10 +22,16 @@ export default function useModals(){
     }
 
 
-    const [ modalDeletePersonVisible, setModalDeletePersonVisible ] = useState<boolean>(false);
-    const handleModalDeletePerson = (value:boolean) => {
-        setModalDeletePersonVisible(value);
-    }
+    // const [ modalDeletePersonVisible, setModalDeletePersonVisible ] = useState<boolean>(false);
+    // const handleModalDeletePerson = (value:boolean) => {
+    //     setModalDeletePersonVisible(value);
+    // }
+
+    // useEffect(()=>{
+    //     console.log('modalPerson', modalPerson);
+        
+    // }, [modalPerson])
+
 
     return {
         modalVisible,
@@ -36,7 +42,7 @@ export default function useModals(){
         handleFormPerson,
         modalDeleteVisible,
         handleModalDelete,
-        modalDeletePersonVisible,
-        handleModalDeletePerson
+        // modalDeletePersonVisible,
+        // handleModalDeletePerson
     }
 }

@@ -2,9 +2,9 @@ import ModalList from "./templates/ModalList";
 import ModalCrudPerson from "./templates/ModalCrudPerson";
 import { Client } from "../../../../types/client";
 import { ToastProps } from "../../../../types/toast";
-import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 import useModals from "../../hooks/useModals";
 import useFields from "./hooks/useFields";
+import ModalDeleteConfirm from "./templates/ModalDeleteConfirm";
 
 type PersonProps = {
     modalPerson: boolean;
@@ -18,7 +18,7 @@ type PersonProps = {
 
 export default function Person({modalPerson, handleModal, formPersonVisible, handleFormPerson, addToast, selectedItem}:PersonProps){
 
-    const { modalDeletePersonVisible, handleModalDeletePerson } = useModals();
+    // const { modalDeletePersonVisible, handleModalDeletePerson } = useModals();
     const { selectedPerson, changeSelectedPerson } = useFields();
 
 
@@ -37,9 +37,13 @@ export default function Person({modalPerson, handleModal, formPersonVisible, han
                 selectedItem={selectedItem}
             />
             <ModalDeleteConfirm
-                visible={modalDeletePersonVisible}
+                // visible={modalDeletePersonVisible}
+                visible={false}
+
                 item={selectedPerson}
-                handleModal={handleModalDeletePerson}
+                // handleModal={handleModalDeletePerson}
+                handleModal={()=>{}}
+
                 drop={()=>{}}
             />
         </>

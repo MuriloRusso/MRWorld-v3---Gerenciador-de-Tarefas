@@ -70,6 +70,8 @@ export default function ListMenuContainer({
     }
 
     const handlePeople = () => {
+        console.log('handlePeople');
+        
         changeSelectedItem(item.row);
         handleModalPerson(true)
     }
