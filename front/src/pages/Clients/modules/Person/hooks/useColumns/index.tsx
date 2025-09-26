@@ -5,7 +5,7 @@ import { Person, PersonData } from "../../../../../../types/person";
 type useColumnsProps = {
     // handleModal: (value: boolean) => void;
     // handleModalPerson: (value: boolean) => void;
-    // handleModalDeletePerson: (value: boolean) => void;
+    handleModalDeletePerson: (value: boolean) => void;
     // changeSelectedItem: (item: Person | null) => void;
     // handleChange: (fieldName: keyof PersonData, newValue: string) => void;
 }
@@ -13,7 +13,7 @@ type useColumnsProps = {
 export default function useColumns({
     // handleModal,
     // handleModalPerson,
-    // handleModalDeletePerson,
+    handleModalDeletePerson,
     // changeSelectedItem,
     // handleChange
 }:useColumnsProps) {
@@ -25,8 +25,8 @@ export default function useColumns({
                     item={params}
                     handleModal={()=>{}}
                     handleModalPerson={()=>{}}
-                    // handleModalDelete={handleModalDeletePerson}
-                    handleModalDelete={()=>{}}
+                    handleModalDelete={() => handleModalDeletePerson(true)}
+                    // handleModalDelete={()=>{}}
 
                     changeSelectedItem={()=>{}}
                     handleChange={()=>{}}

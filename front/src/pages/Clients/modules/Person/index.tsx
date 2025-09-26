@@ -18,7 +18,7 @@ type PersonProps = {
 
 export default function Person({modalPerson, handleModal, formPersonVisible, handleFormPerson, addToast, selectedItem}:PersonProps){
 
-    // const { modalDeletePersonVisible, handleModalDeletePerson } = useModals();
+    const { modalDeletePersonVisible, handleModalDeletePerson } = useModals();
     const { selectedPerson, changeSelectedPerson } = useFields();
 
 
@@ -37,12 +37,12 @@ export default function Person({modalPerson, handleModal, formPersonVisible, han
                 selectedItem={selectedItem}
             />
             <ModalDeleteConfirm
-                // visible={modalDeletePersonVisible}
-                visible={false}
+                visible={modalDeletePersonVisible}
+                // visible={false}
 
                 item={selectedPerson}
-                // handleModal={handleModalDeletePerson}
-                handleModal={()=>{}}
+                handleModal={handleModalDeletePerson}
+                // handleModal={()=>{}}
 
                 drop={()=>{}}
             />

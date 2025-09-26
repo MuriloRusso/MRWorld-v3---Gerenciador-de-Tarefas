@@ -22,15 +22,15 @@ export default function useModals(){
     }
 
 
-    // const [ modalDeletePersonVisible, setModalDeletePersonVisible ] = useState<boolean>(false);
-    // const handleModalDeletePerson = (value:boolean) => {
-    //     setModalDeletePersonVisible(value);
-    // }
+    const [ modalDeletePersonVisible, setModalDeletePersonVisible ] = useState<boolean>(false);
+    const handleModalDeletePerson = (value:boolean) => {
+        setModalDeletePersonVisible(value);
+    }
 
-    // useEffect(()=>{
-    //     console.log('modalPerson', modalPerson);
+    useEffect(()=>{
+        console.log('modalPerson', modalPerson);
         
-    // }, [modalPerson])
+    }, [modalPerson])
 
 
     return {
@@ -42,7 +42,7 @@ export default function useModals(){
         handleFormPerson,
         modalDeleteVisible,
         handleModalDelete,
-        // modalDeletePersonVisible,
-        // handleModalDeletePerson
+        modalDeletePersonVisible,
+        handleModalDeletePerson
     }
 }
