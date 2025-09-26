@@ -41,9 +41,9 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
         >
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Excluír Empresa/Cliente
+                    Excluir definitivamente
                 </Typography>
-                <Grid sx={{display: 'flex', flexDirection: 'row', gap: '10px', paddingY: '10px'}}>
+                {/* <Grid sx={{display: 'flex', flexDirection: 'row', gap: '10px', paddingY: '10px'}}>
                     <img 
                         src={
                             item.id ? API_URL + '/api/clients/uploads/' + item.id + '/' + item.logo : 
@@ -52,13 +52,18 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
                         style={{maxHeight: '80px', width: 'auto', borderRadius: 100}}
                     />
                     <Typography id="modal-modal-item-name" variant="h5" component="p">{item.name}</Typography>
-                </Grid>
-                <Typography id="modal-modal-text" variant="inherit" component="p" sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px',}}>
-                    Tem certeza de que deseja excluir o cliente {item.name}?
+                </Grid> */}
+                <Typography
+                    id="modal-modal-text"
+                    variant="inherit"
+                    component="p"
+                    sx={{color: "#444746", display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px',}}
+                    >
+                    O item "{item.name}" será excluido definitivamente. Não é possível desfazer essa ação.
                 </Typography>
-                <Grid sx={{borderWidth: 0, borderTopWidth: 1, borderColor: "#ccc", borderStyle: 'solid',  display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
+                <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
                     <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} />
-                    <ButtonPrimary value="Confirmar" onClick={()=> {drop(item.id)}}/>
+                    <ButtonPrimary value="Excluir definitivamente" onClick={()=> {drop(item.id)}}/>
                 </Grid>
             </Box>
         </Modal>
