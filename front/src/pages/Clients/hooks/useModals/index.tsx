@@ -32,6 +32,11 @@ export default function useModals(){
         
     }, [modalPerson])
 
+    useEffect(()=>{
+        console.log('modalDeleteVisible', modalDeleteVisible);
+        
+    }, [modalDeleteVisible])
+
 
     return {
         modalVisible,
