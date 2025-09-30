@@ -6,7 +6,7 @@ type useColumnsProps = {
     // handleModal: (value: boolean) => void;
     // handleModalPerson: (value: boolean) => void;
     handleModalDelete: (value: boolean) => void;
-    // changeSelectedItem: (item: Person | null) => void;
+    changeSelectedItem: (item: Person | null) => void;
     // handleChange: (fieldName: keyof PersonData, newValue: string) => void;
 }
 
@@ -14,9 +14,9 @@ export default function useColumns({
     // handleModal,
     // handleModalPerson,
     handleModalDelete,
-    // changeSelectedItem,
+    changeSelectedItem,
     // handleChange
-}:useColumnsProps) {
+}:useColumnsProps): { columns: GridColDef[]; } {
 
     const columns: GridColDef[] = [
         {field: 'id', headerName: '', renderCell(params){
@@ -25,7 +25,9 @@ export default function useColumns({
                     item={params}
                     handleModal={()=>{}}
                     handleModalPerson={()=>{}}
-                    handleModalDelete={() => handleModalDelete(true)}
+                    handleModalDelete={() => {
+                    changeSelectedItem(params.row);
+                    handleModalDelete(true)}}
                     // handleModalDelete={()=>{}}
 
                     changeSelectedItem={()=>{}}

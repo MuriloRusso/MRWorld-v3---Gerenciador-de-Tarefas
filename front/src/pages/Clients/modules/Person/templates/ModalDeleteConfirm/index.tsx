@@ -28,8 +28,14 @@ type ModalProps = {
 
 export default function ModalDeleteConfirm({visible, item, handleModal, drop}:ModalProps){
 
-    if(item === null){
-        return (<></>);
+    // if(item === null){
+    //     return (<></>);
+    // }
+
+    const handleDelete = () => {
+        if(item){
+            drop(item.id)
+        }
     }
 
     return (
@@ -49,13 +55,13 @@ export default function ModalDeleteConfirm({visible, item, handleModal, drop}:Mo
                     component="p"
                     sx={{color: "#444746", display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px',}}
                     >
-                    O item "{item.name}" será excluido definitivamente. Não é possível desfazer essa ação.
+                    O item "{item ? item.name : ""}" será excluido definitivamente. Não é possível desfazer essa ação.
                 </Typography>
                 <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '20px', paddingY: '20px', justifyContent: "flex-end"}}>
                     {/* <ButtonSecondary value="Cancelar" onClick={() => handleModal(false)} /> */}
                     {/* <ButtonPrimary value="Excluir definitivamente" onClick={()=> {drop(item.id)}}/> */}
                     <ButtonLink value="Cancelar" onClick={() => handleModal(false)} />
-                    <ButtonDanger value="Excluir definitivamente" onClick={()=> {drop(item.id)}}/>
+                    <ButtonDanger value="Excluir definitivamente" onClick={handleDelete}/>
                 </Grid>
             </Box>
         </Modal>

@@ -24,7 +24,12 @@ export default function useModals(){
 
     const [ modalDeletePersonVisible, setModalDeletePersonVisible ] = useState<boolean>(false);
     const handleModalDeletePerson = (value:boolean) => {
+        console.log('delete modal function...');
+        
         setModalDeletePersonVisible(value);
+
+        console.log('modaldeleteperson', modalDeletePersonVisible);
+        
     }
 
     useEffect(()=>{

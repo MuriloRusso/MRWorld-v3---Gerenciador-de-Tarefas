@@ -30,6 +30,7 @@ export default function Person({modalPerson, handleModal, formPersonVisible, han
                 handleFormPerson={handleFormPerson}
                 selectedItem={selectedItem}
                 handleModalDelete={handleModalDeletePerson}
+                changeSelectedPerson={changeSelectedPerson}
             />
             <ModalCrudPerson
                 handleModal={handleFormPerson}
@@ -37,6 +38,7 @@ export default function Person({modalPerson, handleModal, formPersonVisible, han
                 addToast={addToast}
                 selectedItem={selectedItem}
             />
+            
             <ModalDeleteConfirm
                 visible={modalDeletePersonVisible}
                 // visible={false}
