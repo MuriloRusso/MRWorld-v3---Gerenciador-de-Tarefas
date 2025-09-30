@@ -26,9 +26,10 @@ type ModalListProps = {
     handleModal: (value:boolean) => void;
     handleFormPerson: (value: boolean) => void;
     selectedItem: Client | null;
+    handleModalDelete: (value: boolean) => void;
 }
 
-export default function ModalList({visible, handleModal, handleFormPerson, selectedItem}:ModalListProps){
+export default function ModalList({visible, handleModal, handleFormPerson, selectedItem, handleModalDelete}:ModalListProps){
 
     const { getList, people} = useGetList({selectedItem});
 
@@ -63,7 +64,7 @@ export default function ModalList({visible, handleModal, handleFormPerson, selec
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Pessoas
                 </Typography>
-                <List rows={rows} handleModal={()=> handleFormPerson(true)} selectedItem={selectedItem}/>
+                <List rows={rows} handleModal={()=> handleFormPerson(true)} selectedItem={selectedItem} handleModalDelete={handleModalDelete}/>
                 <Grid
                     sx={{
                         borderWidth: 0,

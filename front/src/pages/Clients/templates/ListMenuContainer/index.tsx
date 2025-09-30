@@ -65,7 +65,6 @@ export default function ListMenuContainer({
     }
     
     const handleDeleteItem = () => {
-        console.log('deletando.......');
         
         handleModalDelete(true);
         changeSelectedItem(item.row);

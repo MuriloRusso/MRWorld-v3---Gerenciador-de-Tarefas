@@ -11,13 +11,13 @@ type ListProps = {
     rows: Person[];
     handleModal: (value: boolean) => void;
     selectedItem: Client | null
+    handleModalDelete: (value: boolean) => void;
 }
 
-export default function List({rows, handleModal, selectedItem}:ListProps){
+export default function List({rows, handleModal, selectedItem, handleModalDelete}:ListProps){
 
-    const { handleModalDeletePerson } = useModals();
     // const { people } = useGetList({selectedItem});
-    const { columns } = useColumns({handleModalDeletePerson});
+    const { columns } = useColumns({handleModalDelete});
 
     return <TableDataGrid rows={rows} columns={columns} sx={{ height: "500px" }} headerTable={<HeaderList  handleModal={handleModal}/>}/>
 }
